@@ -21,6 +21,9 @@ CMS.init({
       branch: 'master',
     },
     publish_mode: 'editorial_workflow',
+    
+    media_folder: 'images/uploads',
+    public_folder: '/img',
     // media_library:{
     //   name: 'cloudinary',
     //   config: {
