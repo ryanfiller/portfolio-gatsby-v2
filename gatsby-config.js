@@ -19,7 +19,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `static/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/images/gatsby-icon.png`,
       },
     },
 
@@ -31,15 +31,6 @@ module.exports = {
 				modulePath: `${__dirname}/src/cms/cms.js`,
 			},
     },
-    // {
-		// 	resolve:`gatsby-source-cloudinary`,
-		// 	options:{
-		// 		cloudName: 'ryanfiller',
-		// 		apiKey: '244836398385633',
-		// 		apiSecret: 'K9JubqsYaMlZtwvqzGgKwJl5owk',
-		// 		resourceType: 'image',
-		// 	}
-		// },
 
     // data related plugins
     {

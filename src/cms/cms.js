@@ -18,7 +18,6 @@ CMS.init({
       repo: 'ryanfiller/portfolio-gatsby-v2',
       branch: 'master',
     },
-    // publish_mode: 'editorial_workflow',
     
     media_folder: 'static/images/uploads',
     public_folder: '/images/uploads',
