@@ -13,12 +13,12 @@ CMS.init({
   config: {
     load_config_file: false,
     backend: {
-      squash_merges: true,
       name: 'git-gateway',
+      use_large_media_transforms_in_media_library: false,
       repo: 'ryanfiller/portfolio-gatsby-v2',
       branch: 'master',
+      squash_merges: true,
     },
-    
     media_folder: 'static/images/uploads',
     public_folder: '/images/uploads',
     collections: [
