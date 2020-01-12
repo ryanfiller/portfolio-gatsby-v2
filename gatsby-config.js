@@ -23,6 +23,24 @@ module.exports = {
       },
     },
 
+    // CMS / content related plugins
+    {
+			resolve: `gatsby-plugin-netlify-cms`,
+			options: {
+				manualInit: true,
+				modulePath: `${__dirname}/src/cms/cms.js`,
+			},
+    },
+    // {
+		// 	resolve:`gatsby-source-cloudinary`,
+		// 	options:{
+		// 		cloudName: 'ryanfiller',
+		// 		apiKey: '244836398385633',
+		// 		apiSecret: 'K9JubqsYaMlZtwvqzGgKwJl5owk',
+		// 		resourceType: 'image',
+		// 	}
+		// },
+
     // data related plugins
     {
 			resolve: `gatsby-source-filesystem`,
