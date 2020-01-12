@@ -20,7 +20,7 @@ CMS.init({
     },
     // publish_mode: 'editorial_workflow',
     
-    media_folder: 'src/images/uploads',
+    media_folder: 'static/images/uploads',
     public_folder: '/img',
     collections: [
       blog
