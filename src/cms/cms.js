@@ -21,7 +21,7 @@ CMS.init({
     // publish_mode: 'editorial_workflow',
     
     media_folder: 'static/images/uploads',
-    public_folder: '/images',
+    public_folder: '/images/uploads',
     collections: [
       blog
     ]
