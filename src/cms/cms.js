@@ -16,7 +16,7 @@ CMS.init({
     load_config_file: false,
     backend: {
       squash_merges: true,
-      name: 'github',
+      name: 'git-gateway',
       repo: 'ryanfiller/portfolio-gatsby-v2',
       branch: 'master',
     },
