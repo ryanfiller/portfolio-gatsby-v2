@@ -22,7 +22,7 @@ CMS.init({
     },
     publish_mode: 'editorial_workflow',
     
-    media_folder: 'images/uploads',
+    media_folder: 'src/images/uploads',
     public_folder: '/img',
     // media_library:{
     //   name: 'cloudinary',
