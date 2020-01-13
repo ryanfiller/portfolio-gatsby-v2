@@ -58,7 +58,15 @@ module.exports = {
       },
     },
     
-    // client side related plugins
+    // design related plugins
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        cssLoaderOptions: {
+          camelCase: false, // to use BEM syntax
+        },
+      },
+    },
     {
 			resolve: `gatsby-plugin-layout`,
 			options: {

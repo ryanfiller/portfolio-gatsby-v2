@@ -4,10 +4,10 @@ import CMS from 'netlify-cms-app'
 import { blog } from './fields/blog'
 
 // editor components
-// import image from './editor/image'
+import image from './editor/image'
 
 // editor components
-// CMS.registerEditorComponent(image);
+CMS.registerEditorComponent(image);
 
 CMS.init({
   config: {
