@@ -27,13 +27,48 @@ I like being able to do page transitions and other things that required my heade
 
 ### gatsby-plugin-react-helmet
 
-``[`gatsby-plugin-react-helmet`](https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet/) is a default Gatsby plugin that comes with every new Gatsby starter site. In the starter site there are good examples of it being used to pass metadata from any page up and into the `<head>` of the site, but it actually comes with a lot of other features. If you dig into the [documentation of the base package](https://github.com/nfl/react-helmet#reference-guide) there's actually a way to add attributes to the `<body>` tag of the page. 
+``[`gatsby-plugin-react-helmet`](https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet/) is a default Gatsby plugin that comes with every new Gatsby starter site. In the starter site there are good examples of it being used to pass metadata from any page up and into the `<head>` of the site, but it actually comes with a lot of other features. The layout wrapping method I outlined above can make it kind of difficult to pass data upwards, but if you dig into the [documentation of the base package](https://github.com/nfl/react-helmet#reference-guide) there's actually a way to add attributes to the `<body>` tag of the page. I've used this to add high level classnames to the top of the page and then use my [favorite scss feature](https://css-tricks.com/the-sass-ampersand/#article-header-id-5) to to add page specific overrides.
 
-https://github.com/ryanfiller/portfolio-gatsby/search?q=helmet&unscoped_q=helmet
+```javascript
+// layout.jsx
 
-https://github.com/nfl/react-helmet
+const Layout = props => {
+  return (
+    <Header className="header"/>
+    {props.children}
+    <Footer className="footer"/>
+  )
+}
 
-https://css-tricks.com/the-sass-ampersand/#article-header-id-5
+// homepage.jsx
+
+const Homepage = props => {
+  return (
+    <>
+      <Helmet>
+        <body className="homepage" />
+      </Helmet>
+      <Content {...props} />
+    </>
+  )
+}
+
+// header.scss
+
+.header {
+  background: maroon;
+  color: white;
+  
+  .homepage & {
+    background: white;
+    color: grey;
+  }
+}
+```
+
+
+
+
 
 ## Content Stuff
 
