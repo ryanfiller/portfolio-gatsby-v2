@@ -183,11 +183,11 @@ CMS.init({
 })
 ```
 
-This is nice because Ipersonallydon't care for yaml, but it makes common things like title and date abstractable and able tobe reusedin any collection.
+This is nice because I *personally* don't care for yaml, but it makes common things like title and date abstractable and able to be reused in any collection.
 
 ### Extending Default Editor Widgets
 
-Editor Widgets are editor components that appear under the + in the body while editting a post. The default comes with Image and Code blocks, and there are [pretty good docs](https://www.netlifycms.org/docs/custom-widgets/#registereditorcomponent) on the NetlifyCMS site about how to create your own editor widgets. The example shows how to build a YouTube embed, but what happens if you pass the name of an existing widget to the `id` field? Well, it overwrites it of course! Obviously you have to be careful not to break any fucntionality with this, but I have had a lot of luck overriding the default Image widget with a custom one of my own to add a few more options.
+Editor Widgets are editor components that appear under the + in the body while editing a post. The default comes with Image and Code blocks, and there are [pretty good docs](https://www.netlifycms.org/docs/custom-widgets/#registereditorcomponent) on the NetlifyCMS site about how to create custom editor widgets.The example shows how to build a YouTube embed, but what happens if you pass the name of an existing widget to theidfield? Well, it overwrites it of course!Obviouslyits easy to break default functionality with this, but I have had a lot of luck overriding the default Image widget to add a few extra options.
 
 <img src="/images/uploads/cms_image_editor_widget_example.png" alt="example of my custom image editor widget" data-caption="undefined" data-align="full" data-small="false" />
 
