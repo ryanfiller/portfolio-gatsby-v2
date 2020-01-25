@@ -76,7 +76,7 @@ I thnk the [plugin docs](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/) e
 
 > MDX is markdown for the component era. It lets you write JSX embedded inside markdown.
 
-Anyone using Gatsby is already familiar with React, so the ability to easily render React components inside markdown feels like a pretty natural extension. The part that I want to highlight, though, is the ability to pass a `components` object to the `MDXProvider` and have it *automagically* replace default html elements with React components whenever they appear in your markdown.
+Anyone using Gatsby is already familiar with React, so the ability to render React components inside markdown feels like a natural next step.The part that I want to highlight, though, is the ability to pass a `components` object to the `MDXProvider` and have it *automagically* replace markdown elements with React components.
 
 ```javascript
 import Header from './special-header'
@@ -94,7 +94,7 @@ const Markdown = props => (
 )
 ```
 
-This lets you build your own tool similar to [gatsby-remark-autolink-headers](https://www.gatsbyjs.org/packages/gatsby-remark-autolink-headers/), or do your own custom images with any build in functionality you want. You literally have the power of a custom React component anywhere, and you only have to configure it in one place.
+This setup lets you build toolssimilar to[ gatsby-remark-autolink-headers](https://www.gatsbyjs.org/packages/gatsby-remark-autolink-headers/) or custom images with any built in optimization features. You have the power of a custom React component anywhere, and you only have to configure it in one place.
 
 ### gatsby-node.js
 
