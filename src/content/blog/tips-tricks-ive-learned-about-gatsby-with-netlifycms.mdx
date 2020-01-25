@@ -130,7 +130,7 @@ With this setup anything in theblogdirectory gets the default template of `blog.
 
 ### CMS Manual Initialization
 
-While technically in beta, NetlifyCMS supports [manual javascript initialization](https://www.netlifycms.org/docs/beta-features/#manual-initialization) of the CMS instead of using a `config.yaml` file. In my opinion this makes perfect sense to do with Gatsby since the entire ecosystem is already nearly entirely javascript. Besides not having to deal with yaml indention, the big plus is having the full power of javascript. That means you can break up configurations into different partials and compose them in your `config` object.
+While technically in beta, NetlifyCMS supports [manual javascript initialization](https://www.netlifycms.org/docs/beta-features/#manual-initialization) instead of using a `config.yaml` file. This makes perfect sense to do with Gatsby since the entire ecosystem is already javascript based. Besides not having to deal with yaml indention this also adds the full power of javascript to the configuration file. That means you can break up configurations into different partials and compose them in your `config` object.
 
 ```javascript
 // common-fields.js
@@ -183,7 +183,7 @@ CMS.init({
 })
 ```
 
-This is nice because I personally don't care for yaml, but it also lets you abstract common things like title and date into one file and reuse them on any collection you want.
+This is nice because Ipersonallydon't care for yaml, but it makes common things like title and date abstractable and able tobe reusedin any collection.
 
 ### Extending Default Editor Widgets
 
