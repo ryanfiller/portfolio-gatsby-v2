@@ -193,6 +193,4 @@ Editor Widgets are editor components that appear under the + in the body while e
 
 It's **very** easy to break the editor by trying to query something that isn't there, so be careful with that regex and make sure it accounts for *not* matching anything. Its even possible to pass a custom React component into the `toPreview` value and customize how the image looks in the preview pane. This pairs super well with the MDX component I outlined above. Just [dump out the props in the `toBlock` value](https://github.com/ryanfiller/portfolio-gatsby-v2/blob/master/src/cms/editor/image.js#L63) and have the [MDX component grab them on the front end](https://github.com/ryanfiller/portfolio-gatsby-v2/blob/master/src/components/markdown/image.js#L8) and it's possible to make highly configurable React widgets that a user can easily edit.
 
-
-
 How are you supposed to end a blog post?
