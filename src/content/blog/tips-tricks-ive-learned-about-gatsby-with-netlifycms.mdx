@@ -22,11 +22,11 @@ I compiled this non-comprehensive list of some quick-but-powerful tips and trick
 
 ### gatsby-plugin-layout
 
-Gatsby v1 had a concept of "layouts", which were high level components that automatically wrapped each page. This default behavior was changed in Gatsby v2, but their offical docs explains the new situation pretty well. 
+Gatsby v1 had the idea of "layouts", which were high level components that automatically wrapped each page. This feature was changed in Gatsby v2, but their offical docs explain the new situation pretty well. 
 
 > In the original implementation, the layout component was wrapped around the outside of the page component. This meant that the layout component could manage things like transitions and persistent state without any special workarounds, because it never rerendered. In version 2, the layout component is no longer special, and it’s included in every page that wants to display it. This means that it does rerender on every route change.
 
-I like being able to do page transitions and other things that required my header and footer not to rerender.﻿ This component wraps every page template and I've found that its also a good place to put other global things like styles or some context providers. I have a feeling this is using Gatsby's [`wrapPageElement` Browser API](https://www.gatsbyjs.org/docs/browser-apis/#wrapPageElement) behind the scenes, but I think its a little bit easier to configure via plugin.
+I like being able to do page transitions and other things that required my header and footer not to rerender.﻿ This component wraps every page and I've found that it's also a good place to put other global things like styles or some context providers. I have a feeling this is using Gatsby's [`wrapPageElement` Browser API](https://www.gatsbyjs.org/docs/browser-apis/#wrapPageElement) behind the scenes, but I think it is a little bit easier to configure via plugin.
 
 ### gatsby-plugin-react-helmet
 
