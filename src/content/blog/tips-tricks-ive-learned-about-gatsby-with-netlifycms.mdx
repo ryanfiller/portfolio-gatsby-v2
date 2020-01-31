@@ -79,7 +79,7 @@ For anyone not familiar with MDX, I think the [plugin docs](https://www.gatsbyjs
 
 > MDX is markdown for the component era. It lets you write JSX embedded inside markdown.
 
-Anyone using Gatsby is already somewhat familiar with React, so the ability to render React components inside markdown feels like a natural next step. The part that I want to highlight, though, is the ability to pass a `components` object to the `MDXProvider` and have it *automagically* replace markdown elements with React components.
+Anyone using Gatsby is already somewhat familiar with React, so the ability to render React components inside markdown feels like a natural next step. The part that I want to highlight is the ability to pass a `components` object to the `MDXProvider` and have it *automagically* replace markdown elements with React components.
 
 ```javascript
 import Header from './special-header'
@@ -97,11 +97,11 @@ const Markdown = props => (
 )
 ```
 
-This setup lets you build toolssimilar to[ gatsby-remark-autolink-headers](https://www.gatsbyjs.org/packages/gatsby-remark-autolink-headers/) or custom images with any built in optimization features. You have the power of a custom React component anywhere, and you only have to configure it in one place.
+This setup lets you build tools similar to[ gatsby-remark-autolink-headers](https://www.gatsbyjs.org/packages/gatsby-remark-autolink-headers/) or custom images with any built in optimization features. You have the power of a custom React component anywhere, and you only have to configure it in one place.
 
 ### gatsby-node.js
 
-Gatsby has a pretty robust node API exposed in their `gatsby-node` file, and anyone who has build a blog has dug into this file. [This tutorial section](https://www.gatsbyjs.org/tutorial/part-seven/) walks through how to generate pages for say, a blog, from data by creating a slug for each .md file and then resolving a template to render. I like to take this a step further and give myself some nice defaults with the ability to override them in frontmatter.
+Gatsby has a pretty robust node API exposed in their `gatsby-node` file. Anyone who has build a blog and programatically made pages from markdown files has dug into this file. [This tutorial section](https://www.gatsbyjs.org/tutorial/part-seven/) walks through how to generate pages for say, a blog, from data by creating a slug for each .md file and then resolving a template to render. I like to take this a step further and give myself some nice defaults with the ability to override them in frontmatter.
 
 ```javascript
 if (node.internal.type === 'Mdx' && !node.fileAbsolutePath.includes('content/pages/')) {
@@ -127,7 +127,7 @@ if (node.internal.type === 'Mdx' && !node.fileAbsolutePath.includes('content/pag
 }
 ```
 
-With this setup anything in theblogdirectory gets the default template of `blog.js`. I have a similar default that will build a url from the directory name and post title - `blog/post-title`. I want to override that I can give any post with somethingmaybeshorter or more readable.
+With this setup anything in the `blog` directory gets the default template of `blog.js`. I have a similar default that will build a url from the directory name and post title - `blog/post-title`. If I want to override that I can give any post a custom url with something maybe shorter or more readable.
 
 ## CMS Stuff
 
