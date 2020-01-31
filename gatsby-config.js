@@ -11,12 +11,12 @@ module.exports = {
   // TODO? - look into this - https://www.gatsbyjs.org/packages/gatsby-plugin-netlify-cache/
 
   plugins: [
-    'gatsby-plugin-react-helmet',
+    
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'ryanfiller.com',
+        short_name: 'ryanfiller.com',
         start_url: '/',
         background_color: '#663399',
         theme_color: '#663399',
@@ -24,6 +24,9 @@ module.exports = {
         icon: 'static/images/gatsby-icon.png'
       }
     },
+
+    // build related plugins
+    'gatsby-plugin-netlify-cache',
 
     // CMS / content related plugins
     {
@@ -36,6 +39,7 @@ module.exports = {
     },
 
     // data related plugins
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
