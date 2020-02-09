@@ -1,8 +1,25 @@
 ---
-name: 'changes'
-title: 'Change Log'
----
+name: changes
+title: Change Log
+changes:
+  - details: |-
+      * asdf
 
+        * asdf
+        * asdf
+      * asdf
+
+        * asdf
+        * asdf
+        * asdf
+    summary: |-
+      [asdfasdf](#) - asdfasdf
+
+      [asdfasdf](http://localhost:8000/admin/#)- asdfasdf
+
+      [asdfasdf](http://localhost:8000/admin/#)- asdfasdf
+    title: test
+---
 import Change from '../../components/misc/change'
 
 # A page to track my site getting better (or worse)
@@ -15,102 +32,112 @@ import Change from '../../components/misc/change'
   [feature/cms-clearfix](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/40) - Add clearfix editor widget because sometimes laying out pages is hard.
 
   [feature/cms-pages](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/42) - Add pages file collection to CMS
-  
-  [feature/preact](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/44) - Replace build environment rendering engine with Preact
-  
-  - **CMS**
-    - Editor
-      - \+ Clearfix
-    - Fields
-      - \- commonFields
-      - \+ pageFields
-      - \+ postFields
 
-  - **Packages**
-    - \+ preact
-    - \+ gatsby-plugin-preact
-      
+  [feature/preact](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/44) - Replace build environment rendering engine with Preact
+
+* **CMS**
+
+  * Editor
+
+    * + Clearfix
+  * Fields
+
+    * \- commonFields
+    * + pageFields
+    * + postFields
+* **Packages**
+
+  * + preact
+  * + gatsby-plugin-preact
+
 </Change> 
 
 <Change>
 
-  ## RF-05-01 - "Zephyranthes"
+## RF-05-01 - "Zephyranthes"
 
   General behind the scenes improvements and accessibility formatting.
 
   [tooling/eslint-and-jest](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/31) - Testing and code styles.
-  
+
   [feature/headers-and-changelog-mdx-components](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/32) - Added better user experience for growing changes page - collapsable list and linked headers.
-  
+
   [feature/seo-and-metadata](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/34) - Updated metadata hopefully get accurate SEO traction.
-  
+
   [design/post-preview](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/35) - Added better post preview formatting.
-  
+
   [tooling/goat-counter](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/37) - Add [GoatCounter](https://www.goatcounter.com/) open source analytics.
 
   [feature/sitemap](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/39) - Added generated sitemap
 
-  - **Features**
-    - [eslint](https://www.gatsbyjs.org/docs/eslint/)
-    - [Jest for Gatsby](https://www.gatsbyjs.org/docs/unit-testing/)
-    - Updated [ReactHelmet](https://github.com/nfl/react-helmet) to pull data from post frontmatter
+* **Features**
 
-  - **Content**
-    - Changelog
-    - README.md
+  * [eslint](https://www.gatsbyjs.org/docs/eslint/)
+  * [Jest for Gatsby](https://www.gatsbyjs.org/docs/unit-testing/)
+  * Updated [ReactHelmet](https://github.com/nfl/react-helmet) to pull data from post frontmatter
+* **Content**
 
-  - **Components**
-    - Content
-      - \+ `<Meta />`
-      - \+ `<PostPreview />`
-    - Markdown
-      - \+ `<Heading />`
-      - \+ `<Change />`
+  * Changelog
+  * README.md
+* **Components**
 
-  - **Tests**
-    - Content
-      - \+ `<Meta />`
-      - \+ `<PostPreview />`
-    - Layout
-      - \+ `<Markdown />`
-      - \+ `<SEO />`
-    - Markdown
-      - \+ `<Heading />`
-      - \+ `<Change />`
-      - \+ `<Image />`
-    - Helpers
-      - \+ `slugify`
-      - \+ `fishAttr`
+  * Content
 
-  - **Styles **
-    - \+ globals
+    * + `<Meta />`
+    * + `<PostPreview />`
+  * Markdown
 
-  - **Packages**
-    - \+ babel-eslint
-    - \+ babel-jest
-    - \+ babel-preset-gatsby
-    - \+ date-fns
-    - \+ enzyme
-    - \+ enzyme-adapter-react-16
-    - \+ eslint
-    - \+ eslint-config-standard
-    - \+ eslint-config-standard-react
-    - \+ eslint-plugin-css-modules
-    - \+ eslint-plugin-import
-    - \+ eslint-plugin-jsx-a11y
-    - \+ eslint-plugin-react
-    - \+ eslint-plugin-react-hooks
-    - \+ identity-obj-proxy
-    - \+ jest
-    - \+ jest-axe
-    - \+ jest-coverage-badges
-    - \+ react-test-renderer
+    * + `<Heading />`
+    * + `<Change />`
+* **Tests**
+
+  * Content
+
+    * + `<Meta />`
+    * + `<PostPreview />`
+  * Layout
+
+    * + `<Markdown />`
+    * + `<SEO />`
+  * Markdown
+
+    * + `<Heading />`
+    * + `<Change />`
+    * + `<Image />`
+  * Helpers
+
+    * + `slugify`
+    * + `fishAttr`
+* **Styles** 
+
+  * + globals
+* **Packages**
+
+  * + babel-eslint
+  * + babel-jest
+  * + babel-preset-gatsby
+  * + date-fns
+  * + enzyme
+  * + enzyme-adapter-react-16
+  * + eslint
+  * + eslint-config-standard
+  * + eslint-config-standard-react
+  * + eslint-plugin-css-modules
+  * + eslint-plugin-import
+  * + eslint-plugin-jsx-a11y
+  * + eslint-plugin-react
+  * + eslint-plugin-react-hooks
+  * + identity-obj-proxy
+  * + jest
+  * + jest-axe
+  * + jest-coverage-badges
+  * + react-test-renderer
 
 </Change>
 
 <Change>  
 
-  ## RF-05-00-GN1 "Alex"
+## RF-05-00-GN1 "Alex"
 
   Building content editting.
 
@@ -118,45 +145,50 @@ import Change from '../../components/misc/change'
 
   [feature/cms-images](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/24) - Netlify LFS image implementation
 
-  - **Features**
-    - [NetlifyCMS](https://www.netlifycms.org/docs/gatsby/)
-    - [Netlify Large Media](https://www.netlifycms.org/docs/netlify-large-media/)
+* **Features**
 
-  - **Content**
-    - Changelog
-    - Styles
-      - add `<Image />` examples
+  * [NetlifyCMS](https://www.netlifycms.org/docs/gatsby/)
+  * [Netlify Large Media](https://www.netlifycms.org/docs/netlify-large-media/)
+* **Content**
 
-  - **Components**
-    - Markdown
-      - \+ `<Image />`
+  * Changelog
+  * Styles
 
-  - **CMS**
-    - Editor
-      - \+ Image
-    - Fields
-      - \+ Blog (Scaffolded)
+    * add `<Image />` examples
+* **Components**
 
-  - **Helpers**
-    - `fishAttr()` - takes an element and returns a dom attribute or an empty string
+  * Markdown
 
-  - **Packages **
-    - \+ netlify-cms-app
-    - \+ gatsby-plugin-netlify-cms
-    - \+ node-sass
-    - \+ gatsby-plugin-sass
-    - \+ classnames
+    * + `<Image />`
+* **CMS**
 
-  - **Styles **
-    - \+ variables
-    - \+ functions
+  * Editor
+
+    * + Image
+  * Fields
+
+    * + Blog (Scaffolded)
+* **Helpers**
+
+  * `fishAttr()` - takes an element and returns a dom attribute or an empty string
+* **Packages** 
+
+  * + netlify-cms-app
+  * + gatsby-plugin-netlify-cms
+  * + node-sass
+  * + gatsby-plugin-sass
+  * + classnames
+* **Styles** 
+
+  * + variables
+  * + functions
 
 </Change>
 
 <Change>
 
-  ## RF-05-00-G "Prototype"
-    
+## RF-05-00-G "Prototype"
+
   Bare bones Gatsby site that aggregates blog posts on the homepage.
 
   [Initial commit](https://github.com/ryanfiller/portfolio-gatsby-v2/commit/b56638550881dc0d4dd0e0856ec3ff362309ea78) - made Christmas Eve, 2019.
@@ -165,75 +197,80 @@ import Change from '../../components/misc/change'
 
   [feature/change-log ](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/2)
 
-  - **Features**
-    - [MDX](https://www.gatsbyjs.org/packages/gatsby-plugin-layout/)
-    - [Gatsby v1 Layout](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/)
-    - `gatsby-node.js`
-      - `customUrl` override for posts
-      - `customTemplate` override for posts
+* **Features**
 
-  - **Content**
-    - 404 (scaffolded)
-    - About (scaffolded)
-    - Blog
-    - Changelog
-    - Homepage
-      - siteMetadata
-      - blog posts
-    - Portfolio (scaffolded)
-    - Styles (scaffolded)
-    - Workshop (scaffolded)
+  * [MDX](https://www.gatsbyjs.org/packages/gatsby-plugin-layout/)
+  * [Gatsby v1 Layout](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/)
+  * `gatsby-node.js`
 
-  - **Components**
-    - \+ Layout
-      - \+ Header
-      - \+ Markdown
-      - \+ PageLayout
-    - \+ Posts
+    * `customUrl` override for posts
+    * `customTemplate` override for posts
+* **Content**
 
-  - **Packages**
-    - \+ @mdx-js/mdx
-    - \+ @mdx-js/react
-    - \+ gatsby-plugin-layout
-    - \+ gatsby-plugin-mdx
-    - \- gatsby-plugin-sharp
-    - \- gatsby-transformer-sharp
+  * 404 (scaffolded)
+  * About (scaffolded)
+  * Blog
+  * Changelog
+  * Homepage
+
+    * siteMetadata
+    * blog posts
+  * Portfolio (scaffolded)
+  * Styles (scaffolded)
+  * Workshop (scaffolded)
+* **Components**
+
+  * + Layout
+
+    * + Header
+    * + Markdown
+    * + PageLayout
+  * + Posts
+* **Packages**
+
+  * + @mdx-js/mdx
+  * + @mdx-js/react
+  * + gatsby-plugin-layout
+  * + gatsby-plugin-mdx
+  * \- gatsby-plugin-sharp
+  * \- gatsby-transformer-sharp
 
 </Change>
 
 <Change>
 
-  ## Previous Versions
+## Previous Versions
 
   This version of my personal website follows five previous versions, dating all the way back to Thanksgiving Break 2011.
 
-  - **RF-04-G**
-    - [Early 2018](http://2018.ryanfiller.com/)
-    - Built using [Gatsby](https://www.gatsbyjs.org/) and [NetlifyCMS](https://www.netlifycms.org/)
-    - Abandoned due to ever increasing complexity and difficulty of backwards compatability. Complexity and build time needed to be cut down since Netlify introduced limited build minutes, and sometimes starting fresh is easiest.
+* **RF-04-G**
 
-  - **RF-03-J**
-    - [Late 2016](http://2016.ryanfiller.com/)
-    - Built using [Jekyll](https://jekyllrb.com/)
-    - I never quite settled on a homepage for this site.
-    - Abandoned due to complexity of managing local Ruby versions and increasingly long build times as the site grew in size.
+  * [Early 2018](http://2018.ryanfiller.com/)
+  * Built using [Gatsby](https://www.gatsbyjs.org/) and [NetlifyCMS](https://www.netlifycms.org/)
+  * Abandoned due to ever increasing complexity and difficulty of backwards compatability. Complexity and build time needed to be cut down since Netlify introduced limited build minutes, and sometimes starting fresh is easiest.
+* **RF-03-J**
 
-  - **RF-02-2-WP**
-    - Late 2016
-    - [Development](https://github.com/ryanfiller/wordpress-portfolio) on a custom WordPress theme was started but was never deployed.
+  * [Late 2016](http://2016.ryanfiller.com/)
+  * Built using [Jekyll](https://jekyllrb.com/)
+  * I never quite settled on a homepage for this site.
+  * Abandoned due to complexity of managing local Ruby versions and increasingly long build times as the site grew in size.
+* **RF-02-2-WP**
 
-  - **RF-02-WP**
-    - Mid 2014
-    - Built using the [Good Space](https://themeforest.net/item/good-space-responsive-minimal-wp-theme/2278615) WordPress page builder theme
-    - This site was lost to the internet while trying to migrate hosts, I did not know much about databases at the time
+  * Late 2016
+  * [Development](https://github.com/ryanfiller/wordpress-portfolio) on a custom WordPress theme was started but was never deployed.
+* **RF-02-WP**
 
-  - **RF-01-P**
-    - [Mid to Late Spring 2012](http://2012.ryanfiller.com/)
-    - HTML, CSS, and jQuery. A version that converted pages to PHP and used `<?php echo $year; ?>` in the footer for automatic copyright update also existed.
-    - Built for a Web02 college course, and to start applying for jobs.
+  * Mid 2014
+  * Built using the [Good Space](https://themeforest.net/item/good-space-responsive-minimal-wp-theme/2278615) WordPress page builder theme
+  * This site was lost to the internet while trying to migrate hosts, I did not know much about databases at the time
+* **RF-01-P**
 
-  - **RF-00-H**
-    - [Late Fall 2011](http://2011.ryanfiller.com/)
-    - Built using HTML, CSS, and jQuery to satisfy an assignment for a Web01 college course.
+  * [Mid to Late Spring 2012](http://2012.ryanfiller.com/)
+  * HTML, CSS, and jQuery. A version that converted pages to PHP and used `<?php echo $year; ?>` in the footer for automatic copyright update also existed.
+  * Built for a Web02 college course, and to start applying for jobs.
+* **RF-00-H**
+
+  * [Late Fall 2011](http://2011.ryanfiller.com/)
+  * Built using HTML, CSS, and jQuery to satisfy an assignment for a Web01 college course.
 
 </Change>
