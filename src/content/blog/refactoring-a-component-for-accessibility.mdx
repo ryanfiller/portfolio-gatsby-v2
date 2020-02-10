@@ -3,7 +3,7 @@ title: Refactoring a Component for Accessibility
 options:
   customtemplate: ''
   customurl: ''
-  published: true
+  published: false
 meta:
   categories:
     - code
@@ -196,3 +196,7 @@ The `<details>` element is notoriously hard to style, but the spec does offer a 
 <iframe data-aspect-ratio="4/3" title="html 5 detail animate" src="https://codepen.io/ryanfiller/embed/wvaBVJP?default-tab=css,result" loading="lazy"></iframe>
 
 The element can also be controlled with javascript by manually setting the details' `open` attribute to `true` or `false`, and with the [help of an animation library](https://github.com/ryanfiller/portfolio-gatsby-v2/blob/701c0c6eced340f61d2f6ec817272d727690d907/src/components/change.js) I was able to do a [pretty smooth open animation](/changes/#rf-05-02-full-burnern).
+
+## In Summary
+
+My rule of thumb is that if I ever feel overwhelmed with ARIA attributes, I'm probably doing too much. Html has come a long way since the launch of HTML5 in 2015 and thanks to the new "Living Standard" of the spec new features are added with somewhat regularity. The web is getting better all the time, so it's always a good idea to check back now again and see if a common problem like making an accesible dropdown component has been lifted up into the offical language itself.
