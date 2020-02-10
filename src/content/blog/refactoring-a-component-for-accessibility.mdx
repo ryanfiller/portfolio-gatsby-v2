@@ -38,7 +38,21 @@ const Change = props => {
 }
 ```
 
-show current code, talk about role="switch"
+## Good Intentions
+
+Reading that code I know it might not seem like it, but I care about accessibility. I really do. I did some quick searching and I found the [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) [`role="switch"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Switch_role) and added that to my button, because hey, the button is switching between an "on" and "off" state.
+
+```
+<button 
+  onClick={handleToggleOpen}
+  role="switch"
+  aria-checked={open}
+>
+  Read {!open ? 'More' : 'Less'}...
+</button>
+```
+
+
 
 details html element?
 
