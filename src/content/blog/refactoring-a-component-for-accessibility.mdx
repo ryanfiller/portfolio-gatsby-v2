@@ -87,9 +87,39 @@ describe('<Change/>', () => {
 After more reading, there are several things wrong with the component.
 
 * The button is not linked in any way with the section that it controls.
-* Vice versa, the controlled section is not linked to the button in any way.
 * There are no attributes on the `<section>` element indicating the open/closed state.
 * The hidden section is only hidden with css, there is nothing in the markup to indicate whether or not it is visible.
+
+An actually accessible implementation would have needed to look something more like this.
+
+```javascript
+const Change = props => {
+
+  const [state, toggleOpen] = useState(false)
+
+  return (
+    <section 
+      className={'change', open ? 'open' : ''}
+      aria-controls="toggle-button"
+      aria-expanded={open}
+    >
+      <h2>{change title}</h2>
+      <p>{summary text}</p>
+      <ul
+        aria-hidden={!open}
+      >
+        {...a list of changes}
+      </ul>
+      <button 
+        onClick={() => toggleOpen(!open)}
+        id="toggle-button"
+      >
+        Read {!open ? 'More' : 'Less'}...
+      </button>
+    </section>
+  )
+}
+```
 
 details html element?
 
