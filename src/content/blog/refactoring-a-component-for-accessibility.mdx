@@ -52,7 +52,18 @@ Reading that code I know it might not seem like it, but I care about accessibili
 </button>
 ```
 
+Because I do care about accessbility, and it is hard, I use a tool in my testing suite called [Jest aXe](https://www.npmjs.com/package/jest-axe). I know it says in big, bold letters at the top of the page that "this project does not guarantee what you build is accessible," but the code I had written passed an automated test.
 
+```
+describe('<Change/>', () => {
+  it('should render correctly', async () => {
+    const component = mount(<Chage {...props} />)
+    expect(await axe(component.html())).toHaveNoViolations()
+  })
+})
+```
+
+## *Actually* Making The Component Accessible 
 
 details html element?
 
