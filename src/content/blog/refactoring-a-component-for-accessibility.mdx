@@ -100,7 +100,7 @@ const Change = props => {
   return (
     <section 
       className={'change', open ? 'open' : ''}
-      aria-controls="toggle-button"
+      id="toggle-section"
       aria-expanded={open}
     >
       <h2>{change title}</h2>
@@ -112,7 +112,10 @@ const Change = props => {
       </ul>
       <button 
         onClick={() => toggleOpen(!open)}
+        role="switch"
+        aria-checked={open}
         id="toggle-button"
+        aria-controls="toggle-section"
       >
         Read {!open ? 'More' : 'Less'}...
       </button>
@@ -121,8 +124,6 @@ const Change = props => {
 }
 ```
 
-details html element?
+This isn't an unbearable amount of changes, but it was enough that I was nervous to mess it up and still miss something. Also each `id` would need be unique to that instance of the `<Change>` component. In my experience, the best way to make something accessible and repeatable was to make it as automatic as possible, and my data wasn't set up in a way that would make that easy to do.
 
-talk about how this requires structured data (maybe?)
-
-react / aria labels
+## There Has to Be an Easier Way?
