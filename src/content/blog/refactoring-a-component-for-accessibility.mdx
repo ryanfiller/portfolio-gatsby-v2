@@ -17,13 +17,13 @@ A few months ago when I decided to start my website from scratch I decided I wou
 
 Pretty soon this page got long, and I wanted to add a basic accordion feature to it - each change set would have a header and a summary, and the details of what was changed would be collapsable. My component was built in React, but the idea is pretty universal. A button would toggle between the open and closed state, that state would be reprsented by a class on the wrapping element. CSS would use that class to determine when to show the details.
 
-```
+```javascript
 const Change = props => {
 
   const [state, toggleOpen] = useState(false)
 
   return (
-    <section className={!open ? 'change' : 'change change--open'}>
+    <section className={'change', open ? 'open' : ''}>
       <h2>{change title}</h2>
       <p>{summary text}</p>
       <ul>
@@ -39,11 +39,29 @@ const Change = props => {
 }
 ```
 
+The styles were also pretty simple.
+
+```scss
+.change {
+  ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: .2s;
+  }
+
+  &.open {    
+    ul {
+      max-height: 100vh;
+    }
+  }
+}
+```
+
 ## Good Intentions
 
 Reading that code I know it might not seem like it, but I care about accessibility. I really do. I did some quick searching and I found the [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) [`role="switch"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Switch_role) and added that to my button, because hey, the button is switching between an "on" and "off" state.
 
-```
+```javascript
 <button 
   onClick={handleToggleOpen}
   role="switch"
@@ -55,7 +73,7 @@ Reading that code I know it might not seem like it, but I care about accessibili
 
 Because I do care about accessbility, and it is hard, I use a tool in my testing suite called [Jest aXe](https://www.npmjs.com/package/jest-axe). I know it says in big, bold letters at the top of the page that "this project does not guarantee what you build is accessible," but the code I had written passed an automated test.
 
-```
+```javascript
 describe('<Change/>', () => {
   it('should render correctly', async () => {
     const component = mount(<Chage {...props} />)
@@ -64,7 +82,7 @@ describe('<Change/>', () => {
 })
 ```
 
-## *Actually* Making The Component Accessible 
+## *Actually* Making The Component Accessible
 
 details html element?
 
