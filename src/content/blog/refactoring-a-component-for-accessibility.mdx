@@ -84,6 +84,13 @@ describe('<Change/>', () => {
 
 ## *Actually* Making The Component Accessible
 
+After more reading, there are several things wrong with the component.
+
+* The button is not linked in any way with the section that it controls.
+* Vice versa, the controlled section is not linked to the button in any way.
+* There are no attributes on the `<section>` element indicating the open/closed state.
+* The hidden section is only hidden with css, there is nothing in the markup to indicate whether or not it is visible.
+
 details html element?
 
 talk about how this requires structured data (maybe?)
