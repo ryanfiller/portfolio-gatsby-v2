@@ -128,6 +128,14 @@ This isn't an unbearable amount of changes, but it was enough that I was nervous
 
 ## There Has to Be an Easier Way?
 
-HTML5 brought with it a ton of [semantic elements](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantic_elements). These are native browser elements that come with inherent meaning attached to their usage. Most people are probably familiar with some of the oldest semantic elements, like `<h1>,` `<p>`, `<ol>`, or even some of the newer ones like `<header>`, `<footer>`, or `<nav>`.
+HTML5 brought with it a ton of [semantic elements](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantic_elements). These are native browser elements that come with inherent meaning attached to their usage. Most people are probably familiar with some of the oldest semantic elements, like `<h1>,` `<p>`, `<ol>`, or even some of the newer ones like `<header>`, `<footer>`, or `<nav>`. There is actually a set of elements that was made for *exactly* what I'm trying to do here - [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) and [`<summary>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary).
 
-There are a ton of great article (I like [this one](https://css-tricks.com/why-how-and-when-to-use-semantic-html-and-aria/) a lot)
+> The **HTML Details Element (`<details>`)** creates a disclosure widget in which information is visible only when the widget is toggled into an "open" state. A summary or label can be provided using the [`<summary>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary "The HTML Disclosure Summary element (\<summary>) element specifies a summary, caption, or legend for a \<details> element's disclosure box.") element.
+
+There are a lot of great articles (I like [this one](https://css-tricks.com/why-how-and-when-to-use-semantic-html-and-aria/) a lot) about ARIA vs native semantic elements, but they all basically drive home this one point - you don't have to fight against what browsers program native elements to do.
+
+```html
+<div role="heading" aria-level="1">This is not incorrect..</div>
+
+<h1>...but this is better. And more simple.</h1>
+```
