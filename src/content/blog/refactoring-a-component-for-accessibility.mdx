@@ -133,7 +133,7 @@ This isn't an unbearable amount of changes, but it was enough that I was nervous
 
 ## Is There An Easier?
 
-HTML5 brought with it a ton of [semantic elements](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantic_elements). These are native browser elements that come with inherent meaning attached to their usage. Most people are probably familiar with some of the oldest semantic elements, like `<h1>,` `<p>`, `<ol>`, or even some of the newer ones like `<header>`, `<footer>`, or `<nav>`. There is actually a set of elements that was made for *exactly* what I'm trying to do here - [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) and [`<summary>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary).
+HTML5 introduced a ton of new [semantic elements](https://developer.mozilla.org/en-US/docs/Glossary/Semantics#Semantic_elements). These are native browser elements that come with inherent meaning attached to them. Most people are probably familiar with some of the oldest semantic elements, like `<h1>,` `<p>`, `<ol>`, or even some of the newer ones like `<header>`, `<footer>`, or `<nav>`. There is actually a set of elements that were made for *exactly* what I'm trying to do here - [`<details>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details) and [`<summary>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary).
 
 > The **HTML Details Element (`<details>`)** creates a disclosure widget in which information is visible only when the widget is toggled into an "open" state. A summary or label can be provided using the [`<summary>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary "The HTML Disclosure Summary element (\<summary>) element specifies a summary, caption, or legend for a \<details> element's disclosure box.") element.
 
@@ -145,7 +145,7 @@ There are a lot of great articles (I like [this one](https://css-tricks.com/why-
 <h1>...but this is better. And more simple.</h1>
 ```
 
-## Refactoring the component to use native elements
+## Refactoring to Use Native Elements
 
 ```javascript
 const Change = props => {
@@ -171,7 +171,7 @@ const Change = props => {
 }
 ```
 
-This component is now screen reader friendly still passes a Jest aXe test, *and* doesn't even need extra javascript or css to toggle states!
+This component is now screen reader friendly still passes a Jest aXe test. *And* doesn't even need extra javascript or css to toggle states!
 
 <section class="change" style="border: 1px solid currentColor; padding: 1em;">
   <strong>Change Title</strong>
@@ -191,14 +191,14 @@ This component is now screen reader friendly still passes a Jest aXe test, *and*
   </details>
 </section>
 
-## Progressive Enhancement
+## Progressive Enhancements
 
 The `<details>` element is notoriously hard to style, but the spec does offer a few animation entry points. The element state is exposed and can be grabbed with the css attribute `[open]`, so it is possible to add some conditional styles with this value is present.
 
 <iframe data-aspect-ratio="4/3" title="html 5 detail animate" src="https://codepen.io/ryanfiller/embed/wvaBVJP?default-tab=css,result" loading="lazy"></iframe>
 
-The element can also be controlled with javascript by manually setting the details' `open` attribute to `true` or `false`, and with the [help of an animation library](https://github.com/ryanfiller/portfolio-gatsby-v2/blob/701c0c6eced340f61d2f6ec817272d727690d907/src/components/change.js) I was able to do a [pretty smooth open animation](/changes/#rf-05-02-full-burnern).
+The element can also be controlled with javascript by manually setting the details' `open` attribute to `true` or `false`. With the [help of an animation library](https://github.com/ryanfiller/portfolio-gatsby-v2/blob/701c0c6eced340f61d2f6ec817272d727690d907/src/components/change.js) I was able to do a [pretty smooth open animation](/changes/#rf-05-02-full-burnern).
 
-## In Summary
+## Try Not to Fight Against what HTML Already Wants to Do
 
-My rule of thumb is that if I ever feel overwhelmed with ARIA attributes, I'm probably doing too much. Html has come a long way since the launch of HTML5 in 2015 and thanks to the new "Living Standard" of the spec new features are added with somewhat regularity. The web is getting better all the time, so it's always a good idea to check back now again and see if a common problem like making an accesible dropdown component has been lifted up into the offical language itself.
+My rule of thumb is that if I ever feel overwhelmed with ARIA attributes, I'm probably doing too much. Html has come a long way since the launch of HTML5 in 2015 and thanks to the new "Living Standard" of the spec new features are added with somewhat regularity. The web is getting better all the time, so it's always a good idea to check back now again and see if a common problem like making an accessible dropdown component has been lifted up into the official language itself.
