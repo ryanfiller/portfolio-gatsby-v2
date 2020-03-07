@@ -28,10 +28,7 @@ const Heading = (props) => {
 
 Heading.propTypes = {
   h: PropTypes.oneOf(['1', '2', '3', '4', '5', '6']).isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array
-  ]).isRequired
+  children: PropTypes.string.isRequired
 }
 
 export default Heading

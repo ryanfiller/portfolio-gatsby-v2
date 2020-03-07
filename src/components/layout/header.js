@@ -4,47 +4,26 @@ import PropTypes from 'prop-types'
 
 import { mainNav } from '../../config/pages'
 import Nav from './nav'
-import Banner from './banner'
 
 import './header.scss'
 
-const Header = (props) => {
-  const {
-    contentType,
-    frontmatter
-  } = props
-
-  return (
-    <header
-      id='site-header'
-      className='header'
+const Header = (props) => (
+  <header
+    id='site-header'
+    className='header'
+  >
+    <Link
+      to='/'
+      className='logo'
     >
-      <div className='header__content'>
-        <Nav 
-          label='main navigation'
-          links={mainNav}
-        >
-          <Link
-            to='/'
-            className='logo'
-          >
-            ryanfiller.com
-          </Link>
-        </Nav>
-      </div>
-      {props.frontmatter.name !== 'homepage' &&
-        <Banner 
-          contentType={contentType}
-          {...frontmatter}
-        />
-      }
-    </header>
-  )
-}
+      {props.title}
+    </Link>
+    <Nav links={mainNav} label='main navigation' />
+  </header>
+)
 
 Header.propTypes = {
-  contentType: PropTypes.string.isRequired,
-  frontmatter: PropTypes.object.isRequired
+  title: PropTypes.string
 }
 
 export default Header

@@ -10,37 +10,24 @@ import '../layout.css'
 import '../../styles/globals.scss'
 import './page.scss'
 
-const Page = (props) => {
+const PageLayout = (props) => {
 
-  const {
-    fields: {
-      contentType
-    } = { contentType: 'page'},
-    frontmatter,
-    frontmatter: {
-      name: pageName,
-      options: { 
-        hideSiteHeader = false
-      } = {} // default to empty object if any values are missing
-    }
-  } = props.data.mdx
+  const { 
+    name: pageName,
+    options: { 
+      hideSiteHeader = false
+    } = {} // default to empty object if any values are missing
+  } = props.data.mdx.frontmatter
 
   return (
     <>
       <Helmet>
-        <script 
-          async
-          src="//gc.zgo.at/count.js"
-          data-goatcounter="https://ryanfiller.goatcounter.com/count"
-        />
+        <script data-goatcounter="https://ryanfiller.goatcounter.com/count" async src="//gc.zgo.at/count.js"/>
       </Helmet>
       <SEO {...props.data.mdx} />
       <div id='site' className={pageName}>
         {!hideSiteHeader && 
-          <Header
-            frontmatter={frontmatter}
-            contentType={contentType}
-          />
+          <Header title='ryanfiller.com' />
         }
         <div id='content'>
           {props.children}
@@ -51,9 +38,19 @@ const Page = (props) => {
   )
 }
 
-Page.propTypes = {
+PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.shape({
+    mdx: PropTypes.shape({
+      frontmatter: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        title: PropTypes.string,
+        options: PropTypes.shape({
+          hideSiteHeader: PropTypes.bool
+        })
+      }).isRequired
+    }).isRequired
+  }).isRequired
 }
 
-export default Page
+export default PageLayout
