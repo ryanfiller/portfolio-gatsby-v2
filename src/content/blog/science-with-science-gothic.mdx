@@ -19,12 +19,16 @@ meta:
 
 [Science Gothic](https://github.com/tphinney/science-gothic) is a [variable font](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide). The problem is that the font is 1.2mb.
 
+I will be using the [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) Firefox extension to check page speed, and taking the average of five results.
+
+<img src="/images/uploads/font-load-test-control.png" alt="Lighthouse control score" data-caption="Page with default fonts, Science Gothic not loaded." data-align="full" data-small="false" />
+
 ## Loading the font (with Gatsby)
 
 (average of five)
 
 |                                 | external CDN | src/ | static/ |
-| ------------------------------- | -----------: | ---: | ------: |
+| ------------------------------- | ------------ | ---- | ------- |
 | Time to Interaction             | 123          | 123  | 123     |
 | First Meaningful Paint          | 123          | 123  | 123     |
 | Max Potential First Input Delay | 123          | 123  | 123     |
