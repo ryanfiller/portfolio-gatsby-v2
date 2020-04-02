@@ -143,7 +143,7 @@ These numbers were roughly what I expected. Gatsby [reccomends putting all asset
 Gatsby does offer this [first party plugin](https://www.gatsbyjs.org/packages/gatsby-plugin-preload-fonts/) to help apply preloading to font calls (more on what exactly that means later). Here is the same speed test again, but with this plugin and its generated `font-preload-cache.json` file included
 
 <table class="variable-font-speed">
-  <caption>values compared to speeds without \\\\`gatsby-plugin-preload-fonts\\\\`</caption>
+  <caption>values compared to speeds without \\\\\`gatsby-plugin-preload-fonts\\\\\`</caption>
   <tbody>
     <tr>
       <th></th>
@@ -212,7 +212,7 @@ From [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content)
 In short, `preload` is a flag to the browser that this resource, be it a font, javascript, or a critical css file, needs to be downloaded as soon as possible. The most important part about this is that the file will be loaded in a *non-blocking* way, meaning that the rest of the page can progress while the font is still downloading.
 
 <table class="variable-font-speed">
-  <caption>compared to fonts without \\\\`rel="preload"\\\\`</caption>
+  <caption>compared to fonts without \\\\\`rel="preload"\\\\\`</caption>
   <tbody>
     <tr>
       <th></th>
@@ -243,7 +243,7 @@ In short, `preload` is a flag to the browser that this resource, be it a font, j
 
 ### Notes on other `rel` values
 
-I won't be exploring the other potential `rel` values in this post because they don't seem to apply to my use case (and its *definitely* isn't because I waited until the last day of the month to get this blog post out...). According to the [W3C spec](https://www.w3.org/TR/resource-hints/#dfn-preconnect), the other resource hints apply mostly to outside resources, which aren't super relevant since I've already demonstrated the advantages of self hosting fonts.
+I won't be exploring the other potential `rel` values in this post because they don't seem to apply to my use case (and it *definitely* isn't because I waited until the last day of the month to get this blog post out...). According to the [W3C spec](https://www.w3.org/TR/resource-hints/#dfn-preconnect), the other resource hints apply mostly to outside resources, which aren't super relevant since I've already demonstrated the advantages of self hosting fonts.
 
 <dt>
   <a href="https://www.w3.org/TR/resource-hints/#dfn-dns-prefetch">dns-prefetch</a> & <a href="https://www.w3.org/TR/resource-hints/#preconnect">preconnect</a>
@@ -257,7 +257,7 @@ Since these are self hosted files I shouldn't see any speed benefits here. These
 </dt>
 <dd>used to identify a resource that might be required by the next navigation</dd>
 
-Since I'm intending the file to be loaded as fast as possible on *any* page, I don't think I'll get any speed benefits here either. These attributes seem most applicable to a specifc page deeper in the site heirarchy that requies some heavy loading.
+Since I'm intending the file to be loaded as fast as possible on *any* page, I don't think I'll get any speed benefits here either. These attributes seem most applicable to a specific page deeper in the site heirarchy that requires some heavy loading.
 
 ## How to display the fonts?
 
