@@ -24,25 +24,25 @@ Enter new kid on the block, [variable web fonts](https://developer.mozilla.org/e
 
 > Variable fonts are an evolution of the OpenType font specification that enables many different variations of a typeface to be incorporated into a single file, rather than having a separate font file for every width, weight, or style. 
 
-That means that by loading just one file it is now possible to use the `font-variation-setting` css property to specific weight, italic, width, and really anything else a typographer might imagine. There are some very cool examples on [v-fonts.com](https://v-fonts.com/).
+That means that by loading just one file it is now possible to use the `font-variation-setting` css property to specify weight, italic, width, and really anything else a typographer might imagine. There are some very cool examples on [v-fonts.com](https://v-fonts.com/), and I also put together [my own tool](/lab/variable-font-display).
 
 ### There are downsides to this, though
 
-There are two factors to consider with loading fonts, or really resource, on the web. Number of requests and payload size. Since fonts tend to be both heavy and have numerous files for their variations, variable fonts solve the first part of this equation by loading a huge combination of font settings by making just one request and downloading only one file. However, the drawback to using one file that contains multidues is that this file is usually much, much larger than any one file containing a single variation of a typeface. There's a balance to be made, with the size of a font file and the number of variations that get used on a site. If its only one or two, it might be better going the traiditional route and making more requests but for much smaller files.
+There are two factors to consider with loading fonts, or really resource, on the web - number of requests and payload size. Since fonts tend to be both heavy and have numerous files for their variations, variable fonts solve the first part of this equation by loading a huge combination of font settings by making just one request and downloading only one file. However, the drawback to using one file that contains multitudes is that this file is usually much, much larger than any one file containing only a single variation. There's a balance to be made, with the size of a font file and the number of variations that get used on a site. If its only one or two, it might be better going the traiditional route and making more requests but for much smaller files.
 
 ## What is the best ways to load large files?
 
-Becuase I love doing strange things with CSS, I'm choosing to bring some variable fonts into my site just so I can experiment with them. What's the best way to do this? Well, today that's exactly what I want to find out.
+Because I love doing strange things with CSS, I'm choosing to bring some variable fonts into my site just so I can experiment with them. What's the best way to do this? Well, today that's exactly what I want to find out. As they said on Mythbusters once - 
 
 > The Only Difference Between Screwing Around and Science Is Writing It Down
 
 [Science Gothic](https://github.com/tphinney/science-gothic) is the font I'll be using for this test. This font has 4 axes, and is about 1.2MB uncompressed, which is *a lot*.
 
-I will be using the [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) Firefox extension to check page speed, and taking the average of five results. I'll be hosting the site on Netlify, with each testing being a separate [pull request](https://github.com/ryanfiller/gatsby-font-science/branches) and preview deploy.
+I will be using the [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) Firefox extension to check page speed, and taking the average of five results. I'll be hosting the site on Netlify, with each test site being a separate [pull request](https://github.com/ryanfiller/gatsby-font-science/branches) and preview deploy.
 
 ## Test Control
 
-For a baseline in this experiement, I've made a fresh Gatsby site that contains the following code: 
+For a baseline in this experiment, I've made a fresh Gatsby site that contains the following code: 
 
 ```html
 <h1>
@@ -58,7 +58,7 @@ For a baseline in this experiement, I've made a fresh Gatsby site that contains 
 </h1>
 ```
 
-I'm testing the page's Lighthouse ranking with no extra fonts loaded to see what the weight of a "normal" we page under these circumstances would be.
+I'm testing the page's Lighthouse ranking with no extra fonts loaded to see what the weight of a "normal" web page under these circumstances would be.
 
 <img src="/images/uploads/font-load-test-control.png" alt="lighthouse control score" data-caption="Page with default fonts, Science Gothic not loaded." data-align="full" data-small="false" />
 
@@ -87,9 +87,9 @@ I'm testing the page's Lighthouse ranking with no extra fonts loaded to see what
 
 ## Where to keep the fonts?
 
-The first part of this test will be Gatsby specifc. 
+The first part of this test will be Gatsby specific. 
 
-Gatsby offers two main places to keep fonts - in the `src` directory of the project, or outside in the `static` folder. For these test I'll be putting the font file in each of these places, as well as loding from an external CDN, and running the same average of five speed tests. Each site will be using the same `@font-face` declaration:
+Gatsby offers two places to keep files - in the `src` directory of the project, or outside in the `static` folder. For these test I'll be putting the font file in each of these places, as well as loading from an external CDN, and running the same average of five speed tests. Each site will be using the same `@font-face` declaration:
 
 ```css
 @font-face {
@@ -136,14 +136,14 @@ The external CDN is another Netlify hosted site I set up that only contains the 
   </tbody>
 </table> 
 
-These numbers were roughly what I expected. Gatsby [reccoments putting all assets in the `src` folder](https://www.gatsbyjs.org/docs/recipes/styling-css/#adding-a-local-font) to take advantage of optimization, and actually [advises against using the `static` folder](https://www.gatsbyjs.org/docs/static-folder/#when-to-use-the-static-folder) for this sort of thing. I knew that loading the font from an external server would preform worse than self-hosting, but I decided to test it anyways because I guess you never really know until you try.
+These numbers were roughly what I expected. Gatsby [reccomends putting all assets in the `src` folder](https://www.gatsbyjs.org/docs/recipes/styling-css/#adding-a-local-font) to take advantage of optimization, and actually [advises against using the `static` folder](https://www.gatsbyjs.org/docs/static-folder/#when-to-use-the-static-folder) for this sort of thing. I knew that loading the font from an external server would preform worse than self-hosting, but I decided to test it anyways because I guess you never really know until you try.
 
 ### Is there any way to speed Gatsby up?
 
 Gatsby does offer this [first party plugin](https://www.gatsbyjs.org/packages/gatsby-plugin-preload-fonts/) to help apply preloading to font calls (more on what exactly that means later). Here is the same speed test again, but with this plugin and its generated `font-preload-cache.json` file included
 
 <table class="variable-font-speed">
-  <caption>values compared to speeds without \\`gatsby-plugin-preload-fonts\\`</caption>
+  <caption>values compared to speeds without \\\`gatsby-plugin-preload-fonts\\\`</caption>
   <tbody>
     <tr>
       <th></th>
@@ -212,7 +212,7 @@ From [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content)
 In short, `preload` is a flag to the browser that this resource, be it a font, javascript, or a critical css file, needs to be downloaded as soon as possible. The most important part about this is that the file will be loaded in a *non-blocking* way, meaning that the rest of the page can progress while the font is still downloading.
 
 <table class="variable-font-speed">
-  <caption>compared to fonts without \\`rel="preload"\\`</caption>
+  <caption>compared to fonts without \\\`rel="preload"\\\`</caption>
   <tbody>
     <tr>
       <th></th>
