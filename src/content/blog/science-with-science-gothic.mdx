@@ -143,7 +143,7 @@ These numbers were roughly what I expected. Gatsby [reccoments putting all asset
 Gatsby does offer this [first party plugin](https://www.gatsbyjs.org/packages/gatsby-plugin-preload-fonts/) to help apply preloading to font calls (more on what exactly that means later). Here is the same speed test again, but with this plugin and its generated `font-preload-cache.json` file included
 
 <table class="variable-font-speed">
-  <caption>values compared to speeds without \`gatsby-plugin-preload-fonts\`</caption>
+  <caption>values compared to speeds without \\`gatsby-plugin-preload-fonts\\`</caption>
   <tbody>
     <tr>
       <th></th>
@@ -212,7 +212,7 @@ From [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content)
 In short, `preload` is a flag to the browser that this resource, be it a font, javascript, or a critical css file, needs to be downloaded as soon as possible. The most important part about this is that the file will be loaded in a *non-blocking* way, meaning that the rest of the page can progress while the font is still downloading.
 
 <table class="variable-font-speed">
-  <caption>compared to fonts without \`rel="preload"\`</caption>
+  <caption>compared to fonts without \\`rel="preload"\\`</caption>
   <tbody>
     <tr>
       <th></th>
