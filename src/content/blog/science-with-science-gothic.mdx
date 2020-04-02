@@ -143,7 +143,7 @@ These numbers were roughly what I expected. Gatsby [reccomends putting all asset
 Gatsby does offer this [first party plugin](https://www.gatsbyjs.org/packages/gatsby-plugin-preload-fonts/) to help apply preloading to font calls (more on what exactly that means later). Here is the same speed test again, but with this plugin and its generated `font-preload-cache.json` file included
 
 <table class="variable-font-speed">
-  <caption>values compared to speeds without \\\`gatsby-plugin-preload-fonts\\\`</caption>
+  <caption>values compared to speeds without \\\\`gatsby-plugin-preload-fonts\\\\`</caption>
   <tbody>
     <tr>
       <th></th>
@@ -180,19 +180,19 @@ Gatsby does offer this [first party plugin](https://www.gatsbyjs.org/packages/ga
 
 These actually were not the results I was expecting at all... 
 
-Externally hosted fonts were cached, which makes sense they would show a speed up, but it seems like adding this overhead to already self-hosted fonts actually makes them load *slower* somehow?
+Externally hosted fonts were cached, which makes sense they would show a performance boost, but it seems like adding this overhead to already self-hosted fonts actually makes them load *slower* somehow?
 
 From the docs for this plugin:
 
 > It works really well with services like Google Fonts that link to stylesheets that in turn link to font files.
 
-This tracks with the improvements from the CDN link, but it would seem from this data that for self-hosted fonts there's actually a penalty for trying to load them this way. 
+This tracks with the improvements from the CDN link, but it would seem from this data that for self-hosted fonts there's actually a performance penalty for trying to load them this way. 
+
+I know that I want to self-host these fonts, so to speed up testing I'm going to rule out the CDN and `gatsby-plugin-preload-fonts`. I'll still be testing both the src and static directories because even though it is against Gatsby's recommendation, there is [some added benefits](https://www.gatsbyjs.org/docs/caching/#static-files) and caching opportunites to keeping files in the static directory.
 
 ## How to load the fonts?
 
-I know that I want to self-host these fonts, so to speed up testing I'm going to rule out the CDN and `gatsby-plugin-preload-fonts`. I'll still be testing both the src and static folders because even though it is against Gatsby's reccomendation, there is [some added benefits](https://www.gatsbyjs.org/docs/caching/#static-files) to keeping files in the static directory.
-
-Another relatively new feature of the web is the ability to add a `rel` attribute to a `<link>` tag in the site's `<head>` for "resource hinting." This attributes gives the browser a heads up about the type of content being loading, and gives some clues about how to load it and how soon it will be needed by the user. 
+Another relatively new feature of the web is the ability to add a `rel` attribute to a `<link>` tag in the site's `<head>` for "resource hinting." This attributes gives the browser a heads up about the type of content being loading, and give some clues about how to load it and how soon it will be needed by the user. 
 
 ### rel="preload"
 
@@ -212,7 +212,7 @@ From [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content)
 In short, `preload` is a flag to the browser that this resource, be it a font, javascript, or a critical css file, needs to be downloaded as soon as possible. The most important part about this is that the file will be loaded in a *non-blocking* way, meaning that the rest of the page can progress while the font is still downloading.
 
 <table class="variable-font-speed">
-  <caption>compared to fonts without \\\`rel="preload"\\\`</caption>
+  <caption>compared to fonts without \\\\`rel="preload"\\\\`</caption>
   <tbody>
     <tr>
       <th></th>
