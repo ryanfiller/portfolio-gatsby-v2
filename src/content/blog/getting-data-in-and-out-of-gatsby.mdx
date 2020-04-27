@@ -87,11 +87,11 @@ serialize: ({query: {site, allMdx }}) => {
     const url = `${site.siteMetadata.siteUrl}/${edge.node.fields.slug}`
     
     return {
-      edge.node.frontmatter.title,
-      edge.node.frontmatter.meta.date,
-      url,
+      title: edge.node.frontmatter.title,
+      date: edge.node.frontmatter.meta.date,
+      url: url,
       custom_elements: [
-        {'content:encoded': marked(body)}
+        {'content:encoded': body}
       ],
     }
   })
@@ -99,12 +99,11 @@ serialize: ({query: {site, allMdx }}) => {
 ```
 
  \
-These might seem obvious, but there's a couple of things I wanted to make sure and call out in the `serialize` function.
+These might seem obvious, but there's a couple of things I wanted to make sure and call out in the `serialize` function  in regards to making sure links would be handled correctly on different domains.  Both the post slugs (/blog/post-name) and image urls (/images/uploads/image-name.jpg) use relative paths, meaning that their urls are relative to the current domain. For things like posting images or doing linkbacks to the original url of the post, I needed to query the url of the original site and append it to the beginning of my relative paths in the serialize function.
 
-constructing a slug, dealing with image links
+As another not, `gatsby-plugin-feed` will automatically parse some fields, like `title`, `date,` and `url,` but anything extra can be passed in as objects into the `custom_elements` array.
 
-\
-getting data in
+## Getting Data In
 
 \- using a plugin
 
