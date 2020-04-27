@@ -55,7 +55,10 @@ query: `
         siteUrl
       }
     },
-    allMdx (limit: 12 ) {
+    allMdx (
+      limit: 12,
+      sort: { order: DESC, fields: [frontmatter___meta___date]},
+    ) {
       edges {
         node {
           fields {
@@ -63,6 +66,9 @@ query: `
           }
           frontmatter {
             title
+            meta {
+              date
+            }
           }
           internal {
             content
@@ -71,28 +77,19 @@ query: `
       }
     }
   }
-`,
+`
+
 serialize: ({query: {site, allMdx }}) => {
-  const { siteUrl } = site.siteMetadata
 
   return allMdx.edges.map(edge => {
-    const {
-      frontmatter: {
-        title,
-      },
-      internal: {
-        content
-      }
-    } = edge.node
 
-    const body = content.replace(/<img src="\//g, `<img src="${siteUrl}/`)
-
-    const url = `${siteUrl}/${edge.node.fields.slug}`
+    const body = edge.node.internal.content.replace(/<img src="\//g, `<img src="${site.siteMetadata.siteUrl}/`)
+    const url = `${site.siteMetadata.siteUrl}/${edge.node.fields.slug}`
+    
     return {
-      title,
-      date,
+      edge.node.frontmatter.title,
+      edge.node.frontmatter.meta.date,
       url,
-      guid: url,
       custom_elements: [
         {'content:encoded': marked(body)}
       ],
