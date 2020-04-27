@@ -43,10 +43,66 @@ The easiest way to do most things in Gatsby is to look for a plugin, and luckily
 * Don't rely on complex image transformations (like `gatsby-transformer-sharp)`
 * Content doesn't need to be posted full in its original form, it can be transformed in the `serialize` function.
 
-Since I'm not using Gatsby's image processing, the only thing I really needed to worry about was making sure that my images would point to the correct url instead of trying to look for the relative path at whichever new site I was sharing posts to. I also wasn't too concerned with limiting the number of post sicne I'm fine with a "Read More on My Full Site" button at the bottom of my second Gatsby site.
+Since I'm not using Gatsby's image processing, the only thing I really needed to worry about was making sure that my images would point to the correct url instead of trying to look for the relative path at whichever new site I was sharing posts to. I also wasn't too concerned with limiting the number of post since I'm fine with a "Read More on My Full Site" button at the bottom of my second Gatsby site.
 
+`gatsby-plugin-feed` takes a `serialize` function which eventually ends up running in Gatsby's node process. (link?) This function will run a GraphQL query against the markdown content and then return an object that will be used to create XML for RSS. Mine looks something like this:
 
+```javascript
+query: `
+  {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    },
+    allMdx (limit: 12 ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+          internal {
+            content
+          }
+        }
+      }
+    }
+  }
+`,
+serialize: ({query: {site, allMdx }}) => {
+  const { siteUrl } = site.siteMetadata
 
+  return allMdx.edges.map(edge => {
+    const {
+      frontmatter: {
+        title,
+      },
+      internal: {
+        content
+      }
+    } = edge.node
+
+    const body = content.replace(/<img src="\//g, `<img src="${siteUrl}/`)
+
+    const url = `${siteUrl}/${edge.node.fields.slug}`
+    return {
+      title,
+      date,
+      url,
+      guid: url,
+      custom_elements: [
+        {'content:encoded': marked(body)}
+      ],
+    }
+  })
+}
+```
+
+ \
+\
 getting data in
 
 \- using a plugin
