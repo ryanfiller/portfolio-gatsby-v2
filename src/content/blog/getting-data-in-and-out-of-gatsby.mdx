@@ -23,7 +23,9 @@ But, since I *did* already have a blog, it definitely seemed possible to syndica
 
 Yes, it does - and trying to directly query that endpoint was my first thought. `localhost:8000/__graphiql `is a thing, so `ryanfiller.com/__graphiql` probably is too, right?
 
-Well, no. Gatsby has a long section of [their docs](https://www.gatsbyjs.org/docs/graphql/) about Graphql, but the short version of it is that Gatsby is a static site generator, not a serverside application. This means that while running locally, or during build time, a queryable graph exists and is used to gather data and generate pages. Once the production site is built from that data, that graph goes away and the generated site is sent to production, and therefore there is no live GraphQL endpoint on a deployed Gatsby site.
+Well, no. 
+
+Gatsby has a long section of [their docs](https://www.gatsbyjs.org/docs/graphql/) about Graphql, but the short version of it is that Gatsby is a static site generator, not a serverside application. This means that while running locally, or during build time, a queryable graph exists and is used to gather data and generate pages. Once the production site is built from that data, that graph goes away and the generated site is sent to production, and therefore there is no live GraphQL endpoint on a deployed Gatsby site.
 
 ## Getting Data Out
 
