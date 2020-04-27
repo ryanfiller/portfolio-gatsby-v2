@@ -37,15 +37,13 @@ For scenarios like this there are two obvious ways to format the endpoint - [JSO
 
 The easiest way to do most things in Gatsby is to look for a plugin, and luckily for RSS feeds there's a [first party one](https://www.gatsbyjs.org/packages/gatsby-plugin-feed/). To look into how this plug in works, the magic happens in its `src/gatsby-node.js` file. The plugin either uses its default searialize function or takes one from its configuration object, and uses this function to query the appropriate posts, map through them, and format them into a new shape for the feed. For blogs with a LOT of content, this can be a slow process. Luckily, I came across this [Kent C. Dodds Twitter thread](https://twitter.com/kentcdodds/status/1230333532288901121) outlining how this problem could be fixed. The three biggest takeaways:
 
-* Limit the number of posts, RSS feeds will cache most feeds past 10
-* Dont rely on complex image transformations (like `gatsby-transformer-sharp)`
+* Limit the number of posts, RSS feeds will check for updates often and heavily cache old posts
+* Don't rely on complex image transformations (like `gatsby-transformer-sharp)`
 * Content doesn't need to be posted full in its original form, it can be transformed in the `serialize` function.
 
+Since I'm not using Gatsby's image processing, the only thing I really needed to worry about was making sure that my images would point to the correct url instead of trying to look for the relative path at whichever new site I was sharing posts to. I also wasn't too concerned with limiting the number of post sicne I'm fine with a "Read More on My Full Site" button at the bottom of my second Gatsby site.
 
 
-
-
-\- contributing to plugin?
 
 getting data in
 
