@@ -31,13 +31,15 @@ Since accessing GraphQL directly, the next step is to set up a custom API endpoi
 
 ### Two Competing Data Types
 
-For scenarios like this there are two obvious ways to format the endpoint - [JSON](https://en.wikipedia.org/wiki/JSON) and [RSS](https://en.wikipedia.org/wiki/RSS). There are pros and cons to both approaches (and I even went down a route [on my old site](https://2018.ryanfiller.com/syndicate.json) using the [JSON Feed](https://jsonfeed.org/) standard), but it seems like RSS is still the most common type for syndicating data to sites such as dev.to or Medium. JSON seems to be the standard for posting and grabbing comlex data, and RSS for content. I ended up settling with and RSS endpoint, but the same principles should apply to either scenario in mostly the same way.
+For scenarios like this there are two obvious ways to format the endpoint - [JSON](https://en.wikipedia.org/wiki/JSON) and [RSS](https://en.wikipedia.org/wiki/RSS). There are pros and cons to both approaches (and I even went down a route [on my old site](https://2018.ryanfiller.com/syndicate.json) using the [JSON Feed](https://jsonfeed.org/) standard), but it seems like RSS is still the most common type for syndicating data to sites such as dev.to or Medium. JSON seems to be the standard for posting and grabbing complex data, and RSS for content. I ended up settling with and RSS endpoint, but the same principles should apply to either scenario in mostly the same way.
 
 ### Getting Gatsby to Format Data
 
-The easiest way to do most things in Gatsby is to look for a plugin, and luckily for RSS feeds there's a [first party one](https://www.gatsbyjs.org/packages/gatsby-plugin-feed/). To look into how this plug in works, the magic happens in its `src/gatsby-node.js` file. The plugin either uses its default searialize function or takes one from its configuration object, and uses this function to query the appropriate posts, map through them, and format them into a new shape for the feed.
+The easiest way to do most things in Gatsby is to look for a plugin, and luckily for RSS feeds there's a [first party one](https://www.gatsbyjs.org/packages/gatsby-plugin-feed/). To look into how this plug in works, the magic happens in its `src/gatsby-node.js` file. The plugin either uses its default searialize function or takes one from its configuration object, and uses this function to query the appropriate posts, map through them, and format them into a new shape for the feed. For blogs with a LOT of content, this can be a slow process. Luckily, I came across this [Kent C. Dodds Twitter thread](https://twitter.com/kentcdodds/status/1230333532288901121) outlining how this problem could be fixed. The three biggest takeaways:
 
-https://twitter.com/kentcdodds/status/1230333532288901121
+* Limit the number of posts, RSS feeds will cache most feeds past 10
+* Dont rely on complex image transformations (like `gatsby-transformer-sharp)`
+* Content doesn't need to be posted full in its original form, it can be transformed in the `serialize` function.
 
 
 
