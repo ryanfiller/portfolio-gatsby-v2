@@ -35,9 +35,13 @@ For scenarios like this there are two obvious ways to format the endpoint - [JSO
 
 ### Getting Gatsby to Format Data
 
-okay
+The easiest way to do most things in Gatsby is to look for a plugin, and luckily for RSS feeds there's a [first party one](https://www.gatsbyjs.org/packages/gatsby-plugin-feed/). To look into how this plug in works, the magic happens in its `src/gatsby-node.js` file. The plugin either uses its default searialize function or takes one from its configuration object, and uses this function to query the appropriate posts, map through them, and format them into a new shape for the feed.
 
-\- using a plugin, how does the plugin work
+https://twitter.com/kentcdodds/status/1230333532288901121
+
+
+
+
 
 \- contributing to plugin?
 
