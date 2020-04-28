@@ -109,10 +109,10 @@ Much like getting data out of Gatsby, the easiest way to get data is to also use
 
 `gatsby-source-rss-feed` was the plugin that I found that was the closest to what I needed, but to get the correct metadata as part of the file I actually had to submit a [pull request](https://github.com/mottox2/gatsby-source-rss-feed/pull/12/files) to the plugin repo. This was pretty easy to figure out as it works almost exactly the opposite was as the process done in the `gatsby-node.js` file in the plugin used to create the feed. Instead of doing a query and transforming nodes into xml, this process makes it own request against a url passed to it and uses Gatsby's [`createNode` action](https://www.gatsbyjs.org/docs/actions/#createNode) to well, create nodes. It then takes these nodes and assigns them to a [`type`](https://graphql.org/learn/schema/#type-system) that can be queried elsewhere in the site during build time. The original plugin was only mapping through the `item` data of the feed to build the posts, so it was pretty straightforward to use the [rest operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) to get the rest of the data and [pass it on to its own metadata type](https://github.com/ryanfiller/gatsby-source-rss-feed/blob/afa16c29d40671939b5789334c3ab9737c817218/src/gatsby-node.js#L88).
 
+### Formatting Generic Data Back Into Gatsby
+
+asdf
 
 
-
-
-\- transforming data
 
 notifying one site to build
