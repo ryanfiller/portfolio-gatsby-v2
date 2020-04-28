@@ -18,7 +18,7 @@ Last year, my friend [Josh](josh.beardedrobots.com/) brought up the idea of star
 
 <img src="/images/uploads/bender_two_things.gif" alt="Bender talking to Fry and The Professor" data-caption="" data-align="center" data-small="false" />
 
-But, since I *did* already have a blog, it definitely seemed possible to syndicate my posts from one site to the other. I put together a [quick site](https://github.com/ryanfiller/bearded-robots) with [Material-UI](https://material-ui.com/) and started trying to figure out how to get data out of one Gatsby site and into the other.
+But, since I *did* already have a blog, it made me curious to see if I could syndicate my posts from one site to the other. I put together a [quick site](https://github.com/ryanfiller/bearded-robots) with [Material-UI](https://material-ui.com/) and started trying to figure out how to get data out of one Gatsby site and into the other.
 
 ## Gatsby has GraphQL, right?
 
@@ -34,11 +34,11 @@ Since accessing GraphQL directly at run time is not an option, the next step is 
 
 ### Two Competing Data Types
 
-For scenarios like this there are two obvious ways to format the endpoint - [JSON](https://en.wikipedia.org/wiki/JSON) and [RSS](https://en.wikipedia.org/wiki/RSS). There are pros and cons to both approaches (and I even went down a route [on my old site](https://2018.ryanfiller.com/syndicate.json) using the [JSON Feed](https://jsonfeed.org/) standard), but it seems like RSS is still the most common type for syndicating data to sites such as dev.to or Medium. JSON seems to be the standard for posting and grabbing complex data, and RSS for content. I ended up settling with and RSS endpoint, but the same principles should apply to either scenario in mostly the same way.
+For scenarios like this there are two obvious ways to format the endpoint - [JSON](https://en.wikipedia.org/wiki/JSON) and [RSS](https://en.wikipedia.org/wiki/RSS). There are pros and cons to both approaches (and I even went down a route [on my old site](https://2018.ryanfiller.com/syndicate.json) using the [JSON Feed](https://jsonfeed.org/) standard), but it seems like RSS is still the most common type for syndicating data to sites such as dev.to or Medium. JSON seems to be the standard for posting and grabbing complex data, and RSS for content. I ended up settling on an RSS endpoint, but the same principles should apply to a JSON feed.
 
 ### Getting Gatsby to Format Data
 
-The easiest way to do most things in Gatsby is to look for a plugin, and luckily for RSS feeds there's a [first party one](https://www.gatsbyjs.org/packages/gatsby-plugin-feed/). To look into how this plug in works, the magic happens in its `src/gatsby-node.js` file. The plugin either uses its default serialize function or takes one from its configuration object, and uses this function to query the appropriate posts, map through them, and format them into a new shape for the feed. For blogs with a LOT of content, this can be a slow process. Luckily, I came across this [Kent C. Dodds Twitter thread](https://twitter.com/kentcdodds/status/1230333532288901121) outlining how this problem could be fixed. The three biggest takeaways:
+The easiest way to do add any functionality in Gatsby is to look for a plugin, and luckily for RSS feeds there's a [first party one](https://www.gatsbyjs.org/packages/gatsby-plugin-feed/). To look into how this plugin works, the magic happens in its `src/gatsby-node.js` file. The plugin either uses its default serialize function or takes one from its configuration object, and uses this function to query the appropriate posts, map through them, and format them into a new shape for the feed. For blogs with a LOT of content, this can be a slow process. Luckily, I came across this [Kent C. Dodds Twitter thread](https://twitter.com/kentcdodds/status/1230333532288901121) outlining how this problem could be fixed. The three biggest takeaways:
 
 * Limit the number of posts, RSS feeds will check for updates often and heavily cache old posts
 * Don't rely on complex image transformations (like `gatsby-transformer-sharp)`
