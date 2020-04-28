@@ -12,6 +12,7 @@ meta:
   tags:
     - gatsby
     - rss
+    - blogging
 ---
 A while back, my friend [Josh](https://twitter.com/Kaytal1) wanted to start a development blog with me. He even went through all the trouble buying a url and setting us each our own subdomain. Since I already had my own blog, primarily about development, writing another one seemed like a lot of work.
 
@@ -180,7 +181,7 @@ exports.onCreateNode = ({ node, actions }) => {
 }
 ```
 
-## Telling the Site When To Build
+## Telling the Sites When To Build
 
 Now that one site is able to pull data directly from the other, I need a mechanism for that site to let the other one know that new content exists and a new build needs to be started. Luckily, Netlify has a very straightforward way to add [build hooks](https://docs.netlify.com/configure-builds/build-hooks/) to any site!
 
@@ -196,4 +197,4 @@ Tada! Now when the first site sucessfully completes a build, magic will happen o
 
 ## Quick SEO Notes
 
-rel = canonical
+I'm far from an SEO expert, but I do know that having the same content live on multiple urls across the web can somtimes confuse search engines. For this situation exactly, a `rel="canonical"` link can be added to any syndicated posts and point back to the main blog domain. This [Google Webmaster article](https://support.google.com/webmasters/answer/139066?hl=en) does a pretty good job elaborting exactly why this is important.
