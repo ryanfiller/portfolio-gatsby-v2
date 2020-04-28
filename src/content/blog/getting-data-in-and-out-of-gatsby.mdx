@@ -164,7 +164,21 @@ From here, creating posts worked just like it would on most any other Gatsby sit
 }
 ```
 
+Most data is already in the format that it needs to be, with the exception of the post slug. The full url, including my original domain name that I tacked on during the feed construction, comes through as the post's `link` data, so when creating that field for Gatsby I made sure to strip that part off.
 
+```javascript
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions
+  
+  if (node.internal.type === 'FeedRyanBlog') {  
+    createNodeField({
+      node,
+      name: 'slug',
+      value: node.link.split('.com')[1]
+    })
+  }
+}
+```
 
 ## Telling the Site When To Build
 
