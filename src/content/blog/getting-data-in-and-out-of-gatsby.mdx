@@ -14,7 +14,7 @@ meta:
     - rss
     - blogging
 ---
-Last year, my friend [Josh](josh.beardedrobots.com/) brought up the idea of starting a development blog together. This seemed like a fun idea, but since I already had my own blog about development writing a second one seemed like more work than I would have time for.
+Last year, my friend [Josh](josh.beardedrobots.com/) brought up the idea of starting a development blog together. He even went through all the trouble buying a url and setting us each our own subdomain. This seemed like a fun idea, but since I already had my own blog about development writing a second one seemed like more work than I would have time for.
 
 <img src="/images/uploads/bender_two_things.gif" alt="Bender talking to Fry and The Professor" data-caption="" data-align="center" data-small="false" />
 
@@ -38,10 +38,10 @@ For scenarios like this there are two obvious ways to format the endpoint - [JSO
 
 ### Getting Gatsby to Format Data
 
-The easiest way to do add any functionality in Gatsby is to look for a plugin, and luckily for RSS feeds there's a [first party one](https://www.gatsbyjs.org/packages/gatsby-plugin-feed/). To look into how this plugin works, the magic happens in its `src/gatsby-node.js` file. The plugin either uses its default serialize function or takes one from its configuration object, and uses this function to query the appropriate posts, map through them, and format them into a new shape for the feed. For blogs with a LOT of content, this can be a slow process. Luckily, I came across this [Kent C. Dodds Twitter thread](https://twitter.com/kentcdodds/status/1230333532288901121) outlining how this problem could be fixed. The three biggest takeaways:
+The easiest way to do add any functionality in Gatsby is to look for a plugin, and luckily for RSS feeds there's a [first party one](https://www.gatsbyjs.org/packages/gatsby-plugin-feed/). To look into how this plugin works, the magic happens in its `src/gatsby-node.js` file. The plugin either uses its default serialize function or takes one from its configuration object, and uses this function to query the appropriate posts, map through them, and format them into a new shape for the feed. For blogs with a LOT of content, this can be a slow process. Luckily, I came across this [Kent C. Dodds Twitter thread](https://twitter.com/kentcdodds/status/1230333532288901121) outlining how this problem could be fixed. My biggest takeaways:
 
 * Limit the number of posts, RSS feeds will check for updates often and heavily cache old posts
-* Don't rely on complex image transformations (like `gatsby-transformer-sharp)`
+* Don't rely on complex image transformations (like `gatsby-transformer-sharp`)
 * Content doesn't need to be posted full in its original form, it can be transformed in the `serialize` function.
 
 Since I'm not using Gatsby's image processing, the only thing I really needed to worry about was making sure that my images would point to the correct url instead of trying to look for the relative path at whichever new site I was sharing posts to. I also wasn't too concerned with limiting the number of post since I'm fine with a "Read More on My Full Site" button at the bottom of my second Gatsby site.
@@ -105,18 +105,17 @@ serialize: ({query: {site, allMdx }}) => {
 }
 ```
 
- \
-These might seem obvious, but there's a couple of things I wanted to make sure and call out in the `serialize` function  in regards to making sure links would be handled correctly on different domains.  Both the post slugs (/blog/post-name) and image urls (/images/uploads/image-name.jpg) use relative paths, meaning that their urls are relative to the current domain. For things like posting images or doing linkbacks to the original url of the post, I needed to query the url of the original site and append it to the beginning of my relative paths in the serialize function.
+ These might seem obvious, but there's a couple of things I wanted to make sure and call out in the `serialize` function  in regards to making sure links would be handled correctly on different domains.  Both the post slugs (/blog/post-name) and image urls (/images/uploads/image-name.jpg) use relative paths, meaning that their urls are relative to the current domain. For things like posting images or doing links back to the original url of the post, I needed to query the url of the original site and append it to the beginning of my relative paths in the serialize function.
 
-As another not, `gatsby-plugin-feed` will automatically parse some fields, like `title`, `date,` and `url,` but anything extra can be passed in as objects into the `custom_elements` array.
+Also worth noting, `gatsby-plugin-feed` will automatically parse some fields, like `title`, `date,` and `url,` but anything extra can be passed in as objects into the `custom_elements` array.
 
 ## Getting Data In
 
-Much like getting data out of Gatsby, the easiest way to get data is to also use a plugin. Gatsby has a ton of first and third party source plugins, and the benefit of this is that they can all be used in conjunction to synthesize many points of data into one GraphQL endpoint. That means that on my syndicated blog I could have some content, like an about me page or something, in regular markdown while still having the blog post come from an external RSS source. This is the oppsite of what I was trying to do, though. I wanted all data, even metadata about the blog, to be accessible in my rss.xml file.
+Much like getting data out of Gatsby, the easiest way to get data in is to also use a plugin. Gatsby has a ton of first and third party source plugins, and the benefit of this is that they can all be used in conjunction to synthesize many points of data into one GraphQL endpoint. That means that on my syndicated blog I could have some content, like an About Me page for example, in regular markdown while still having the blog post come from an external RSS source. This is the opposite of what I was trying to do, though. I wanted all data, even metadata about the blog, to be accessible in my rss.xml file.
 
 `gatsby-source-rss-feed` was the plugin that I found that was the closest to what I needed, but to get the correct metadata as part of the file I had to submit a [pull request](https://github.com/mottox2/gatsby-source-rss-feed/pull/12/files) to the plugin repo. This was fairly easy to figure out as it works almost exactly the opposite was as the process done in the `gatsby-node.js` file in the plugin used to create the feed. Instead of doing a query and transforming nodes into xml, this process makes it own request against a url passed to it and uses Gatsby's [`createNode` action](https://www.gatsbyjs.org/docs/actions/#createNode) to well, create nodes. It then takes these nodes and assigns them to a [`type`](https://graphql.org/learn/schema/#type-system) that can be queried elsewhere in the site during build time. The original plugin was only mapping through the `item` data of the feed to build the posts, so it was pretty straightforward to use the [rest operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters) to get the rest of the data and [pass it on to its own metadata type](https://github.com/ryanfiller/gatsby-source-rss-feed/blob/afa16c29d40671939b5789334c3ab9737c817218/src/gatsby-node.js#L88).
 
-The plugin still needed to be told what of that extra data to grab, so my config object looked like this:
+The plugin still needed to know what extra data to grab, so my config object looked like this:
 
 ```javascript
 {
@@ -193,10 +192,10 @@ Once that url has been created, a matching Deploy Notification needs to be creat
 
 <img src="/images/uploads/netlify-build-hook-outgoing.png" alt="Netlify outgoing build hook configuration" data-caption="" data-align="center" data-small="false" />
 
-Tada! Now when the first site sucessfully completes a build, magic will happen on the internet and the second site automatically will to!
+Tada! Now when the first site successfully completes a build, magic will happen on the internet and the second site automatically will to!
 
 ## Quick SEO Notes
 
 I'm far from an SEO expert, but I do know that having the same content live on multiple urls across the web can sometimes confuse search engines. For this situation exactly, a `rel="canonical"` link can be added to any syndicated posts and point back to the main blog domain. This [Google Webmaster article](https://support.google.com/webmasters/answer/139066?hl=en) does a good job elaborating exactly why this is important.
 
-Something to end the post about how you could be reading this on ryanfiller.com, or ryan.beardedrobots.com, or dev.to, or an RSS reader app, or something.
+If all goes well with this post, who knows - you might even be reading it on ryan.beardedrobots, or dev.to, or an RSS app right now!
