@@ -21,7 +21,7 @@ But, since I *did* already have a blog, it definitely seemed possible to syndica
 
 ## Gatsby has GraphQL, right?
 
-Yes, it does - and trying to directly query that endpoint was my first thought. `localhost:8000/__graphiql `is a thing, so `ryanfiller.com/__graphiql` probably is too, right?
+Yes, it does - and trying to directly query that endpoint was my first thought. `localhost:8000/__graphiql`is a thing, so `ryanfiller.com/__graphiql` probably is too, right?
 
 Well, no. 
 
@@ -135,15 +135,40 @@ The plugin still needed to be told what of that extra data to grab, so my config
 
 ### Formatting Generic Data Back Into Gatsby
 
-From here, creating posts worked just like it would on most any other Gatsby site.
+From here, creating posts worked just like it would on most any other Gatsby site. Whatever value is passed into the `name` option of the plugin gets concatenated into a type that can be queried and transformed into pages. 
+
+```javascript
+{
+  meta: feedRyanBlogMeta {
+    siteUrl
+  }
+
+  posts: allFeedRyanBlog {
+    edges {
+      node {
+        fields {
+          id
+          slug
+        }
+        title
+        pubDate
+        link
+        categories
+        excerpt 
+        content {
+          encoded
+        }
+      }
+    }
+  }
+}
+```
 
 
 
 ## Telling the Site When To Build
 
 netlify, webhooks
-
-
 
 ## Quick SEO Notes
 
