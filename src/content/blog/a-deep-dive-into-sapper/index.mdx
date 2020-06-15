@@ -13,4 +13,12 @@ meta:
     - svelte
     - sapper
 ---
-Svelte is a Javascript framework that has been interseting to me since seeing [Nate Clark](https://nateclark.io/) give a short talk on it at my [local meetup](https://memphiswebworkers.com/) last summer. I build a really basic color app ([demo](https://rgb-color-values.netlify.app/), [code](https://github.com/ryanfiller/rgb-color-values)) around the same time and haven't touched Svelte much since then. A lot has changed since then, both in the world and with the framework - [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity) was released earlier this year - and I thought it was time to take another look at both Svelte its application framework, [Sapper](https://sapper.svelte.dev/).
+Svelte is a Javascript framework that has been interesting to me since seeing [Nate Clark](https://nateclark.io/) give a short talk on it at my [local meetup](https://memphiswebworkers.com/) last summer. I build a really basic color app ([demo](https://rgb-color-values.netlify.app/), [code](https://github.com/ryanfiller/rgb-color-values)) around the same time and haven't touched Svelte much since then. A lot has changed since then, both in the world and with the framework - [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity) was released earlier this year - and I thought it was time to take another look at both Svelte its application framework, [Sapper](https://sapper.svelte.dev/).
+
+## What is Svelte and what is Sapper?
+
+[Svelte](https://svelte.dev/) is a new-ish framework that takeas a "radical new approach to building user interfaces." Svelte differs from other Javascript UI tools, like [React](https://reactjs.org/) or [Vue](https://vuejs.org/), in that it does its work during compile time rather than in the browser. This means that rather than ship the library itself, Svelte "boils away" and only vanilla Javascript makes it to the browser.
+
+This video sums up the philosphy behind Svelte: https://www.youtube.com/watch?v=AdNJ3fydeao
+
+[Sapper](https://sapper.svelte.dev/) is Svelte's first party application framework, akin to [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) or [Next](https://nextjs.org/) for React, or or [Nuxt](https://nuxtjs.org/) for Vue. Sapper is also able to export a static version of a site, putting it more in line with [Gatsby](https://www.gatsbyjs.org/) for React and [Gridsome](https://gridsome.org/) for Vue.
