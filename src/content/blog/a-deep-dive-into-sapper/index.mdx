@@ -53,7 +53,42 @@ The great news is that this feature works by default. If for whatever reason a u
 
 ## Global Components
 
-This is something else that most component-based frameworks offer, but I wanted the ability to re-render only some parts of the page on route changes. Sapper boasts the ability to *"surgically updates the DOM when the state of your app changes",* and the [`_layout.svelte`](``https://sapper.svelte.dev/docs#Layouts) file allows for just that. `_layout.svelte` is a file that will accept the contents of any other page into the `<slot/>` tag, which means that anything outside that tag will persist between pages.
+This is something else that most component-based frameworks offer, but I wanted the ability to re-render only some parts of the page on route changes. Sapper boasts the ability to *"surgically updates the DOM when the state of your app changes",* and the [`_layout.svelte`](``https://sapper.svelte.dev/docs#Layouts) file allows for just that. `_layout.svelte` is a file that will accept the contents of any other page into the `<slot/>` tag, which means that anything outside that tag will persist between pages. Sapper also will automatically proved a `segment` prop that can be used to determind what the current page is or even conditionally render nested routes. 
+
+From the header component I put together:
+
+```svelte
+// nav.svelte
+<script>
+  export let active
+</script>
+
+<style>
+  a {
+    color: currentColor;
+  }
+  a.active {
+    font-weight: bold;
+    color: orange;
+    border-bottom: 2px solid orange;
+  }
+</style>
+
+<nav class='main-nav'>
+  <ul>
+    <li>
+      <a href='/' class={!segment ? 'active' : ''}>
+        about
+      </a>
+    </li>
+    <li>
+      <a href='goals' class={segment === 'goals' ? 'active' : ''}>
+        goals
+      </a>
+    </li>
+  </ul>
+</nav>
+```
 
 ## JavaScript in Markdown
 
