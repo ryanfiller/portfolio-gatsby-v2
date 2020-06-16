@@ -100,9 +100,25 @@ This was the first feature that Sapper didn't provide natively. Analogous to [MD
 "export": "sapper export --legacy --ext '.svelte .md'"
 ```
 
+With this preprocessing set up to happen during Svelte's complie time, components can be important into markdown files and used inline. Data from the posts frontmatter is even automatically parsed and passed into the pages as props.
+
+```markdown
+---
+title: a post
+---
+
+<script>
+  import Component from './_component.svelte'
+</script>
+
+# Regular Markdown
+
+<Component text={title} />
+```
+
 ## Automatic Markdown Processing
 
-asdf
+Moreso than using components in Markdown I use MDX to build autmatically rendered, extra-powered versions of regalar HTML components.
 
 ## Colocation of Images & Components
 
