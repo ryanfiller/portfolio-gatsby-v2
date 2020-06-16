@@ -13,7 +13,9 @@ meta:
     - svelte
     - sapper
 ---
-Svelte is a Javascript framework that has been interesting to me since seeing [Nate Clark](https://nateclark.io/) give a short talk on it at my [local meetup](https://memphiswebworkers.com/) last summer. I build a really basic color app ([demo](https://rgb-color-values.netlify.app/), [code](https://github.com/ryanfiller/rgb-color-values)) around the same time and haven't touched Svelte much since then. A lot has changed since then, both in the world and with the framework - [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity) was released earlier this year - and I thought it was time to take another look at both Svelte its application framework, [Sapper](https://sapper.svelte.dev/).
+
+
+Svelte is a Javascript framework that has been interesting to me since seeing [Nate Clark](https://nateclark.io/) give a short talk on it at my [local meetup](https://memphiswebworkers.com/) last summer. I built a really basic color app ([demo](https://rgb-color-values.netlify.app/), [code](https://github.com/ryanfiller/rgb-color-values)) around the same time and haven't touched Svelte much since then. A lot has changed since then, both in the world and with the framework - [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity) was released earlier this year - and I thought it was time to take another look at both Svelte its application framework, [Sapper](https://sapper.svelte.dev/).
 
 ## What is Svelte and what is Sapper?
 
@@ -22,3 +24,65 @@ Svelte is a Javascript framework that has been interesting to me since seeing [N
 This video sums up the philosphy behind Svelte: https://www.youtube.com/watch?v=AdNJ3fydeao
 
 [Sapper](https://sapper.svelte.dev/) is Svelte's first party application framework, akin to [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) or [Next](https://nextjs.org/) for React, or or [Nuxt](https://nuxtjs.org/) for Vue. Sapper is also able to export a static version of a site, putting it more in line with [Gatsby](https://www.gatsbyjs.org/) for React and [Gridsome](https://gridsome.org/) for Vue.
+
+## ??? Headlines are hard....
+
+I've been working in the Gatsby-React ecosystem for a while, and I've formed pretty strong opinions about how I like to do things such as organize files, which toolschains I use, plugins I can't live without, etc. Obvioulys Sapper could be used to make *a* markdown blog, but it could make one the *I* wanted? I know that no two frameworks will ever be completely 1:1 with each other, but I started by making a list of must-have features:
+
+TODO: link these to the headres down below
+
+* Works With No Client JS
+* Global Components
+* JavaScript in Markdown
+* Automatic Markdown Processing
+* Colocation of Images & Components
+* post/index File Structure
+* Inline SVGs
+* SCSS Imports
+* Easy RSS Feed & Sitemap
+
+I put together a [quick starter project](https://github.com/ryanfiller/sapper-test) and hosted it on [Netlify](https://sapper-goals.netlify.app/) to get my hands dirty and try to accomplish all of these things and see how much friction implementing them in Sapper would cause. 
+
+(Spoilers: it did everything I wanted, and was relatvively easy along the way.)
+
+
+
+## Works With No Client JS
+
+Sapper, like most other Javascript Static Site Generators, works by buidling a server side HTML bundle and then rehydrating it by re-rendering on top of it clientside with Javascript. Sapper's production script comes in two versions, \`build\` and \`export\`. \`build\` will generate a Node app that can be hosted somewhere, and \`export\` will generate a static version of the site.
+
+## Global Components
+
+asdf
+
+## JavaScript in Markdown
+
+asdf
+
+## Automatic Markdown Processing
+
+asdf
+
+## Colocation of Images & Components
+
+asdf
+
+## post/index File Structure
+
+asdf
+
+## Inline SVGs
+
+asdf
+
+## SCSS Imports
+
+asdf
+
+## Easy RSS Feed & Sitemap
+
+asdf
+
+
+
+Shoutout to pengwin and that one guy who made the spelling PR, and the discord groupd.
