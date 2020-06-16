@@ -13,8 +13,6 @@ meta:
     - svelte
     - sapper
 ---
-
-
 Svelte is a Javascript framework that has been interesting to me since seeing [Nate Clark](https://nateclark.io/) give a short talk on it at my [local meetup](https://memphiswebworkers.com/) last summer. I built a really basic color app ([demo](https://rgb-color-values.netlify.app/), [code](https://github.com/ryanfiller/rgb-color-values)) around the same time and haven't touched Svelte much since then. A lot has changed since then, both in the world and with the framework - [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity) was released earlier this year - and I thought it was time to take another look at both Svelte its application framework, [Sapper](https://sapper.svelte.dev/).
 
 ## What is Svelte and what is Sapper?
@@ -45,11 +43,9 @@ I put together a [quick starter project](https://github.com/ryanfiller/sapper-te
 
 (Spoilers: it did everything I wanted, and was relatvively easy along the way.)
 
-
-
 ## Works With No Client JS
 
-Sapper, like most other Javascript Static Site Generators, works by buidling a server side HTML bundle and then rehydrating it by re-rendering on top of it clientside with Javascript. Sapper's production script comes in two versions, \`build\` and \`export\`. \`build\` will generate a Node app that can be hosted somewhere, and \`export\` will generate a static version of the site.
+Sapper, like most other Javascript Static Site Generators, works by building a server side HTML bundle and then rehydrating it by re-rendering on top of it clientside with Javascript. Sapper's production script comes in two versions, \`build\` and \`export\`. \`build\` will generate a Node app that can be hosted somewhere, and \`export\` will generate a static version of the site.
 
 \> Static doesn't mean non-interactive — your Svelte components work exactly as they do normally, and you still get all the benefits of client-side routing and prefetching.
 
@@ -86,7 +82,5 @@ asdf
 ## Easy RSS Feed & Sitemap
 
 asdf
-
-
 
 Shoutout to pengwin and that one guy who made the spelling PR, and the discord groupd.
