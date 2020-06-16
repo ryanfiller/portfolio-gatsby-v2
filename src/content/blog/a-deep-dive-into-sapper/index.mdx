@@ -92,7 +92,15 @@ From the header component I put together:
 
 ## JavaScript in Markdown
 
-asdf
+This was the first feature that Sapper didn't provide natively. Analogous to [MDX,](https://mdxjs.com/) the Svelte ecosystem has its own Javascrit-Markdown hybrid toold - [MDsveX](https://mdsvex.com/). MDsveX works by transforming markdown into Svelte components, which lets file imports go both ways. `.md` content can be imported into `.svelte` components, and vice versa. MDsveX has to be configured as a plugin in the `rollup.config.js` file in the root of the project, and it can take a number of config optoins to do things like change the default file extension. More importantly, the build scripts in `package.json` need to be modified so that they correctly process whichever file extension are specified in the config.
+
+```javascript
+"dev": "sapper dev --ext '.svelte .md'",
+"build": "sapper build --legacy --ext '.svelte .md'",
+"export": "sapper export --legacy --ext '.svelte .md'"
+```
+
+Huge thank you to [pngwn](https://twitter.com/evilpingwin), the creator of MDsveX, for helping me on Twitter, Github, and Discord to get this running on my demo site.
 
 ## Automatic Markdown Processing
 
