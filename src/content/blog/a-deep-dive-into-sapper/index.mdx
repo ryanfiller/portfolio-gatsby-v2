@@ -51,6 +51,10 @@ I put together a [quick starter project](https://github.com/ryanfiller/sapper-te
 
 Sapper, like most other Javascript Static Site Generators, works by buidling a server side HTML bundle and then rehydrating it by re-rendering on top of it clientside with Javascript. Sapper's production script comes in two versions, \`build\` and \`export\`. \`build\` will generate a Node app that can be hosted somewhere, and \`export\` will generate a static version of the site.
 
+\> Static doesn't mean non-interactive — your Svelte components work exactly as they do normally, and you still get all the benefits of client-side routing and prefetching.
+
+The great news is that this feature works by default. If for whatever reason a user has Javascript disabled in their browser, they get the un-hydrated version of the Sapper app and, assuming everything was build in a smart way, the app will work as plain HTML. Sapper doesn't use special components in place of `<a>` tags, so even links will function like regular HTML links.
+
 ## Global Components
 
 asdf
