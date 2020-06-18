@@ -121,10 +121,14 @@ title: a post
 Moreso than using components in Markdown I use MDX to build automatically rendered, extra-powered versions of regular HTML components. I'm of the strong opinion that my content should be able to be rendered by a regular Markdown parser into regular HTML first, but that I should be able to use other tools to add functionality on top of it. I usually use [data attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*) to do this, 
 
 ```html
-<img src="image.jp" alt="title" data-align="right" />
+<img src="image.jpg" alt="title" data-align="right" />
 ```
 
-but by design MDsveX doesn't run on top of 
+MDsveX, by design, will only process Markdown content and not any inline HTML. This means that in order to add any attributes other than `src` and `alt` to images I needed to figure out a way to extend default Markdown functionality. Luckily, MDsveX recently reached version 0.8 and added the ability to use [remark plugins](https://github.com/remarkjs/remark/blob/master/doc/plugins.md), and there happens to be [a plugin](https://github.com/arobase-che/remark-attr) to do exactly that. Once the [remark-attr](https://github.com/arobase-che/remark-attr) pluging is configured in the `remarkPlugins` array in `rollup.config.js` any extra attributes can be added in markdown, and will be ignored in parsers that do not support this functionality.
+
+```markdown
+![title](image.jpg){data-align="right"}
+```
 
 ## Colocation of Images & Components
 
