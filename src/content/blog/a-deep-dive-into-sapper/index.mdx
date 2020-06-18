@@ -118,7 +118,13 @@ title: a post
 
 ## Automatic Markdown Processing
 
-Moreso than using components in Markdown I use MDX to build autmatically rendered, extra-powered versions of regular HTML components.
+Moreso than using components in Markdown I use MDX to build automatically rendered, extra-powered versions of regular HTML components. I'm of the strong opinion that my content should be able to be rendered by a regular Markdown parser into regular HTML first, but that I should be able to use other tools to add functionality on top of it. I usually use [data attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*) to do this, 
+
+```html
+<img src="image.jp" alt="title" data-align="right" />
+```
+
+but by design MDsveX doesn't run on top of 
 
 ## Colocation of Images & Components
 
