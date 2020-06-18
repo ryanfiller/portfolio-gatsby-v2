@@ -127,7 +127,7 @@ Moreso than using components in Markdown I use MDX to build automatically render
 MDsveX, by design, will only process Markdown content and not any inline HTML. This means that in order to add any attributes other than `src` and `alt` to images I needed to figure out a way to extend default Markdown functionality. Luckily, MDsveX recently reached version 0.8 and added the ability to use [remark plugins](https://github.com/remarkjs/remark/blob/master/doc/plugins.md), and there happens to be [a plugin](https://github.com/arobase-che/remark-attr) to do exactly that. Once the [remark-attr](https://github.com/arobase-che/remark-attr) pluging is configured in the `remarkPlugins` array in `rollup.config.js` any extra attributes can be added in markdown, and will be ignored in parsers that do not support this functionality.
 
 ```markdown
-![title](image.jpg){data-align="right"}
+![title](image.jpg){align="right"}
 ```
 
 ## Colocation of Images & Components
