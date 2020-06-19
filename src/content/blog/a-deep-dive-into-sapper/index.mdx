@@ -27,15 +27,15 @@ This video sums up the philosphy behind Svelte: https://www.youtube.com/watch?v=
 
 I've been working in the Gatsby-React ecosystem for a while, and I've formed pretty strong opinions about how I like to do things such as organize files, which toolchains I use, plugins I can't live without, etc. Obvioulys Sapper could be used to make *a* markdown blog, but it could make one the *I* wanted? I know that no two frameworks will ever be completely 1:1 with each other, but I started by making a list of must-have features:
 
-* [Works With No Client JS](#works-with-no-js)
-* [Global Components](#global-components)
-* [JavaScript in Markdown](#javascript-in-markdown)
-* [Automatic Markdown Processing](#automatic-markdown-processing)
-* [Colocation of Images & Components](#post-index-pattern)
-* [post/index File Structure](#colocation-of-images)
-* [Inline SVGs](#inline-svgs)
-* [SCSS Imports](#scss-imports)
-* [Easy RSS Feed & Sitemap](#easy-rss-and-sitemap)
+* Works With No Client JS
+* Global Components
+* JavaScript in Markdown
+* Automatic Markdown Processing
+* Colocation of Images & Components
+* post/index File Structure
+* Inline SVGs
+* SCSS Imports
+* Easy RSS Feed & Sitemap
 
 I put together a [quick starter project](https://github.com/ryanfiller/sapper-test) and hosted it on [Netlify](https://sapper-goals.netlify.app/) to get my hands dirty and try to accomplish all of these things and see how much friction implementing them in Sapper would cause. 
 
@@ -167,8 +167,6 @@ const posts = fs.readdirSync(route)
 This endpoint can then be fetched against in a module script by a function that will return data that can be used to create page navigation.
 
 ```svelte
-
-
 <script context="module">
   export function preload({ params, query }) {
     return this.fetch(`/posts.json`)
@@ -185,8 +183,6 @@ This endpoint can then be fetched against in a module script by a function that 
   {/each}
 </ul>
 ```
-
-
 
 ## Colocation of Images & Components
 
@@ -206,8 +202,6 @@ Another added benefit of the module pattern for organizing post files is that im
 One of the constaints of Sapper, however, is that images **must** live in the `static` directory in the root of the project in order to be picked up by the compiler. The key is that they don't have to *always* be there, they just need to be there at the time the compiler runs.
 
 To get around this constraint I was able to use [`rollup-plugin-copy`](https://www.npmjs.com/package/rollup-plugin-copy) and configure it to move any files from a post's `/images` directory into the main `static/images` directory at build time.
-
-
 
 ```javascript
 import copy from 'rollup-plugin-copy'
