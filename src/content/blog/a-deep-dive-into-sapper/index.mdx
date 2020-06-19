@@ -43,6 +43,8 @@ I put together a [quick starter project](https://github.com/ryanfiller/sapper-te
 
 ## Works With No Client JS
 
+[See The Example »](https://sapper-goals.netlify.app/goals/works-with-no-js)
+
 Sapper, like most other Javascript Static Site Generators, works by building a server side HTML bundle and then rehydrating it by re-rendering on top of it clientside with Javascript. Sapper's production script comes in two versions, \`build\` and \`export\`. \`build\` will generate a Node app that can be hosted somewhere, and \`export\` will generate a static version of the site.
 
 \> Static doesn't mean non-interactive — your Svelte components work exactly as they do normally, and you still get all the benefits of client-side routing and prefetching.
@@ -50,6 +52,8 @@ Sapper, like most other Javascript Static Site Generators, works by building a s
 The great news is that this feature works by default. If for whatever reason a user has Javascript disabled in their browser, they get the un-hydrated version of the Sapper app and, assuming everything was build in a smart way, the app will work as plain HTML. Sapper doesn't use special components in place of `<a>` tags, so even links will function like regular HTML links.
 
 ## Global Components
+
+[See The Example »](https://sapper-goals.netlify.app/goals/global-components)
 
 This is something else that most component-based frameworks offer, but I wanted the ability to re-render only some parts of the page on route changes. Sapper boasts the ability to *"surgically updates the DOM when the state of your app changes",* and the [`_layout.svelte`](``https://sapper.svelte.dev/docs#Layouts) file allows for just that. `_layout.svelte` is a file that will accept the contents of any other page into the `<slot/>` tag, which means that anything outside that tag will persist between pages. Sapper also will automatically proved a `segment` prop that can be used to determind what the current page is or even conditionally render nested routes. 
 
@@ -90,6 +94,8 @@ From the header component I put together:
 
 ## JavaScript in Markdown
 
+[See The Example »](https://sapper-goals.netlify.app/goals/javascript-in-markdown)
+
 This was the first feature that Sapper didn't provide natively. Analogous to [MDX,](https://mdxjs.com/) the Svelte ecosystem has its own Javascrit-Markdown hybrid toold - [MDsveX](https://mdsvex.com/). MDsveX works by transforming markdown into Svelte components, which lets file imports go both ways. `.md` content can be imported into `.svelte` components, and vice versa. MDsveX has to be configured as a plugin in the `rollup.config.js` file in the root of the project, and it can take a number of config optoins to do things like change the default file extension. More importantly, the build scripts in `package.json` need to be modified so that they correctly process whichever file extension are specified in the config.
 
 ```javascript
@@ -116,6 +122,8 @@ title: a post
 
 ## Automatic Markdown Processing
 
+[See The Example »](https://sapper-goals.netlify.app/goals/automatic-markdown-processing)
+
 Moreso than using components in Markdown I use MDX to build automatically rendered, extra-powered versions of regular HTML components. I'm of the strong opinion that my content should be able to be rendered by a regular Markdown parser into regular HTML first, but that I should be able to use other tools to add functionality on top of it. I usually use [data attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*) to do this, 
 
 ```html
@@ -138,6 +146,8 @@ MDsveX can also be configured with a module script in each layout with an object
 ```
 
 ## post/index File Structure
+
+[See The Example »](https://sapper-goals.netlify.app/goals/post-index-pattern)
 
 One thing I've really learned to appreciate the more I work with compoent-based websites is flat file organization. I still tend to overly organize things into different folders, but I do my best to group them by feature and not by file type. That means that I'm likely to put the styles for a javascript compoennt next to each other, but I'll likely have the site header in one folder and a blog thumbnail in another. Usually this leads to shorter import paths, which also means less mental strain while trying to use relative links to navigate directory structures.
 
@@ -180,6 +190,8 @@ This endpoint can then be fetched against in a module script by a function that 
 
 ## Colocation of Images & Components
 
+[See The Example »](https://sapper-goals.netlify.app/goals/colocation-of-images)
+
 Another added benefit of the module pattern for organizing post files is that images can be kept directly along side Markdown content.
 
 ```text
@@ -218,13 +230,19 @@ To keep images from being tracked twice by version control, I also added `/stati
 
 ## Inline SVGs
 
+[See The Example »](https://sapper-goals.netlify.app/goals/inline-svgs)
+
 asdf
 
 ## SCSS Imports
 
+[See The Example »](https://sapper-goals.netlify.app/goals/scss-imports)
+
 asdf
 
 ## Easy RSS Feed & Sitemap
+
+[See The Example »](https://sapper-goals.netlify.app/goals/easy-rss-and-sitemap)
 
 asdf
 
