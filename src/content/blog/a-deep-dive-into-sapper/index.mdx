@@ -226,7 +226,17 @@ To keep images from being tracked twice by version control, I also added `/stati
 
 [See The Example »](https://sapper-goals.netlify.app/goals/inline-svgs)
 
-I have quite a bit of experience figuring out how to import .svg files as components in various environments with [Webpack](https://webpack.js.org/loaders/svg-inline-loader/), but one major difference between Sapper and many other frameworks I've used is that it favors [rollup](https://rollupjs.org/guide/en/) for bundling. Sapper can be [configured to use webpack,](https://github.com/sveltejs/sapper-template-webpack) but in the spirit of trying new things I wanted to give rollup a try.
+I have quite a bit of experience figuring out how to import .svg files as components in various environments with [Webpack](https://webpack.js.org/loaders/svg-inline-loader/), but one major difference between Sapper and many other frameworks I've used is that it favors [Rollup](https://rollupjs.org/guide/en/) for bundling. Sapper can be [configured to use webpack,](https://github.com/sveltejs/sapper-template-webpack) but in the spirit of trying new things I wanted to give rollup a try.
+
+Rollup has a pluging, [`rollup-plugin-svelte-svg`](https://www.npmjs.com/package/rollup-plugin-svelte-svg), that allows for .svg files to be imported as if they were Svelte components. They can even be passed props.
+
+```svelte
+<script>
+  import SVG from "./_svg.svg";
+</script>
+
+<SVG class='animate' />
+```
 
 ## SCSS Imports
 
