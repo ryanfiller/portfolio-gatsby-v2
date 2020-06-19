@@ -145,7 +145,18 @@ One thing I've really learned to appreciate the more I work with compoent-based 
 
 The place I find this most useful is for post content. I've started naming a directory with the title of the post and relying on the [ES6 module pattern](https://www.digitalocean.com/community/tutorials/react-index-js-public-interfaces) to keep an `index.md` file inside. 
 
-Sapper, and also MDsveX, automatically support this functionality. Any file inside the `routes/` directory will be turned into pages.
+Sapper, and also MDsveX, automatically support this functionality. Any file inside the `routes/` directory will be turned into pages. In order to programatically build a list of those pages to construct navigation, the traditional method of Sapper server routes can be used. An `index.json.js` can use [Node's `fs.readdirSync` function](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options) to to query the file system at run time and create a json route that the app can fetch data against.
+
+```javascript
+const posts = fs.readdirSync(route)
+  .filter(file => isDir(`${route}/${file}`))
+  .map(file => {
+      const post = fs.readFileSync(path.resolve(route, `${file}/index.md`), 'utf-8')
+      return {...post, slug: file}
+  })
+```
+
+
 
 ## Colocation of Images & Components
 
