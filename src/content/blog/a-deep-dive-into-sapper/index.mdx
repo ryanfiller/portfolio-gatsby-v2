@@ -139,11 +139,17 @@ MDsveX can also be configured with a module script in each layout with an object
 </script>
 ```
 
+## post/index File Structure
+
+One thing I've really learned to appreciate the more I work with compoent-based websites is flat file organization. I still tend to overly organize things into different folders, but I do my best to group them by feature and not by file type. That means that I'm likely to put the styles for a javascript compoennt next to each other, but I'll likely have the site header in one folder and a blog thumbnail in another. Usually this leads to shorter import paths, which also means less mental strain while trying to use relative links to navigate directory structures.
+
+The place I find this most useful is for post content. I've started naming a directory with the title of the post and relying on the [ES6 module pattern](https://www.digitalocean.com/community/tutorials/react-index-js-public-interfaces) to keep an `index.md` file inside. 
+
+In order to BLAH BLAH BLAH
+
 ## Colocation of Images & Components
 
-One thing I've really learned to appreciate the more I work with compoennt-based websites is flat file organization. I still tend to overly organize things into different folders, but I do my best to group them by feature and not by file type. That means that I'm likely to put the styles for a javascript compoennt next to each other, but I'll likely have the site header in one folder and a blog thumbnail in another. Usually this leads to shorter import paths, which also means less mental strain while trying to use relative links to navigate directory structures.
-
-The place I find this most useful is for post content. I've started naming a directory with the title of the post and relying on the [ES6 module pattern](https://www.digitalocean.com/community/tutorials/react-index-js-public-interfaces) to keep an `index.md` file inside. This is nice for using components directly in post Markdown, but it is even nicer for organizing images.
+Another added benefit of the module pattern for organizing post files is that images can be kept directly along side Markdown content.
 
 ```text
 └─ blog/
@@ -178,10 +184,6 @@ export default {
 ```
 
 To keep images from being tracked twice by version control, I also added `/static/images/*` to the my `.gitignore` so only the original images would be seen.
-
-## post/index File Structure
-
-asdf
 
 ## Inline SVGs
 
