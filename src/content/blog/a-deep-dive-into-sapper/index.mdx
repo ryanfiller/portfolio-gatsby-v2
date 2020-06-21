@@ -345,7 +345,6 @@ const render = (pages) => (`<?xml version="1.0" encoding="UTF-8" ?>
 
 export function get(req, res, next) {
   res.setHeader('Cache-Control', `max-age=0, s-max-age=${600}`) // 10 minutes
-  // res.setHeader('Content-Type', 'application/rss+xml')
   res.setHeader('Content-Type', 'text/xml')
 
   const sitemap = render(pages)
@@ -353,4 +352,4 @@ export function get(req, res, next) {
 }
 ```
 
-An important note here is that during the Sapper static export process, Sapper will crawl the site and generate any pages that can be linked from the `href` value of an `<a>` tag.
+An important note here is that during the Sapper static export process, Sapper will crawl the site and generate any pages that can be linked from the `href` value of an `<a>` tag. For pagse like the RSS feed and sitemap, to be built they either need to be linked to from another page, or they can be added behind the [`--entry` flag](https://sapper.svelte.dev/docs#How_it_works) in any of the build commands in `package.json`.
