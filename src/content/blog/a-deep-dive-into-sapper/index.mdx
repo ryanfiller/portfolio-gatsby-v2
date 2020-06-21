@@ -242,7 +242,9 @@ Rollup has a pluging, [`rollup-plugin-svelte-svg`](https://www.npmjs.com/package
 
 [See The Example »](https://sapper-goals.netlify.app/goals/scss-imports)
 
-asdf
+Svelte comes with the features to use generated class names to scope any rule written in a components `<style>` tag to that component. Despite the recent-ish addition of [native css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) I still use scss on nearly every project for scoped nesting, easy breakpoints,  and reusable functions. 
+
+Sapper already runs a process to compile a stylesheet for the app, and the [`svelte-preprocess` plugin](https://www.npmjs.com/package/svelte-preprocess) offers an easy way to add steps to this compilation process.
 
 ## Easy RSS Feed & Sitemap
 
