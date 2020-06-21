@@ -274,4 +274,6 @@ Sapper already runs a process to compile a stylesheet for the app, and the [`sve
 
 I'm new to RSS, and I've had quite a bit of trouble getting it correctly set up in the past. \
 Creating a route with a file custom file extension can be done by prepending that extension to the `.js` portion of a file. To create an rss feed for my examples site that would live at [`/goals/rss.xml`](https://sapper-goals.netlify.app/goals/rss.xml) all I needed to do was add a file named `rss.xml.js` inside of the `goals` directory.\
-Inisde of that file, similar to the strategy used to build the page navigation,
+Inisde of that file, similar to the strategy used to build the page navigation, a fetch call could be made to the existing `goals.json` route, then the response could be mapped through and used to construct an XML document.\
+\
+Creating a sitemap that would live at [`/sitemap.xml`](https://sapper-goals.netlify.app/goals/rss.xml) was very similar. Rather than query the endpoint containing posts,
