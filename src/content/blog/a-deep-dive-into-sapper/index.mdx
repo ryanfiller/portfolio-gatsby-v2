@@ -244,7 +244,27 @@ Rollup has a pluging, [`rollup-plugin-svelte-svg`](https://www.npmjs.com/package
 
 Svelte comes with the features to use generated class names to scope any rule written in a components `<style>` tag to that component. Despite the recent-ish addition of [native css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) I still use scss on nearly every project for scoped nesting, easy breakpoints,  and reusable functions. 
 
-Sapper already runs a process to compile a stylesheet for the app, and the [`svelte-preprocess` plugin](https://www.npmjs.com/package/svelte-preprocess) offers an easy way to add steps to this compilation process.
+Sapper already runs a process to compile a stylesheet for the app, and the [`svelte-preprocess` plugin](https://www.npmjs.com/package/svelte-preprocess) offers an easy way to add steps to this compilation process. Among other things, this plugin can be used to run `node-sass` as part of the Sapper build script. After adding it the the array of plugin in `rollup.config.js`, script tags can be modified with `type="text/scss"` attribute and native scss syntax can be used within the body of the tag.
+
+```svelte
+<style type="text/scss">
+  @import '../functions.scss';
+
+  p {
+    font-size: 12px;
+
+    span {
+      font-style: italic;
+    }
+  }
+
+  @include small() {
+    p {
+      font-size: 16px;
+    }
+  }
+</style>
+```
 
 ## Easy RSS Feed & Sitemap
 
