@@ -308,4 +308,49 @@ export function get(req, res) {
 }
 ```
 
-Creating a sitemap that would live at [`/sitemap.xml`](https://sapper-goals.netlify.app/goals/rss.xml) was very similar. Rather than query the endpoint containing posts, I used [`fs.readdirSync`](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options) again to read everything inside of the the `src/routes` directory.
+Creating a sitemap that would live at [`/sitemap.xml`](https://sapper-goals.netlify.app/goals/rss.xml) was very similar. Rather than query the endpoint containing posts, I used [`fs.readdirSync`](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options) again to read everything inside of the the `src/routes` directory and build an array of pages. Because I was using the post/index organization pattern and also didn't want my images directories in the sitemap I excluded those files from the recursive function, as well as any files starting with `_` that didn't need to be transformed into routes.
+
+That array could then be looped through to build another XML tree.
+
+```javascript
+const BASE_URL = config.SITE_URL
+const ROUTES = './src/routes'
+
+const pages = ['']
+
+const getRoutes = root => fs.readdirSync(root).forEach(file => {
+  const excluded = ['index', 'rss', 'sitemap', 'images']
+  file = file.split('.')[0]
+  
+  if (file.charAt(0) !== '_' && !excluded.includes(file)) {
+    const directory = `${root}/${file}`
+
+    if(fs.lstatSync(directory).isDirectory()) {
+
+      pages.push(directory.replace(ROUTES, ''))
+      getRoutes(directory)
+      
+    } else {
+      pages.push(file)
+    }
+  }
+})
+
+getRoutes(ROUTES)
+
+const render = (pages) => (`<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  ${pages.map(page => `<url><loc>${BASE_URL}${page}</loc></url>`).join("\n")}
+</urlset>`)
+
+export function get(req, res, next) {
+  res.setHeader('Cache-Control', `max-age=0, s-max-age=${600}`) // 10 minutes
+  // res.setHeader('Content-Type', 'application/rss+xml')
+  res.setHeader('Content-Type', 'text/xml')
+
+  const sitemap = render(pages)
+  res.end(sitemap)
+}
+```
+
+An important note here is that during the Sapper static export process, Sapper will crawl the site and generate any pages that can be linked from the `href` value of an `<a>` tag.
