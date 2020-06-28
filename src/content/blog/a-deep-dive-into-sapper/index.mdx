@@ -1,11 +1,11 @@
 ---
 title: A Deep Dive into Sapper
 options:
-  published: false
+  published: true
   customurl: ''
   customtemplate: ''
 meta:
-  date: 2020-06-15T23:13:49.134Z
+  date: 2020-06-28
   excerpt: Exploring some of the more esoteric details about Svelte and Sapper
   categories:
     - code
@@ -13,31 +13,31 @@ meta:
     - svelte
     - sapper
 ---
-Svelte is a Javascript framework that has been interesting to me since seeing [Nate Clark](https://nateclark.io/) give a short talk on it at my [local meetup](https://memphiswebworkers.com/) last summer. I built a really basic color app ([demo](https://rgb-color-values.netlify.app/), [code](https://github.com/ryanfiller/rgb-color-values)) around the same time and haven't touched Svelte much since then. A lot has changed since then, both in the world and with the framework - [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity) was released earlier this year - and I thought it was time to take another look at both Svelte its application framework, [Sapper](https://sapper.svelte.dev/).
+Svelte is a Javascript framework that has been interesting to me since seeing [Nate Clark](https://nateclark.io/) give a short talk on it at my [local meetup](https://memphiswebworkers.com/) last summer. I built a really basic color app ([demo](https://rgb-color-values.netlify.app/), [code](https://github.com/ryanfiller/rgb-color-values)) around the same time and haven't touched Svelte much since then. A lot has changed since then, both in the world and with the framework. [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity) was released earlier this year and I thought now was a good time to take another look at both the Svelte ecosystem. 
 
 ## What is Svelte and what is Sapper?
 
-[Svelte](https://svelte.dev/) is a new-ish framework that takeas a "radical new approach to building user interfaces." Svelte differs from other Javascript UI tools, like [React](https://reactjs.org/) or [Vue](https://vuejs.org/), in that it does its work during compile time rather than in the browser. This means that rather than ship the library itself, Svelte "boils away" and only vanilla Javascript makes it to the browser.
+[Svelte](https://svelte.dev/) is a new-ish framework that takeas a _"radical new approach to building user interfaces."_ Svelte differs from other Javascript UI tools, like [React](https://reactjs.org/) or [Vue](https://vuejs.org/), in that it does the work during compile time rather than during clientside runtime. This means that rather than ship the library itself, Svelte "boils away" and only vanilla Javascript ever makes it to the browser.
 
-This video sums up the philosphy behind Svelte: https://www.youtube.com/watch?v=AdNJ3fydeao
+[This video](https://www.youtube.com/watch?v=AdNJ3fydeao) sums up the philosophy behind Svelte, and is often cited online as the best selling point for using Svelte.
 
-[Sapper](https://sapper.svelte.dev/) is Svelte's first party application framework, akin to [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) or [Next](https://nextjs.org/) for React, or or [Nuxt](https://nuxtjs.org/) for Vue. Sapper is also able to export a static version of a site, putting it more in line with [Gatsby](https://www.gatsbyjs.org/) for React and [Gridsome](https://gridsome.org/) for Vue.
+[Sapper](https://sapper.svelte.dev/) is Svelte's first party application framework, akin to [Create React App](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) or [Next](https://nextjs.org/) for React, or [Nuxt](https://nuxtjs.org/) for Vue. Sapper is also able to export a static version of a site, putting it more in line with [Gatsby](https://www.gatsbyjs.org/) for React and [Gridsome](https://gridsome.org/) for Vue.
 
-## ??? Headlines are hard....
+## Can Sapper meet my specific wants?
 
-I've been working in the Gatsby-React ecosystem for a while, and I've formed pretty strong opinions about how I like to do things such as organize files, which toolchains I use, plugins I can't live without, etc. Obvioulys Sapper could be used to make *a* markdown blog, but it could make one the *I* wanted? I know that no two frameworks will ever be completely 1:1 with each other, but I started by making a list of must-have features:
+I've been working in the Gatsby-React ecosystem for a while, and I've formed pretty strong opinions about how I like to work - organizing files, which toolchains I use, plugins I can't live without, etc. Obviously Sapper could be used to make *a* markdown blog, but it could make one the *I* wanted? I know that no two frameworks will ever be completely one-to-one with each other, but I started by making a list of must-have features from my current Gastby site
 
 * Works With No Client JS
 * Global Components
 * JavaScript in Markdown
 * Automatic Markdown Processing
-* Colocation of Images & Components
 * post/index File Structure
+* Colocation of Images & Components
 * Inline SVGs
 * SCSS Imports
 * Easy RSS Feed & Sitemap
 
-I put together a [quick starter project](https://github.com/ryanfiller/sapper-test) and hosted it on [Netlify](https://sapper-goals.netlify.app/) to get my hands dirty and try to accomplish all of these things and see how much friction implementing them in Sapper would cause. 
+I put together a [quick starter project](https://github.com/ryanfiller/sapper-test) and hosted it on [Netlify](https://sapper-goals.netlify.app/). I wanted to see if I could accomplish these things and see how much friction implementing them in Sapper would cause. 
 
 (Spoilers: it did everything I wanted, and was relatvively easy along the way.)
 
@@ -45,24 +45,24 @@ I put together a [quick starter project](https://github.com/ryanfiller/sapper-te
 
 [See The Example »](https://sapper-goals.netlify.app/goals/works-with-no-js)
 
-Sapper, like most other Javascript Static Site Generators, works by building a server side HTML bundle and then rehydrating it by re-rendering on top of it clientside with Javascript. Sapper's production script comes in two versions, \`build\` and \`export\`. \`build\` will generate a Node app that can be hosted somewhere, and \`export\` will generate a static version of the site.
+Sapper, like most other Javascript Static Site Generators, works by building a server side HTML bundle and then "rehydrating" it with clientside Javascript. Sapper's production script comes in two versions, `build` and `export`. `build` will generate a Node app that can be hosted somewhere, and `export` will generate a static version of the site.
 
-\> Static doesn't mean non-interactive — your Svelte components work exactly as they do normally, and you still get all the benefits of client-side routing and prefetching.
+> Static doesn't mean non-interactive — your Svelte components work exactly as they do normally, and you still get all the benefits of client-side routing and prefetching.
 
-The great news is that this feature works by default. If for whatever reason a user has Javascript disabled in their browser, they get the un-hydrated version of the Sapper app and, assuming everything was build in a smart way, the app will work as plain HTML. Sapper doesn't use special components in place of `<a>` tags, so even links will function like regular HTML links.
+The great news is that this feature works by default. If, for whatever reason, a user has Javascript disabled in their browser they get the un-hydrated version of the Sapper app. Assuming everything was build in a smart way, the app will work as plain HTML. Sapper doesn't use special components in place of `<a>` tags, so even links will function like regular HTML links.
 
 ## Global Components
 
 [See The Example »](https://sapper-goals.netlify.app/goals/global-components)
 
-This is something else that most component-based frameworks offer, but I wanted the ability to re-render only some parts of the page on route changes. Sapper boasts the ability to *"surgically updates the DOM when the state of your app changes",* and the [`_layout.svelte`](``https://sapper.svelte.dev/docs#Layouts) file allows for just that. `_layout.svelte` is a file that will accept the contents of any other page into the `<slot/>` tag, which means that anything outside that tag will persist between pages. Sapper also will automatically proved a `segment` prop that can be used to determind what the current page is or even conditionally render nested routes. 
+Most component-based frameworks offer this feature, but I wanted the ability to re-render only some parts of the page on route changes. Sapper boasts the ability to *"surgically updates the DOM when the state of your app changes",* and the [`_layout.svelte`](https://sapper.svelte.dev/docs#Layouts) file allows for just that. `_layout.svelte` is a file that will accept the contents of any other page into the `<slot/>` tag, which means that anything outside that tag will persist between pages. Sapper also will automatically proved a `segment` prop that can be used to determine what the current page is or conditionally render nested subcomponents. 
 
-From the header component I put together:
+For the header component I put together:
 
 ```svelte
 // nav.svelte
 <script>
-  export let active
+  export let segment
 </script>
 
 <style>
@@ -96,7 +96,7 @@ From the header component I put together:
 
 [See The Example »](https://sapper-goals.netlify.app/goals/javascript-in-markdown)
 
-This was the first feature that Sapper didn't provide natively. Analogous to [MDX,](https://mdxjs.com/) the Svelte ecosystem has its own Javascrit-Markdown hybrid toold - [MDsveX](https://mdsvex.com/). MDsveX works by transforming markdown into Svelte components, which lets file imports go both ways. `.md` content can be imported into `.svelte` components, and vice versa. MDsveX has to be configured as a plugin in the `rollup.config.js` file in the root of the project, and it can take a number of config optoins to do things like change the default file extension. More importantly, the build scripts in `package.json` need to be modified so that they correctly process whichever file extension are specified in the config.
+This was the first feature that Sapper didn't provide natively. Analogous to [MDX,](https://mdxjs.com/) the Svelte ecosystem has its own Javascrit-Markdown hybrid toold - [MDsveX](https://mdsvex.com/). MDsveX works by transforming markdown into Svelte components. `.md` content can be imported into `.svelte` components, and vice versa. MDsveX has to be configured as a plugin in the `rollup.config.js` file in the root of the project and can take a number of config options. Options can do things like add plugins and change the default file extension. More importantly, the build scripts in `package.json` need to be modified so that they correctly process whichever MDsveX file extension are configured.
 
 ```javascript
 "dev": "sapper dev --ext '.svelte .md'",
@@ -104,7 +104,7 @@ This was the first feature that Sapper didn't provide natively. Analogous to [MD
 "export": "sapper export --legacy --ext '.svelte .md'"
 ```
 
-With this preprocessing set up to happen during Svelte's complie time, components can be important into markdown files and used inline. Data from the posts frontmatter is even automatically parsed and passed into the pages as props.
+With this preprocessing set up to happen during Svelte's complile time, components can be imported and used in markdown files. Data from the posts frontmatter is even automatically parsed and passed into the pages as props.
 
 ```markdown
 ---
@@ -124,19 +124,19 @@ title: a post
 
 [See The Example »](https://sapper-goals.netlify.app/goals/automatic-markdown-processing)
 
-Moreso than using components in Markdown I use MDX to build automatically rendered, extra-powered versions of regular HTML components. I'm of the strong opinion that my content should be able to be rendered by a regular Markdown parser into regular HTML first, but that I should be able to use other tools to add functionality on top of it. I usually use [data attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*) to do this, 
+More so than using components in Markdown I use MDX to build extra-powered versions of regular HTML components. I have the strong opinion that my content should be renderable by a regular Markdown parser, but that I should be able to use other tools to add functionality on top of it. I usually use [data attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*) to do this.
 
 ```html
 <img src="image.jpg" alt="title" data-align="right" />
 ```
 
-MDsveX, by design, will only process Markdown content and not any inline HTML. This means that in order to add any attributes other than `src` and `alt` to images I needed to figure out a way to extend default Markdown functionality. Luckily, MDsveX recently reached version 0.8 and added the ability to use [remark plugins](https://github.com/remarkjs/remark/blob/master/doc/plugins.md), and there happens to be [a plugin](https://github.com/arobase-che/remark-attr) to do exactly that. Once the [remark-attr](https://github.com/arobase-che/remark-attr) pluging is configured in the `remarkPlugins` array in `rollup.config.js` any extra attributes can be added in markdown, and will be ignored in parsers that do not support this functionality.
+MDsveX, by design, will only process Markdown content and not any inline HTML. This means that to add any attributes other than `src` and `alt` to images I needed to figure out a way to extend default Markdown functionality. Luckily, MDsveX recently reached version 0.8 and added the ability to use [remark plugins](https://github.com/remarkjs/remark/blob/master/doc/plugins.md), and there happens to be [a plugin](https://github.com/arobase-che/remark-attr) to do exactly that. Once the [remark-attr](https://github.com/arobase-che/remark-attr) plugin is configured in the `remarkPlugins` array in `rollup.config.js` extra attributes can be added using curly brackets. These will be ignored by parsers that do not support this functionality.
 
 ```markdown
 ![title](image.jpg){align="right"}
 ```
 
-MDsveX can also be configured with a module script in each layout with an object containing components that will automatically be replaced when the corresponding HTML is rendered by that layout.
+MDsveX layouts can also be configured within their a module script tag with object containing tags that will automatically be replaced when the corresponding HTML is rendered by that layout.
 
 ```svelte
 <script context="module">
@@ -151,11 +151,11 @@ Huge thank you to [pngwn](https://twitter.com/evilpingwin), the creator of MDsve
 
 [See The Example »](https://sapper-goals.netlify.app/goals/post-index-pattern)
 
-One thing I've really learned to appreciate the more I work with compoent-based websites is flat file organization. I still tend to overly organize things into different folders, but I do my best to group them by feature and not by file type. That means that I'm likely to put the styles for a javascript compoennt next to each other, but I'll likely have the site header in one folder and a blog thumbnail in another. Usually this leads to shorter import paths, which also means less mental strain while trying to use relative links to navigate directory structures.
+One thing I've learned to appreciate the more I work with component-based websites is flat file organization. I still tend to overly organize things into folders, but I do my best to group them by feature and not by file type. That means that I'm likely to put the component file and its styles next to each other, but I'll likely have the site header in one folder and a blog thumbnail in another. Usually this leads to shorter import paths, which also means less mental strain while trying to use relative links to navigate directory structures.
 
 The place I find this most useful is for post content. I've started naming a directory with the title of the post and relying on the [ES6 module pattern](https://www.digitalocean.com/community/tutorials/react-index-js-public-interfaces) to keep an `index.md` file inside. 
 
-Sapper, and also MDsveX, automatically support this functionality. Any file inside the `routes/` directory will be turned into pages. In order to programatically build a list of those pages to construct navigation, the traditional method of Sapper server routes can be used. An `index.json.js` can use [Node's `fs.readdirSync` function](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options) to to query the file system at run time and create a json endpoint that contains all of the data in the post's index file.
+Sapper, and also MDsveX, automatically support this functionality. Any file inside the `routes/` directory will have a corresponding page created. To programmatically build a list of pages to construct navigation, the traditional method of Sapper server routes can be used. An `index.json.js` file can use [Node's `fs.readdirSync` function](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options) to to query the file system at run time and create a json endpoint that contains a list of pages in the route's index file.
 
 ```javascript
 const posts = fs.readdirSync(route)
@@ -166,7 +166,7 @@ const posts = fs.readdirSync(route)
   })
 ```
 
-This endpoint can then be fetched against in a module script by a function that will return data that can be used to create page navigation.
+This endpoint can then be fetched against in a module script to get data that can be used to create page navigation.
 
 ```svelte
 <script context="module">
@@ -190,7 +190,7 @@ This endpoint can then be fetched against in a module script by a function that 
 
 [See The Example »](https://sapper-goals.netlify.app/goals/colocation-of-images)
 
-Another added benefit of the module pattern for organizing post files is that images can be kept directly along side Markdown content.
+Another added benefit of the module organization pattern is that images can be kept directly along side Markdown content.
 
 ```text
 └─ blog/
@@ -201,9 +201,9 @@ Another added benefit of the module pattern for organizing post files is that im
     └─ component.js
 ```
 
-One of the constaints of Sapper, however, is that images **must** live in the `static` directory in the root of the project in order to be picked up by the compiler. The key is that they don't have to *always* be there, they just need to be there at the time the compiler runs.
+One of the constraints of Sapper, however, is that images **must** live in the `static` directory in the root of the project in order to be picked up by the compiler. The key is that they don't have to *always* be there, they just need to be there at the time the compiler runs.
 
-To get around this constraint I was able to use [`rollup-plugin-copy`](https://www.npmjs.com/package/rollup-plugin-copy) and configure it to move any files from a post's `/images` directory into the main `static/images` directory at build time.
+To get around this constraint I was able to use [`rollup-plugin-copy`](https://www.npmjs.com/package/rollup-plugin-copy) to copy any files from a post's `/_images` directory into the main `static/images` directory at build time.
 
 ```javascript
 import copy from 'rollup-plugin-copy'
@@ -222,13 +222,13 @@ export default {
 }
 ```
 
-To keep images from being tracked twice by version control, I also added `/static/images/*` to the my `.gitignore` so only the original images would be seen.
+To keep images from being tracked twice by version control, I also added `/static/images/*` to the my `.gitignore` so only the original images would be tracked.
 
 ## Inline SVGs
 
 [See The Example »](https://sapper-goals.netlify.app/goals/inline-svgs)
 
-I have quite a bit of experience figuring out how to import .svg files as components in various environments with [Webpack](https://webpack.js.org/loaders/svg-inline-loader/), but one major difference between Sapper and many other frameworks I've used is that it favors [Rollup](https://rollupjs.org/guide/en/) for bundling. Sapper can be [configured to use webpack,](https://github.com/sveltejs/sapper-template-webpack) but in the spirit of trying new things I wanted to give rollup a try.
+I have quite a bit of experience figuring out how to directly import .svg files in various environments with [Webpack](https://webpack.js.org/loaders/svg-inline-loader/), but one major difference between Sapper and other frameworks I've used is that it favors [Rollup](https://rollupjs.org/guide/en/) for bundling. Sapper can be [configured to use Webpack,](https://github.com/sveltejs/sapper-template-webpack) but in the spirit of trying new things I wanted to give Rollup a try.
 
 Rollup has a pluging, [`rollup-plugin-svelte-svg`](https://www.npmjs.com/package/rollup-plugin-svelte-svg), that allows for .svg files to be imported as if they were Svelte components. They can even be passed props.
 
@@ -244,9 +244,9 @@ Rollup has a pluging, [`rollup-plugin-svelte-svg`](https://www.npmjs.com/package
 
 [See The Example »](https://sapper-goals.netlify.app/goals/scss-imports)
 
-Svelte comes with the features to use generated class names to scope any rule written in a components `<style>` tag to that component. Despite the recent-ish addition of [native css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) I still use scss on nearly every project for scoped nesting, easy breakpoints,  and reusable functions. 
+Svelte comes with the features to use generated class names to scope any rule written in a components `<style>` tag to that component. Despite the recent-ish addition of [native css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) I still use scss on nearly every project for nesting, easy breakpoints,  and reusable functions. 
 
-Sapper already runs a process to compile a stylesheet for the app, and the [`svelte-preprocess` plugin](https://www.npmjs.com/package/svelte-preprocess) offers an easy way to add steps to this compilation process. Among other things, this plugin can be used to run `node-sass` as part of the Sapper build script. After adding it the the array of plugin in `rollup.config.js`, script tags can be modified with `type="text/scss"` attribute and native scss syntax can be used within the body of the tag.
+Sapper already runs a process to compile a stylesheet for the app, and the [`svelte-preprocess` plugin](https://www.npmjs.com/package/svelte-preprocess) offers an easy way to add steps to this compilation process. Among other things, this plugin can be used to run `node-sass` as part of the Sapper build script. After adding it the the plugin array in rollup.config.js, script tags can have the `type="text/scss"` attribute added and scss can be used within the body of the tag.
 
 ```svelte
 <style type="text/scss">
@@ -272,9 +272,11 @@ Sapper already runs a process to compile a stylesheet for the app, and the [`sve
 
 [See The Example »](https://sapper-goals.netlify.app/goals/easy-rss-and-sitemap)
 
-I'm new to RSS, and I've had quite a bit of trouble getting it correctly set up in the past. \
-Creating a route with a file custom file extension can be done by prepending that extension to the `.js` portion of a file. To create an rss feed for my examples site that would live at [`/goals/rss.xml`](https://sapper-goals.netlify.app/goals/rss.xml) all I needed to do was add a file named `rss.xml.js` inside of the `goals` directory.\
-Inisde of that file, similar to the strategy used to build the page navigation, a fetch call could be made to the existing `goals.json` route, then the response could be mapped through and used to construct an XML document.
+I'm new to RSS, and I've had quite a bit of trouble getting it correctly set up in the past. 
+
+Creating a route with a file custom file extension can be done by prepending that extension to the `.js` portion of a file. To create an rss feed for my examples site that would live at [`/goals/rss.xml`](https://sapper-goals.netlify.app/goals/rss.xml) all I needed to do was add a file named `rss.xml.js` inside of the `goals` directory.
+
+In that file, similar to the strategy used to build the page navigation, a fetch call could be made to the existing goals.json route and the response could be mapped through to construct an XML document.
 
 ```javascript
 export function get(req, res) {
@@ -308,7 +310,7 @@ export function get(req, res) {
 }
 ```
 
-Creating a sitemap that would live at [`/sitemap.xml`](https://sapper-goals.netlify.app/goals/rss.xml) was very similar. Rather than query the endpoint containing posts, I used [`fs.readdirSync`](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options) again to read everything inside of the the `src/routes` directory and build an array of pages. Because I was using the post/index organization pattern and also didn't want my images directories in the sitemap I excluded those files from the recursive function, as well as any files starting with `_` that didn't need to be transformed into routes.
+Creating a sitemap that would live at [`/sitemap.xml`](https://sapper-goals.netlify.app/goals/rss.xml) was very similar. Rather than query the endpoint containing posts, I used [`fs.readdirSync`](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options) again to build an array of everything inside of the the `src/routes`  directory. Because I was using the post/index organization and also didn't want my images included in the sitemap I excluded those files, as well as any files starting with `_` that didn't need to be transformed into routes.
 
 That array could then be looped through to build another XML tree.
 
@@ -354,4 +356,10 @@ export function get(req, res, next) {
 
 An important note here is that during the Sapper static export process, Sapper will crawl the site and generate any pages that can be linked from the `href` value of an `<a>` tag. For pagse like the RSS feed and sitemap, to be built they either need to be linked to from another page, or they can be added behind the [`--entry` flag](https://sapper.svelte.dev/docs#How_it_works) in any of the build commands in `package.json`.
 
-## Need some sort of way to end the post...
+## Final Thoughts
+
+All in all, Sapper was cool and I enjoyed the Svelte platform. Some things feel very different than tools I've used in the past, but I think the tradeoffs are worth it. By compiling away the framework this saves anywhere from ~50k to ~100k from the Javascript bundle as user has to initially download. It also means that Svelte can be as feature rich as it wants because a site will only ship the specific features it uses. 
+
+Sapper comes with different tools than Gatsby does. Gatsby has a built in away to query internal data with GraphQL, but Sapper handles page creation and template inheritance with a lot more magic. Both have a rich plugin ecosystem and can be customize to accomplish pretty much anything. 
+
+I enjoyed this experiment, and I will definitely be making more Svelte and Sapper projects in the future.
