@@ -12,9 +12,10 @@
 	<title>{status}</title>
 </svelte:head>
 
-<h1>{status}</h1>
-
-<p>{error.message}</p>
+<main>
+	<h1>Ruh Roh: {status}</h1>
+	<p>{error.message}</p>
+</main>
 
 {#if dev && error.stack}
 	<pre>{error.stack}</pre>
