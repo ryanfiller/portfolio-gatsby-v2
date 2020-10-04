@@ -1,7 +1,7 @@
 <!-- import PostPreview from '../components/content/post-preview' -->
 
 <style type="text/scss">
-  @import '../styles/functions.scss';
+  @import '../../styles/functions.scss';
 
   #site.lab {
 
