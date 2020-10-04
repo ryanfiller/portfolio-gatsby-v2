@@ -1,5 +1,5 @@
 const visit = require('unist-util-visit')
-const helpers = require('../../src/helpers')
+const helpers = require('../../__gatsby/src/helpers')
 const fishAttr = helpers.fishAttr
 
 function transformer(tree) {
