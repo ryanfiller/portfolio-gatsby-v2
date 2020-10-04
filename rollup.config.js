@@ -106,7 +106,7 @@ export default {
 			svelteSVG({ generate: "ssr", dev }),
 			copy({
 				targets: [
-					{ src: 'routes/**/*.jpg', dest: 'static/images' }
+					{ src: 'src/**/images/*.*', dest: 'static/images' }
 				]
 			})
 		],

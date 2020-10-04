@@ -5,6 +5,6 @@
 <style>
 </style>
 
-<main>
+<main class={segment}>
 	<slot></slot>
 </main> 

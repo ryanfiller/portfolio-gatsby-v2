@@ -2,7 +2,7 @@ export const meta = {
   title: 'ryanfiller.com',
   siteUrl: 'https://www.ryanfiller.com',
   author: '@ryanfiller_',
-  headshot: 'https://www.ryanfiller.com/images/uploads/headshot_2017.jpg',
+  headshot: 'https://www.ryanfiller.com/images/site-assets/headshot_2017.jpg',
   description: 'The blog and portfolio of Ryan Filler',
   about: 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.'
 }

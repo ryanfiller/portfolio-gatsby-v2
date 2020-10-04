@@ -24,20 +24,20 @@ context('remark images', () => {
     it('adds query params to images', () => {
       cy.get('div#imgs').within(() => {
         cy.get('img').eq(0)
-        .should('have.attr', 'src', '/images/uploads/_placeholder.jpg?nf_resize=fit&w=1000')
-        .should('have.attr', 'srcset', '/images/uploads/_placeholder.jpg?nf_resize=fit&w=500 500w,/images/uploads/_placeholder.jpg?nf_resize=fit&w=800 800w')
+        .should('have.attr', 'src', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=1000')
+        .should('have.attr', 'srcset', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=500 500w,/images/site-assets/_placeholder.jpg?nf_resize=fit&w=800 800w')
       })
 
       cy.get('div#figures').within(() => {
         cy.get('figure').eq(0).find('img')
-        .should('have.attr', 'src', '/images/uploads/_placeholder.jpg?nf_resize=fit&w=1000')
-        .should('have.attr', 'srcset', '/images/uploads/_placeholder.jpg?nf_resize=fit&w=500 500w,/images/uploads/_placeholder.jpg?nf_resize=fit&w=800 800w')
+        .should('have.attr', 'src', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=1000')
+        .should('have.attr', 'srcset', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=500 500w,/images/site-assets/_placeholder.jpg?nf_resize=fit&w=800 800w')
       })
     })
 
     it('does not add query params to gifs', () => {
       cy.get('div#gifs').within(() => {
-        cy.get('img').eq(0).should('have.attr', 'src', '/images/uploads/_placeholder.gif')
+        cy.get('img').eq(0).should('have.attr', 'src', '/images/site-assets/_placeholder.gif')
       })
     })
   })
