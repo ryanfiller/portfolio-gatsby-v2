@@ -8,14 +8,10 @@ import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
 import { mdsvex } from 'mdsvex'
 import svelteSVG from "rollup-plugin-svelte-svg"
-import { scss } from 'svelte-preprocess'
-import attr from 'remark-attr'
+import { globalStyle, scss } from 'svelte-preprocess'
 import copy from 'rollup-plugin-copy'
 
-const mode = process.env.NODE_ENV
-const dev = mode === 'development'
-const legacy = !!process.env.SAPPER_LEGACY_BUILD
-
+import attr from 'remark-attr'
 // custom plugins
 // import blockquote from './plugins/remark/blockquote'
 // import headings from './plugins/remark/headings'
@@ -25,12 +21,14 @@ const legacy = !!process.env.SAPPER_LEGACY_BUILD
 // import embed from './plugins/rehype/embed'
 // import twitter from './plugins/rehype/twitter'
 
+const mode = process.env.NODE_ENV
+const dev = mode === 'development'
+const legacy = !!process.env.SAPPER_LEGACY_BUILD
+
 const preprocess = [
 	mdsvex({
 		extension: '.md',
-		// layout: {
-		// 	goals: 'src/routes/goals/_goals-layout.svelte',
-		// },
+		layout: 'src/components/layout/mdsvex.svelte',
 		// TODO remark-abbr
 		remarkPlugins: [
 			[attr, { scope: 'every' }],
@@ -41,12 +39,13 @@ const preprocess = [
 			// // video
 		],
 		// TODO https://github.com/JS-DevTools/rehype-toc
-		rehypePlugins: [
-			// embed,
-			// twitter,
-		],
+		// rehypePlugins: [
+		// 	// embed,
+		// 	// twitter,
+		// ],
 	}),
-	scss()
+	scss(),
+	globalStyle()
 ]
 
 const onwarn = (warning, onwarn) => (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) || onwarn(warning)

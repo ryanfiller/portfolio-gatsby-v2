@@ -1,8 +1,8 @@
 <script>
-  import { meta } from '../_config'
+  import { meta } from '../site-config'
 </script>
 
-<style type='text/scss'>
+<style global type='text/scss'>
   section {
     display: flex;
     align-items: center;
@@ -22,10 +22,6 @@
     width: 200px;
   }
 </style>
-
-<svelte:head>
-	<title>a sapper experiment</title>
-</svelte:head>
 
 <main>
   <section class='temp-bio'>

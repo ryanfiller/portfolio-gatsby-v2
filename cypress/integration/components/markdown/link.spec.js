@@ -30,8 +30,8 @@ context('remark anchors', () => {
     it('renders correctly', () => {
       cy.get('div#text').within(() => {        
         cy.get('a').eq(2)
-        .should('have.attr', 'href', 'https://www.gatsbyjs.org')
-        .should('have.attr', 'title', 'https://www.gatsbyjs.org')
+        .should('have.attr', 'href', 'https://sapper.svelte.dev')
+        .should('have.attr', 'title', 'https://sapper.svelte.dev')
         .should('have.attr', 'target', '_blank')
         .should('have.attr', 'rel', 'noopener')
         cy.checkA11y()

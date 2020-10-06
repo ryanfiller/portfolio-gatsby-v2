@@ -26,7 +26,7 @@ WIP
 
 <div id="text">
 
-  Nulla vitae elit libero, a pharetra augue. [This is an internal link.](/) Maecenas sed diam eget risus varius blandit sit amet non magna. [This is ALSO an internal link.](/blog) Maecenas sed diam eget risus varius blandit sit amet non magna. [This is a link to an external site.](https://www.gatsbyjs.org) Aenean lacinia bibendum nulla sed consectetur. [This is a link to a subdomain.](https://colors.ryanfiller.com)
+  Nulla vitae elit libero, a pharetra augue. [This is an internal link.](/) Maecenas sed diam eget risus varius blandit sit amet non magna. [This is ALSO an internal link.](/blog) Maecenas sed diam eget risus varius blandit sit amet non magna. [This is a link to an external site.](https://sapper.svelte.dev) Aenean lacinia bibendum nulla sed consectetur. [This is a link to a subdomain.](https://colors.ryanfiller.com)
 
   Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras mattis consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
 

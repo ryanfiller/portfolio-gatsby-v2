@@ -1,7 +1,6 @@
 audio,
 canvas,
-progress,
-video {
+progress {
   display: block;
   height: auto;
   width: 100%;
@@ -59,26 +58,6 @@ pre,
 samp {
   font-family: monospace, monospace;
   font-size: 1em;
-}
-html {
-  font: 112.5%/1.45em georgia, serif;
-  box-sizing: border-box;
-  overflow-y: scroll;
-}
-* {
-  box-sizing: inherit;
-}
-*:before {
-  box-sizing: inherit;
-}
-*:after {
-  box-sizing: inherit;
-}
-body {
-  font-family: georgia, serif;
-  font-weight: normal;
-  word-wrap: break-word;
-  font-kerning: normal;
 }
 hgroup {
   margin-left: 0;
@@ -167,16 +146,6 @@ fieldset {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-blockquote {
-  margin-left: 1.45rem;
-  margin-right: 1.45rem;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
-}
 noscript {
   margin-left: 0;
   margin-right: 0;
@@ -237,9 +206,6 @@ li > ul {
   margin-left: 1.45rem;
   margin-bottom: calc(1.45rem / 2);
   margin-top: calc(1.45rem / 2);
-}
-blockquote *:last-child {
-  margin-bottom: 0;
 }
 li *:last-child {
   margin-bottom: 0;

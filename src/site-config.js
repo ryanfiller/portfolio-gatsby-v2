@@ -1,8 +1,10 @@
+const siteUrl = 'https://www.ryanfiller.com'
+
 export const meta = {
   title: 'ryanfiller.com',
-  siteUrl: 'https://www.ryanfiller.com',
+  siteUrl: siteUrl,
   author: '@ryanfiller_',
-  headshot: 'https://www.ryanfiller.com/images/site-assets/headshot_2017.jpg',
+  headshot: `${siteUrl}/images/site-assets/headshot_2017.jpg`,
   description: 'The blog and portfolio of Ryan Filler',
   about: 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.'
 }
@@ -10,9 +12,11 @@ export const meta = {
 const mainNav = [
   // {
   //   name: 'about',
+  //   url: 'about'
   // },
   {
     name: 'blog',
+    url: 'blog'
   },
   // {
   //   name: 'portfolio',
@@ -34,6 +38,7 @@ const secondaryNav = [
   },
   {
     name: 'styles',
+    url: 'styles'
   },
   {
     name: 'analytics',

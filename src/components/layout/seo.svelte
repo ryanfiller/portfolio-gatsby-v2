@@ -1,23 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+<script>
+  export let title
+  import { meta } from '../../site-config.js'
+  $: pageTitle = title ? `${title} | ${meta.title}` : meta.title
 
-const SEO = (props) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            author
-            about
-          }
-        }
-      }
-    `
-  )
+  import { stores } from '@sapper/app'
+  const { page } = stores()
+  
+  // $:console.log('page', $page)
+</script>
 
+
+<svelte:head>
+  <title>{pageTitle}</title>
+</svelte:head>
+
+<!-- 
   // these destructures are kind of a disaster...
 
   const { 
@@ -115,18 +112,4 @@ const SEO = (props) => {
       ]}
     />
   )
-}
-
-SEO.propTypes = {
-  frontmatter: PropTypes.shape({
-    title: PropTypes.string,
-    meta: PropTypes.shape({
-      excerpt: PropTypes.string,
-      categories: PropTypes.array,
-      tags: PropTypes.array,
-    })
-  }),
-  excerpt: PropTypes.string
-}
-
-export default SEO
+} -->
