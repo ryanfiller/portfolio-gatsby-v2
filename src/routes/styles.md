@@ -3,15 +3,13 @@ name: 'styles'
 title: 'Style Guide'
 ---
 
-WIP
+<!-- import ColorChart from '../../../components/misc/color-chart' -->
 
-<!-- import ColorChart from '../../../components/misc/color-chart'
-
-<div id="colors">
+<!-- <div id="colors">
 
   <ColorChart />
 
-</div>
+</div> -->
 
 <div id="headings">
 
@@ -64,8 +62,8 @@ WIP
 
 <div id="tables">
   
-  {/* TODO need to figure out how to do table caption */}
-  {/* ?? https://www.npmjs.com/package/remark-grid-tables */}
+  <!-- TODO need to figure out how to do table caption -->
+  <!-- ?? https://www.npmjs.com/package/remark-grid-tables -->
 
   | Eddard Stark          | Jon Snow                   | Arya Stark               |
   |:--------------------- |:-------------------------- |:------------------------ |
@@ -201,4 +199,4 @@ WIP
 
   Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time? We are going to Starbase Montgomery for Engineering consultations prompted by minor read-out anomalies. Probes have recorded unusual levels of geological activity in all five planetary systems. Assemble a team. Look at records of the Drema quadrant. Would these scans detect artificial transmissions as well as natural signals? Now what are the possibilities of warp drive? Cmdr Riker's nervous system has been invaded by an unknown microorganism. The organisms fuse to the nerve, intertwining at the molecular level. That's why the transporter's biofilters couldn't extract it.
 
-</div> -->
+</div>

@@ -1,4 +1,4 @@
-const visit = require('unist-util-visit')
+import visit from 'unist-util-visit'
 
 // TODO pull this from some config file elsewhere
 const siteUrl = 'ryanfiller.com'
@@ -56,4 +56,4 @@ function links() {
   return transformer
 }
 
-module.exports = links
+export default links

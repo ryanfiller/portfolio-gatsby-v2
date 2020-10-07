@@ -1,4 +1,4 @@
-const visit = require('unist-util-visit')
+import visit from 'unist-util-visit'
 
 function renderVideo(node) {
   const data = node.data || (node.data = {})
@@ -31,10 +31,13 @@ function renderVideo(node) {
   if (caption) {
     newNode = {
       type: 'html',
-      value: `<figure ${wrapperProps()}>
+      value: `
+      <!-- svelte-ignore a11y-media-has-caption -->
+      <figure ${wrapperProps()}>
         <video title="${title || alt}" controls loop autoplay>
           <source src="${src}" type="video/mp4" muted />
           Sorry, your browser doesn't support embedded videos.
+          <track kind="descriptions" label="${title || alt}" />
         </video>
         <figcaption>${caption}</figcaption>
       </figure>`
@@ -42,9 +45,12 @@ function renderVideo(node) {
   } else {
     newNode = {
       type: 'html',
-      value: `<video title="${title || alt}" ${wrapperProps()} controls loop autoplay>
+      value: `
+      <!-- svelte-ignore a11y-media-has-caption -->
+      <video title="${title || alt}" ${wrapperProps()} controls loop autoplay>
         <source src="${src}" type="video/mp4" muted />
         Sorry, your browser doesn't support embedded videos.
+        <track kind="descriptions" label="${title || alt}" />
       </video>`
     }
   }
@@ -54,7 +60,7 @@ function renderVideo(node) {
 
 
 // exported to use in `./image.js`
-module.exports = renderVideo
+export { renderVideo }
 
 // don't need all this for now...
 // function transformer(ast) {

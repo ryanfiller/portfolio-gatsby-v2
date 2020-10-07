@@ -15,7 +15,6 @@
 </script>
 
 <style global type="text/scss">
-	@import '../stylesslowly-delete-these-styles.css';
 	@import '../styles/globals.scss';
 	@import '../styles/functions.scss';
 
@@ -153,6 +152,7 @@
 		src='//gc.zgo.at/count.js'
 		data-goatcounter='https://ryanfiller.goatcounter.com/count'
 	></script>
+	<link rel='stylesheet' href='/slowly-delete-these-styles.css'>
 </svelte:head>
 
 <SEO />

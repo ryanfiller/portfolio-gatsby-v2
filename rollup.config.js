@@ -12,14 +12,17 @@ import { globalStyle, scss } from 'svelte-preprocess'
 import copy from 'rollup-plugin-copy'
 
 import attr from 'remark-attr'
+// TODO remark-abbr
+// TODO https://github.com/JS-DevTools/rehype-toc
+
 // custom plugins
-// import blockquote from './plugins/remark/blockquote'
-// import headings from './plugins/remark/headings'
-// import images from './plugins/remark/images'
-// import links from './plugins/remark/links'
-// // import video from './plugins/remark/video' // only called from image component for now...
-// import embed from './plugins/rehype/embed'
-// import twitter from './plugins/rehype/twitter'
+import blockquote from './plugins/remark/blockquote'
+import headings from './plugins/remark/headings'
+import images from './plugins/remark/images'
+import links from './plugins/remark/links'
+// import video from './plugins/remark/video' // only called from image component for now...
+import embed from './plugins/rehype/embed'
+import twitter from './plugins/rehype/twitter'
 
 const mode = process.env.NODE_ENV
 const dev = mode === 'development'
@@ -29,20 +32,18 @@ const preprocess = [
 	mdsvex({
 		extension: '.md',
 		layout: 'src/components/layout/mdsvex.svelte',
-		// TODO remark-abbr
 		remarkPlugins: [
 			[attr, { scope: 'every' }],
-			// blockquote,
-			// headings,
-			// images,
-			// links,
-			// // video
+			blockquote,
+			headings,
+			images,
+			links,
+			// video
 		],
-		// TODO https://github.com/JS-DevTools/rehype-toc
-		// rehypePlugins: [
-		// 	// embed,
-		// 	// twitter,
-		// ],
+		rehypePlugins: [
+			embed,
+			twitter
+		],
 	}),
 	scss(),
 	globalStyle()
@@ -125,7 +126,7 @@ export default {
 			svelteSVG({ generate: "ssr", dev }),
 			copy({
 				targets: [
-					{ src: 'src/**/images/*.*', dest: 'static/images' }
+					{ src: 'src/**/_images/*.*', dest: 'static/images' }
 				]
 			})
 		],

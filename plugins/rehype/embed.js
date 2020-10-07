@@ -1,15 +1,15 @@
-const visit = require('unist-util-visit')
-const helpers = require('../../__gatsby/src/helpers')
-const fishAttr = helpers.fishAttr
+import visit from 'unist-util-visit'
+// relative to rollup.config.js for some reason?
+const { fishAttr } = require('./src/helpers')
 
 function transformer(tree) {
-  visit(tree, 'jsx', visitor)
-
+  visit(tree, 'raw', visitor)
+  
   function visitor(node) {
     const iframeRegex = new RegExp(/<iframe(.*)<\/iframe>/g)
 
     if (node.value && node.value.match(iframeRegex)) {
-      // sometimes this grabs other jsx values... not sure why?
+      // sometimes this grabs other lines... not sure why?
       const value = node.value.match(iframeRegex)[0]
       
       const title = fishAttr(value, 'title')
@@ -57,4 +57,4 @@ function embed() {
   return transformer
 }
 
-module.exports = embed
+export default embed

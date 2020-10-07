@@ -40,7 +40,7 @@ I've been working in the Gatsby-React ecosystem for a while, and I've formed pre
 
 I put together a [quick starter project](https://github.com/ryanfiller/sapper-test) and hosted it on [Netlify](https://sapper-goals.netlify.app/). I wanted to see if I could accomplish the things on this list, and figure out how difficult they would be to do in Sapper.
 
-<img src="/sapper-test-site-screenshot.png" alt="Sapper test site" data-caption="" data-align="full" data-small="false" />
+![Sapper test site homepage](/images/sapper-test-site-screenshot.png){data-align="full"}
 
 (Spoilers: Sapper did everything I wanted, and was relatively easy.)
 
