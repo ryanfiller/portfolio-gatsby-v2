@@ -2,8 +2,6 @@
 title: Things Svelte and Sapper Can't Do (Yet)
 options:
   published: true
-  customurl: ''
-  customtemplate: ''
 meta:
   date: 2020-07-26
   excerpt: Three big limitations I've discovered while working with Svelte and Sapper

@@ -5,5 +5,5 @@ export function get(req, res) {
 		'Content-Type': 'application/json'
 	})
 
-	res.end(getPages('blog'))
+	res.end(getPages('blog', true))
 } 

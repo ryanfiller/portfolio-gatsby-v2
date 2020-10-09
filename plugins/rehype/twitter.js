@@ -75,12 +75,10 @@ const twitter = () => async (tree) => {
         })
         .then(avatarUrl => {
           const newNodeValue = render(avatarUrl)
-
           return node.value = node.value.replace(tweetRegex, newNodeValue)
         })
         .catch(() => {
           const newNodeValue = render(avatarFallback)
-
           return node.value = node.value.replace(tweetRegex, newNodeValue)
         })
   

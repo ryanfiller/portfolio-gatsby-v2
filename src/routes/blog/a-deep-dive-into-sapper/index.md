@@ -2,8 +2,6 @@
 title: A Deep Dive into Sapper
 options:
   published: true
-  customurl: ''
-  customtemplate: ''
 meta:
   date: 2020-06-29T00:00:00.000Z
   excerpt: Exploring some of the more esoteric details about Svelte and Sapper

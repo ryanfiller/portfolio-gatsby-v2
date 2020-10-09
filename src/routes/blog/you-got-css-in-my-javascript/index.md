@@ -1,8 +1,6 @@
-<!-- ---
+---
 title: You got CSS in my Javascript
 options:
-  custompath: ''
-  customtemplate: ''
   published: true
 banner:
   url: '/css-in-js-reeses.png'
@@ -26,7 +24,7 @@ thumbnail:
   alt: ''
 ---
 
-SCSS is magical. As someone who learned web development through the front end, seeing things like nesting, variables, and mixins were game changers for me. With the addition of learning [BEM](http://getbem.com/) — gone were the days of having a monolithic, hundreds-of-lines-long .css file and a new age of writing maintainable component libraries was laid out in front of me.
+<!-- SCSS is magical. As someone who learned web development through the front end, seeing things like nesting, variables, and mixins were game changers for me. With the addition of learning [BEM](http://getbem.com/) — gone were the days of having a monolithic, hundreds-of-lines-long .css file and a new age of writing maintainable component libraries was laid out in front of me.
 
 Fast forward a few years to when I was in the middle of converting my personal site from [Jekyll](https://jekyllrb.com/) to [Gatsby](https://www.gatsbyjs.org/). CSS-in-JS is a divisive issue in the web-dev community right now, so I decided to try out [💅&nbspStyled-Components](https://www.styled-components.com/) in order to have a more informed opinion.
 

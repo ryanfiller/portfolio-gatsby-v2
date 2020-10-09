@@ -1,8 +1,6 @@
 ---
 title: Grid Thoughts About CSS And Print Design
 options:
-  custompath: ''
-  customtemplate: ''
   published: true
 banner:
   url: '/css-grid-tron.jpg'

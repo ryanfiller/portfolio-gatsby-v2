@@ -2,8 +2,6 @@
 title: Fighting with Git LFS
 options:
   published: true
-  customurl: ''
-  customtemplate: ''
 meta:
   date: 2020-05-11T01:26:16.929Z
   categories:

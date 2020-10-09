@@ -2,8 +2,6 @@
 title: Svelte, Sanity, and Severless Functions
 options:
   published: true
-  customurl: ''
-  customtemplate: ''
 meta:
   date: 2020-09-27
   excerpt: Building a CRUD site to host color palettes using Svelte, Routify, Sanity, and Netlify Functions.

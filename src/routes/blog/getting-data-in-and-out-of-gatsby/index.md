@@ -2,8 +2,6 @@
 title: Getting Data In and Out of Gatsby
 options:
   published: true
-  customurl: ''
-  customtemplate: ''
 meta:
   date: 2020-04-28T20:50:22.346Z
   excerpt: Using RSS and Webhooks to syndicate posts from one Gatsby site to another.

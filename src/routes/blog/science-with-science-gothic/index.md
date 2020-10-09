@@ -1,8 +1,6 @@
 ---
 title: 'Science, with Science Gothic'
 options:
-  customtemplate: ''
-  customurl: ''
   published: true
 meta:
   categories:

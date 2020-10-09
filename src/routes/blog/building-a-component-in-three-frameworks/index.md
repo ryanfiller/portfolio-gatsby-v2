@@ -1,8 +1,6 @@
 ---
 title: Building a Component in Three Frameworks
 options:
-  customtemplate: ''
-  customurl: ''
   published: true
 meta:
   categories:

@@ -1,8 +1,6 @@
 ---
 title: Refactoring a Component for Accessibility
 options:
-  customtemplate: ''
-  customurl: ''
   published: true
 meta:
   categories:

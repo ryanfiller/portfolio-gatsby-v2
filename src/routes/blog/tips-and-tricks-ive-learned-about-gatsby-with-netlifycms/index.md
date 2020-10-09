@@ -1,8 +1,6 @@
 ---
 title: Tips & Tricks I've Learned About Gatsby with NetlifyCMS
 options:
-  customtemplate: ''
-  customurl: ''
   published: true
 meta:
   categories:
