@@ -1,4 +1,3 @@
-
 import fs from 'fs'
 import path from 'path'
 
@@ -18,7 +17,14 @@ function isDir(path) {
 	} catch (e) { return false }
 }
 
-const getPosts = (directory, returnBody = false, slice = [0, undefined]) => {
+const getPosts = ({
+	directory,
+	category,
+	returnBody = false,
+	slice = [0, undefined]
+}) => {
+
+	if (!directory) { return }
 
 	const route = `src/routes/${directory}`
 	const posts = fs.readdirSync(route)
@@ -47,17 +53,19 @@ const getPosts = (directory, returnBody = false, slice = [0, undefined]) => {
 			return ({
 				...frontmatter,
 				slug: `${directory}/${post}`,
-				content: html
+				html: html
 			})
 		})
     // reverse chronological date sort
-    .filter(page => page.options.published)
+		.filter(page => page.options.published)
+		// if category, do a filter, or else return them all
+    .filter(page => category ? page.meta.categories.includes(category) : page)
 		.sort((a, b) => (a.meta.date < b.meta.date) ? 1 : -1)
 
 		// for pagination, defaults to 0-all
 		const [ start, end ] = slice
 
-	return JSON.stringify(posts.slice(start, end))
+		return posts.slice(start, end)
 }
 
 export default getPosts
