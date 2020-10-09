@@ -15,9 +15,9 @@ meta:
     quite easy to mess up and equally as frustrating to fix.
 ---
 
-TODO
-
-<!-- import ImageResizeExample from './image-resize-example'
+<script>
+  import ImageResizeExample from './_image-resize-example.svelte'
+</script>
 
 I came across this tweet the other day from [Leslie Cohn-Wein](https://twitter.com/lesliecdubs).
 
@@ -105,7 +105,7 @@ As I do with any new feature, I made a new branch from `master` and set up a tes
 
 The good news is that once a file is stored in LFS, git is a little smarter than it is with normal files. Often git will see a file that was moved as "deleted" at its original location and "created" at its new location. LFS figured out that these files were actually only "renamed."
 
-<img src="/move-lfs-files.png" alt="GitHub successfully moving location of unchanged LFS files" data-caption="" data-align="full" data-small="false" />
+![GitHub successfully moving location of unchanged LFS files](/images/move-lfs-files.png){data-align="full"}
 
 The BAD news is that once a regular image is in there... its in there, even after you've modified and commited a `.gitattributes` file that would have included it.
 
@@ -117,7 +117,7 @@ src/content/**/*.gif filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.mp4 filter=lfs diff=lfs merge=lfs -text 
 ```
 
-<img src="/committed-image.jpg" alt="GitHub tracking a jpg instead of a large media file" data-caption="" data-align="full" data-small="false" />
+![GitHub tracking a jpg instead of a large media file](/images/committed-image.jpg){data-align="full"}
 
 ## The Fix
 
@@ -129,11 +129,11 @@ To answer Leslie's question about whether or not there is a GUI, I accidentally 
 
 NetlifyCMS, which I have configured for [Netlify Large Media](https://www.netlifycms.org/docs/netlify-large-media/), actually errored when trying to look up the path to my non-LFS image. This makes sense because rather than looking to github to find them the CMS needed to be looking at Netlify's media servers, and since I had tracked my file incorrectly it didn't exist there.
 
-<img src="/netlifycms-broken-image.png" alt="NetlifyCMS showing a broken image" data-caption="" data-align="full" data-small="false" />
+![NetlifyCMS showing a broken file](/images/netlifycms-broken-image.png){data-align="full"}
 
 To go through the steps of removing it and adding it again was very easy using the CMS media manager, meaning that I could do this with a few clicks of a button instead of having to bounce around between my text editor deleting files and my terminal pushing my changes. Because of the way that NetlifyCMS squashes commits this ended up being very clean in the repository history.
 
-<img src="/remove-and-add-image.png" alt="commits removing and re-adding an image to correct tracking history" data-caption="`Update Pages “uses”` contains the new upload of the image." data-align="full" data-small="false" />
+![commits removing and re-adding a file to correct tracking history](/images/remove-and-add-image.png){data-caption="'Update Pages “uses”' contains the new upload of the image." data-align="full" }
 
 I definitely wouldn't call this a "LFS GUI," nor would I want to try to use it to batch-fix more than one or two images, but it was quick and easy for what I needed to do.
 

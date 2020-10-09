@@ -15,9 +15,9 @@ meta:
     - performance
 ---
 
-TODO
-
-<!-- import Table from './table.js'
+<script>
+  import Table from './_diff-table/index.svelte'
+</script>
 
 ## What are Variable Fonts?
 
@@ -63,7 +63,7 @@ For a baseline in this experiment, I've made a fresh Gatsby site that contains t
 
 I'm testing the page's Lighthouse ranking with no extra fonts loaded to see what the weight of a "normal" web page under these circumstances would be.
 
-<img src="/font-load-test-control.png" alt="lighthouse control score" data-caption="Page with default fonts, Science Gothic not loaded." data-align="full" data-small="false" />
+![lighthouse control score](/images/font-load-test-control.png){data-caption="Page with default fonts, Science Gothic not loaded." data-align="full"}
 
 <Table data='control' />
 
@@ -184,7 +184,7 @@ This option quickly checks for the font, but lets the loaded font appear at any 
 
 This option give the longest possible time to check for the font before rendering a fallback, but also lets the loaded font appear at any point.
 
-![optional, fallback, swap, and block loading](/font-load-test-3g-font-display.mp4){data-caption="examples showing optional, fallback, swap, and block loading"}
+![optional, fallback, swap, and block loading](/images/font-load-test-3g-font-display.mp4){data-caption="examples showing optional, fallback, swap, and block loading"}
 
 In the above comparison the fonts are loaded after clearing the cache. The block period of the font can be observed in the time it takes the numbers to appear. The furthest left block, set to `optional`, will never load the font since it could not be downloaded during the short block period. The second to left block, set to `fallback`, fails to load the font during the block period, but it also fails to load during its short swap period. This means that this block will also not display the font. The third block, `swap`, loads the same as the `fallback` block but due to its longer swap period it does eventually display the font. The final block, styled with `block` is notably different because it has the longest block period. This is why the numbers appear later than in any other example, and due to its infinite swap period it will *always* eventually load the font.
 
@@ -206,7 +206,7 @@ It would be nice if fonts could load instantaneously, and though that technicall
 
 Because the data has been transposed to text, it can now be downloaded as part of a the site's css (or js, if css-in-js is your thing) bundle. Just like with variable fonts themselves though, number of requests is only half the equation here. This will **greatly** increase the size of the overall bundle, and depending on the size of the font, probably isn't ever a good idea.
 
-<img src="/font-load-test-base64.png" alt="lighthouse score of page with base64 encoded font" data-caption="" data-align="full" data-small="false" />
+![lighthouse score of page with base64 encoded font](/font-load-test-base64.png){data-align="full"}
 
 To compare the data: 
 
@@ -218,4 +218,4 @@ There are some javascript options, probably the most popular of which is the [We
 
 I did make a [test page](https://5e854097e97dd4000678801a--font-science-gothic.netlify.com/) using Web Font Loader, but this actually hurt performance by adding to the overall size of the javascript bundle. The biggest downside to this approach, in my opinion, is that custom fonts will actually *never* load for users with javascript disabled since there is no mechanism to swap out class names when fonts are made available and shutting off features to users is something I try to avoid whenever possible.
 
-TODO - take these netlify pages down, add an update about removing examples from this -->
+TODO - take these netlify pages down, add an update about removing examples from this

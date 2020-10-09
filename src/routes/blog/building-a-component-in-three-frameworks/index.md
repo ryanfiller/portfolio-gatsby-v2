@@ -13,9 +13,9 @@ meta:
     - vue
 ---
 
-TODO
-
-<!-- import FrameworkList from './framework-list/index.js'
+<script>
+  import FrameworkList from './_framework-list.svelte'
+</script>
 
 I recently decided to break up my `color-contrast-chart` NPM package to be less coupled to a specific framework. I split off the core functionality into [one package](https://www.npmjs.com/package/color-contrast-table) and the React rendering bits into [another](https://www.npmjs.com/package/color-contrast-table-react).
 
@@ -25,7 +25,7 @@ This post is far from an exhaustive tutorial about how to use each framework, bu
 
 ## Specifications
 
-<img src="./color-chart.jpg" alt="example color chart" data-align="right" />
+![example color chart](/images/color-chart.jpg){data-align='right'}
 
 In order to make sure I was building the same features into each package, I came up with a short list of specifications. Each component would: 
 
@@ -102,7 +102,7 @@ There isn't a ton to say about this, other than that all three frameworks have b
 
 Components are small pieces of reusable code that combine to build up complex applications, which is called "component composition." Often they accept data from their parent components and display or transform it in some way. Most modern JavaScript frameworks refer to passed data as "props," short for properties.
 
-<img src="./color-block.png" alt="a color block component" data-align="left" data-small="true" />
+![a color block component](/images/color-block.png){data-align='left' data-small='true'}
 
 The most simple component in my color-chart is the `<Color>` component. This component needs to look at a `color` object which will contain a `name`, `value`, `score`, and contrast `ratio`. 
 
@@ -309,7 +309,7 @@ The most simple component in my color-chart is the `<Color>` component. This com
 
 ## Passing Props and Checking Types
 
-<img src="./color-block-2.png" alt="a color block component with a background" data-align="right" data-small="true" />
+![a color block component with a background](/images/color-block-2.png){data-align='right' data-small='true'}
 
 `props`, like I briefly mentioned before, are how modern JavaScript frameworks pass data around. For the most part props "flow down," meaning that they are passed from parent to child and not in the other direction.
 
@@ -705,7 +705,7 @@ The good news is that all three frameworks also have tools to add [types](https:
 
 Sometimes, in order to make components more dynamic, values need to be set locally to each instance of a component. This is often useful to do within the render body of the component if the output will end up directly in the DOM. These DOM side effects often involve manipulating classes for CSS, or even adding inline CSS directly onto elements.
 
-<img src="./color-row.png" alt="block components with different color text" data-align="center" />
+![block components with different color text](/images/color-row.png){data-align='center'}
 
 For the color chart, the easiest way to style each block was to add an inline `background-color` to each `<Color>` component. Also, each block runs a small JavaScript function to determine whether to use black or white text.
 
@@ -1132,7 +1132,7 @@ I'll be using [Block Element Modifier](http://getbem.com/) style classes for thi
 
 Moving up one level from the `<Color>` component in the color charts is the Row component. Each row contains two things: a collection of generated `<Color>` components, and a `<Header>` element that needs to know whether to show regular text or editable inputs.
 
-<img src="./color-row-2.png" alt="a row of blocks generated from an array" data-align="full" data-small="" />
+![row of blocks generated from an array](/images/color-row-2.png){data-align='full'}
 
 Each Row will get `props` data that looks like this:
 
@@ -1397,7 +1397,7 @@ If props are one half of modern frameworks, state is the other. Props are data p
 
 Each component can hold it's own state, and pass it down into child components via props, but often the top level component for a system will maintain all the state and disperse it down the tree. All three frameworks contain mechanisms to re-render a component if its `props` or `state` change. If a user takes an action, the top level component will be notified to update its state, and then let the children know they needs to re-render with new data.
 
-<img src="./edit-color.png" alt="editting a color value" data-align="full" />
+![editing a color value](/images/edit-color.png){data-align='full'}
 
 Custom events tied to different inputs and user actions are used to update state.
 
@@ -1778,7 +1778,7 @@ Custom events tied to different inputs and user actions are used to update state
         :colors="colorChart"
         @namechange="namechange"
         @valuechange="valuechange"
-      /> 
+      />
     </Fragment>
   </template>
   ```
@@ -1797,11 +1797,11 @@ Just for fun, here's the final bundle size of each package running within three 
 
 <FrameworkList>
 
- - <img src="./react-bundle.png" alt="434kb react js bundle" data-align="full" />
+ - ![434kb react js bundle](/images/react-bundle.png){data-align='full'}
 
- - <img src="./svelte-bundle.png" alt="104kb svelte js bundle" data-align="full" />
+ - ![104kb svelte js bundle](/images/svelte-bundle.png){data-align='full'}
 
- - <img src="./vue-bundle.png" alt="267kb vue js bundle" data-align="full" />
+ - ![267kb vue js bundle](/images/vue-bundle.png){data-align='full'}
 
 </FrameworkList>
 
@@ -1811,7 +1811,7 @@ Just for fun, here's the final bundle size of each package running within three 
 
   - Of the these three frameworks, I've been working with React the longest and have built the most complex apps with it. My last few day jobs have involved primarily using React. That said, while I have the most knowledge about its intricacies, I probably also have the most experience with running up against its rough edges. There's a lot I like about React _now_, but I remember JSX being a lot to get used to. It can sometimes be hard to search out help as a beginner, especially now that there's probably as much information on the web about function components and Hooks as there are about class components and Lifecycle Methods. As a beginner its not always apparent when to use which.
 
-  Also, for whatever reason, at some point React's dev tools became two views — Components and Profiler. To be honest, I still don't know what the Profiler view does and much preferred the old consolidated view. 
+  Also, for whatever reason, at some point React's dev tools became two views — Components and Profiler. To be honest, I still don't know what the Profiler view does and much preferred the old consolidated view.
     
   - I've only built a handful of small projects with Svelte, but its been very enjoyable to use. It definitely has some syntax oddities, but I've found that they're often justifiable when explained in the right way. A lot of things make sense eventually but are used in ways that I've never _quite_ seen JavaScript written before. This is out of the scope of what I wrote about in this post, but Svelte not relying on a virtual DOM is something that greatly interests me. This makes me want to explore Svlete more in the future.
 
@@ -1842,4 +1842,4 @@ I hope this brief look into React, Svelte, and Vue helped someone make up their 
 
 If any of the examples from the post need a little bit more context to make sense, check out the full mono-repo for all three versions [on GitHub](https://github.com/ryanfiller/color-contrast-table). And if I got something wrong, either in the explanation or the packages themselves, I'm definitely accepting feedback and pull requests!
 
-Good luck building! -->
+Good luck building!

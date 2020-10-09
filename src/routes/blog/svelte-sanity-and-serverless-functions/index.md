@@ -44,7 +44,7 @@ Because I wrote the same NPM package in three frameworks, I had  three options t
 
 Built-in, easy reactivity is ideal since the main feature of this site are users changing color values and viewing information in real time.
 
-![editting colors](/editing.mp4){data-caption="a user using the edit feature on the site"}
+![editting colors](/images/editing.mp4){data-caption="a user using the edit feature on the site"}
 
 ### Routify
 
@@ -468,7 +468,7 @@ const getData = async () => {
 
 The GROQ language can be a little confusing at first, and making a malformed query doesn't always return a super helpful error message. One helpful tool that Sanity provides is the [Vision Plugin](https://www.sanity.io/docs/the-vision-plugin). This plugin can be added to the project's Studio, either locally or hosted on [sanity.studio](https://sanity.studio), and used to try out queries and see their potential response data.
 
-<img src="/sanity-vision-plugin.png" alt="sanity vision plugin showing query and response for an owner's color palettes" data-caption="" data-align="full" data-small="false" />
+![sanity vision plugin showing query and response for an owner's color palettes](/images/sanity-vision-plugin.png){data-align="full"}
 
 #### Moving data around with Stores
 
@@ -749,7 +749,7 @@ dotenv.config()
 
 `process.env` values can be defined in a `.env` file locally (make sure to add this to your `.gitignore` and commit it!), and in the Settings > Deploys > Environment section of the Netlify dashboard. These values don't have to match in both places, but they do both need to be valid tokens.
 
-<img src="/netlify-environment-dashboard.png" alt="Netlify dashboard, Settings  Deploys > Environment" data-caption="" data-align="full" data-small="false" />
+![Netlify dashboard, Settings  Deploys > Environment](/images/netlify-environment-dashboard.png){data-align="full"}
 
 #### Sending Data
 

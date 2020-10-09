@@ -12,7 +12,7 @@ meta:
     - sapper
 ---
 
-<!-- [Last month](/blog/a-deep-dive-into-sapper) I wrote about testing Svelte and Sapper to learn about their intricacies and limitations before trying to change my blog framework. I decided I'd explored enough to attempt a refactor and I found a few features that couldn't easily be replicated or done at all.
+[Last month](/blog/a-deep-dive-into-sapper) I wrote about testing Svelte and Sapper to learn about their intricacies and limitations before trying to change my blog framework. I decided I'd explored enough to attempt a refactor and I found a few features that couldn't easily be replicated or done at all.
 
 ## A .svelte file cannot export multiple components
 
@@ -126,7 +126,7 @@ There are a few big differences with building this component in Svelte. Ignore t
 {/if}
 ```
 
-The first is that Svetle doesn't seem to have the ability to use strings to dynamically choose html tags. Maybe this is possible with [<svelte:component>](https://svelte.dev/docs#svelte_component), but I could only get this to work with other custom components and not html tags. The good news is that the Svelte community is aware of this, and at the time of writing this post there is an [open proposal](https://github.com/sveltejs/svelte/issues/2324) to implement a fix. For now I went with one of the easier fixes suggested in the GitHub issue and added a series of `if else` statements.
+The first is that Svetle doesn't seem to have the ability to use strings to dynamically choose html tags. Maybe this is possible with [`<svelte:component>`](https://svelte.dev/docs#svelte_component), but I could only get this to work with other custom components and not html tags. The good news is that the Svelte community is aware of this, and at the time of writing this post there is an [open proposal](https://github.com/sveltejs/svelte/issues/2324) to implement a fix. For now I went with one of the easier fixes suggested in the GitHub issue and added a series of `if else` statements.
 
 The second issue lies in trying to replicate the `index.js` file that exports six heading components.
 
@@ -269,4 +269,4 @@ No, Svelte is still a great framework that has enough features to do most things
 
 This does, unfortunately, mean that I won't currently be moving my blog from Gatsby to Sapper. I plan on giving this another shot when Sapper does a full 1.0 release. This should give Svelte time to release more features and give me time to refactor some of my React code to make it more portable. I'm also in the early planning stages of another web app and I'm still considering using Svelte and Sapper to build it. Like I said, Svelte is great, it just isn't not a great fit for my blog right now.
 
-I've also only been working with Svelte for a few months, and it is entirely possible that these things _are_ doable and I just haven't discovered how. If that's the case I would absolutely love to be told I'm wrong, let me know [@ryanfiller_](https://twitter.com/ryanfiller_) on Twitter and I'll update this article with the fix. -->
+I've also only been working with Svelte for a few months, and it is entirely possible that these things _are_ doable and I just haven't discovered how. If that's the case I would absolutely love to be told I'm wrong, let me know [@ryanfiller_](https://twitter.com/ryanfiller_) on Twitter and I'll update this article with the fix.

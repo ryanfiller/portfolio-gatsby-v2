@@ -12,7 +12,7 @@ meta:
     - netlifycms
 ---
 
-<!-- For a number of reasons, some for money and some for fun, I've scaffolded out more than half a dozen new Gatsby sites in the past year. There have been a few weird "hacks" and escape hatches I've liked to leave myself every time and I thought those might be fun to share. 
+For a number of reasons, some for money and some for fun, I've scaffolded out more than half a dozen new Gatsby sites in the past year. There have been a few weird "hacks" and escape hatches I've liked to leave myself every time and I thought those might be fun to share. 
 Since Gatsby is already a React-based metaframework, it makes sense to me to do as much work in javascript as possible. This is a nice fit with NetlifyCMS since it also doe a lot behind the scenes with javascript, and its editor is also built using React components.
 
 I compiled this non-comprehensive list of some quick-but-powerful tips and tricks might be helpful for anyone setting up a new Gatsby site managed with NetlifyCMS, or even anyone trying to augment an existing project. 
@@ -191,10 +191,10 @@ This is nice because I *personally* don't care for yaml, but it makes common thi
 
 Editor Widgets are editor components that appear under the + in the body while editing a post. The default comes with Image and Code blocks, and there are [pretty good docs](https://www.netlifycms.org/docs/custom-widgets/#registereditorcomponent) on the NetlifyCMS site about how to create custom editor widgets. The example shows how to build a YouTube embed, but what happens if you pass the name of an existing widget to the `id` field? Well, it overwrites it of course! Obviously its easy to break default functionality with this, but I have had a lot of luck overriding the default Image widget to add a few extra options.
 
-<img src="/cms_image_editor_widget_example.png" alt="example of my custom image editor widget" data-caption="" data-align="full" data-small="false" />
+![example of my custom media editor widget](/images/cms_image_editor_widget_example.png){data-align='full'}
 
 It's **very** easy to break the editor by trying to query something that isn't there, so be careful with that regex and make sure it accounts for *not* matching anything. It's even possible to pass a custom React component into the `toPreview` value and customize how the image looks in the preview pane. This pairs super well with the MDX component I outlined above. Just [dump out the props in the `toBlock` value](https://github.com/ryanfiller/portfolio-gatsby-v2/blob/master/src/cms/editor/image.js#L63) and have the [MDX component grab them on the front end](https://github.com/ryanfiller/portfolio-gatsby-v2/blob/master/src/components/markdown/image.js#L8) and it's possible to make highly configurable React widgets that a user can easily edit.
 
 ## Final Thoughts
 
-Gatsby is a powerful tool, and adding the NetlifyCMS can make it easy enough to edit content that the combination can even power sites where clients needs to log in and make changes. These were just a few tricks I've learned over the past few years of working on my personal blog, hopefully they're helpful to others as well. For examples on everything I mentioned, check out the [repo](https://github.com/ryanfiller/portfolio-gatsby-v2) of this site, and feel free to [reach out](https://twitter.com/ryanfiller_) with any questions! -->
+Gatsby is a powerful tool, and adding the NetlifyCMS can make it easy enough to edit content that the combination can even power sites where clients needs to log in and make changes. These were just a few tricks I've learned over the past few years of working on my personal blog, hopefully they're helpful to others as well. For examples on everything I mentioned, check out the [repo](https://github.com/ryanfiller/portfolio-gatsby-v2) of this site, and feel free to [reach out](https://twitter.com/ryanfiller_) with any questions!

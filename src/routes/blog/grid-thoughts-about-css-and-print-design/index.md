@@ -1,7 +1,7 @@
 ---
 title: Grid Thoughts About CSS And Print Design
 options:
-  published: true
+  published: false
 banner:
   url: '/css-grid-tron.jpg'
   alt: ''
@@ -34,7 +34,7 @@ Having the ability to specifically define how content and images span both rows 
 
 ## Configuring Grids in Different Environments
 
-<img src="/css-grid-print.jpg" alt="print screenshot" title="" data-align="left" data-small="" />
+![print screenshot](/images/css-grid-print.jpg){data-align="left"}
 
 **Swiss Modular Grid**
 - four column modular grid
@@ -42,7 +42,7 @@ Having the ability to specifically define how content and images span both rows 
 
 <div style="clear:both" class="clearfix"></div>
 
-<img src="/css-grid-indesign-screenshot.jpg" alt="indesign screenshot of grid" title="" data-align="right" data-small="" />
+![indesign screenshot of grid](/images/css-grid-indesign-screenshot.jpg){data-align="right"}
 
 **Adobe InDesign Grid**
 - font-size 12pt
@@ -53,7 +53,7 @@ Having the ability to specifically define how content and images span both rows 
 
 <div style="clear:both" class="clearfix"></div>
 
-<img src="/css-grid-code-screenshot.jpg" alt="codepen screenshot" title="" data-align="left" data-small="" />
+![codepen screenshot](/images/css-grid-code-screenshot.jpg){data-align="left"}
 
 **CSS Grid Layout**
 - font-size: 12px; (.75rem)
@@ -91,7 +91,7 @@ Line height does not work the same way on the web as it does in print. Rather th
 
 Because of this, even though the math seems like a 1rem repeating vertical grid would line up with the baselines of the text, it actually ends up nearly in the middle of the vertical space between each line of text.
 
-<iframe data-aspect-ratio="full" title="MXEPGe" src="//codepen.io/ryanfiller89/embed/MXEPGe"></iframe>
+<iframe data-aspect-ratio="4/3" title="MXEPGe" src="//codepen.io/ryanfiller89/embed/MXEPGe"></iframe>
 
 It seems like it would make sense to compensate for this using some math.
 
@@ -120,7 +120,7 @@ However, there are certain areas where I think this kind of attention to detail 
 
 Of course, another huge variable here is working with clients and having editable, variable lengths of text on the site since that introduces a lot of unknowns into the equation. I think the best scenario in this case is having the content maintained by someone who is both design and code savvy, as they'll know what looks good and also a little of what's going on with the CSS to achieve the design.
 
-<img src="/css-grid-text-threads.jpg" alt="indesign screenshot of text threading" title="" data-align="right" data-small="" />
+![indesign screenshot of text threading](/images/css-grid-text-threads.jpg){data-align="right"}
 
 Another huge drawback to complex grid layouts is that text flow in browsers works quite differently than in tools like InDesign. Using print layout tools, text boxes can be "threaded" so that when copy overflows one box it will automatically flow into linked text boxes. There's no existing HTML / CSS / Javascript / whatever tool that treats text this way, except maybe `css column-count: #;` and event that isn't ideal because a user would end up scrolling to the bottom of the page and then back to the top to read additional columns. 
 

@@ -3,10 +3,10 @@
 </script>
 
 <style global type='text/scss'>
-  section {
-    display: flex;
-    align-items: center;
-  }
+  // section { // DON'T DO THIS
+  //   display: flex;
+  //   align-items: center;
+  // }
 
   div {
     line-height: 1.5;

@@ -14,7 +14,7 @@ meta:
 ---
 Last year, my friend [Josh](josh.beardedrobots.com/) brought up the idea of starting a development blog together. He even went through all the trouble buying a url and setting us each our own subdomain. This seemed like a fun idea, but since I already had my own blog about development writing a second one seemed like more work than I would have time for.
 
-<img src="/bender_two_things.gif" alt="Bender talking to Fry and The Professor" data-caption="" data-align="center" data-small="false" />
+![Bender talking to Fry and The Professor](/images/bender_two_things.gif){data-align="center"}
 
 But, since I *did* already have a blog, it made me curious to see if I could syndicate my posts from one site to the other. I put together a [quick site](https://github.com/ryanfiller/bearded-robots) with [Material-UI](https://material-ui.com/) and started trying to figure out how to get data out of one Gatsby site and into the other.
 
@@ -184,11 +184,11 @@ Now that one site is able to pull data directly from the other, I need a mechani
 
 This works by configuring two things. First, on the auto-deploying site, a new `build hook` needs to be added. This is a url that can be POSTed to that will notify Netlify to start a new build. It lives at Settings > Deploys > Build Hooks.
 
-<img src="/netlify-build-hook-incoming.png" alt="Netlify incoming build hook configuration" data-caption="" data-align="full" data-small="false" />
+![Netlify incoming build hook configuration](/images/netlify-build-hook-incoming.png){data-align="full"}
 
 Once that url has been created, a matching Deploy Notification needs to be created on the original site. It lives at Settings > Deploys > Deploy Notifications.
 
-<img src="/netlify-build-hook-outgoing.png" alt="Netlify outgoing build hook configuration" data-caption="" data-align="full" data-small="false" />
+![Netlify outgoing build hook configuration](/images/netlify-build-hook-outgoing.png){data-align="full"}
 
 Ta-da! Now when the first site successfully completes a build, magic will happen on the internet and the second site automatically will to!
 

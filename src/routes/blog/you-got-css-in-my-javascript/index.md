@@ -1,7 +1,7 @@
 ---
 title: You got CSS in my Javascript
 options:
-  published: true
+  published: false
 banner:
   url: '/css-in-js-reeses.png'
   alt: ''
@@ -24,7 +24,7 @@ thumbnail:
   alt: ''
 ---
 
-<!-- SCSS is magical. As someone who learned web development through the front end, seeing things like nesting, variables, and mixins were game changers for me. With the addition of learning [BEM](http://getbem.com/) — gone were the days of having a monolithic, hundreds-of-lines-long .css file and a new age of writing maintainable component libraries was laid out in front of me.
+SCSS is magical. As someone who learned web development through the front end, seeing things like nesting, variables, and mixins were game changers for me. With the addition of learning [BEM](http://getbem.com/) — gone were the days of having a monolithic, hundreds-of-lines-long .css file and a new age of writing maintainable component libraries was laid out in front of me.
 
 Fast forward a few years to when I was in the middle of converting my personal site from [Jekyll](https://jekyllrb.com/) to [Gatsby](https://www.gatsbyjs.org/). CSS-in-JS is a divisive issue in the web-dev community right now, so I decided to try out [💅&nbspStyled-Components](https://www.styled-components.com/) in order to have a more informed opinion.
 
@@ -44,11 +44,11 @@ In my project I have a config.js file that looks mostly like this:
 
 ``` javascript
 module.exports = {
-	breaks: {
-		large: 1200,
-		tablet: 768,
-		phone: 480
-	},
+  breaks: {
+    large: 1200,
+    tablet: 768,
+    phone: 480
+  },
 }
 ```
 
@@ -64,21 +64,21 @@ Using this same configuration style, I was able to pull these values — as well
 
 ``` javascript
 const StyledSocials = styled.ul`
-	.social {
-		width: 1.75rem;
-		display: block;
-		@media(max-width: ${breaks.phone}px) {
-			flex: 1;
-			width: auto;
-		}
-	}
+  .social {
+    width: 1.75rem;
+    display: block;
+    @media(max-width: ${breaks.phone}px) {
+      flex: 1;
+      width: auto;
+    }
+  }
 
-	svg {
-		fill: ${colors.white};
-		@media(max-width: ${breaks.tablet}px) {
-			fill: currentColor;
-		}
-	}
+  svg {
+    fill: ${colors.white};
+    @media(max-width: ${breaks.tablet}px) {
+      fill: currentColor;
+    }
+  }
 `
 ```
 
@@ -92,33 +92,33 @@ In coding, I often face choice paralysis. I spend so much time doing research to
 
 The first and most obvious frustration was debugging. The way Styled-Components (and I think most css-in-js libraries?) handle the issue of scoping is to generate machine-readable classnames and apply them to the JSX elements. That means, in the browser, you end up with a lot of nonsense as far as human-readability is concerned.
 
-<img src="/css-in-js-gabbyandryandotcom.jpg" alt="dev tools screenshot" title="" data-align="full" data-small="" />
+![dev tools screenshot](/images/css-in-js-gabbyandryandotcom.jpg){data-align="full"}
 
 You <em>can</em> add your own classes, but if you're correctly leveraging the power of the scope and cascade you shouldn't be afraid to just style based on elements.
 
 ``` javascript 
 const Container = styled.div`  
-	max-width: 40rem;
+  max-width: 40rem;
 
-	img {
-		width: 100%;
-	}
+  img {
+    width: 100%;
+  }
 `;
 
 const Hover = styled.img`
-	opacity: 0;
-	transition: .125s;
+  opacity: 0;
+  transition: .125s;
 
-	&:hover {
-		opacity: 1;
-	}
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const Image = () => (
-	<Container>
-		<img className="hover" src="../images/heads-hover.png" />
-		<Hover src="../images/heads.png" />
-	</Container>
+  <Container>
+    <img className="hover" src="../images/heads-hover.png" />
+    <Hover src="../images/heads.png" />
+  </Container>
 )
 ```
 
@@ -132,15 +132,15 @@ Another downside to the mental model required here is that even though these sty
 $tablet: 768px;
 
 @mixin tablet-break () {
-	@media only screen and (max-width: $tablet) {
-		@content;
-	}
+  @media only screen and (max-width: $tablet) {
+    @content;
+  }
 }
 
 ---
 
 @include tablet-break {
-	//styles
+  //styles
 }
 ```
 
@@ -148,15 +148,15 @@ In order to replicate this relatively simple SCSS mixin (above) in Styled-Compon
 
 ``` javascript
 export const breaks = {
-	tablet: 768
+  tablet: 768
 
-	tabletBreak: (styles) => {
-		return `
-			@media (min-width: ${breaks.tablet}px) {
-				${styles}
-			}
-		`
-	},
+  tabletBreak: (styles) => {
+    return `
+      @media (min-width: ${breaks.tablet}px) {
+        ${styles}
+      }
+    `
+  },
 };
 
 ---
@@ -171,7 +171,7 @@ const StyledDiv = styled.div`
 `;
 ```
 
-Because using style-components means writing in one language and interpreting in another, this requires weaving in and out of javascript syntax and css syntax. Thankfully ES6's [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) make this really easy, but this still requires a developer to hold a lot in their mind. In just this one breakpoint I'm defining a function, returning a string to be converted to css, calling a javascript variable, passing an interpolated string into the function, calling the initial function in another file, and then finally passing ing styles via another template literal. Nevermind if it's necessary to call some other javascript variable inside <em>that</em> string of styles. One small syntax error here means trying to track down a stray ``` or `)` or `{` across multiple files.
+Because using style-components means writing in one language and interpreting in another, this requires weaving in and out of javascript syntax and css syntax. Thankfully ES6's [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) make this really easy, but this still requires a developer to hold a lot in their mind. In just this one breakpoint I'm defining a function, returning a string to be converted to css, calling a javascript variable, passing an interpolated string into the function, calling the initial function in another file, and then finally passing ing styles via another template literal. Nevermind if it's necessary to call some other javascript variable inside <em>that</em> string of styles. One small syntax error here means trying to track down a stray backtick, bracket, or parenthesis across multiple files.
 
 Further to the point of having to overcomplicate things that SCSS natievely does with relative ease, SCSS is a very mature language with over ten years of stability and nuance behind it. The web developer community has had time to make improvements over the years, and while I'm sure the css-in-js community as a whole will eventually get to that level, right now there's just too much missing. SCSS functions I've taken for granted like `transparentize()` or the ability to easily do math with values of different units like ems, rems, and pixels (without having to work in either npm dependencies or complicated interpolations) is a hard thing to give up.
 
@@ -185,27 +185,27 @@ One of the biggest reasons I've heard for switching to css-in-js is that it will
 
 ``` scss
 .button {
-	background: $orange;
+  background: $orange;
 }
 
 ---
 
 .form {
-	&__button {
-		background: $blue;
-	}
+  &__button {
+    background: $blue;
+  }
 
-	.button {
-		background: $blue;
-	}
+  .button {
+    background: $blue;
+  }
 }
 
 ---
 
 body.form-page {
-	.button {
-		background: $blue;
-	}
+  .button {
+    background: $blue;
+  }
 }
 ```
 
@@ -213,11 +213,11 @@ BEM aside, taking advantage of SCSS's native ampersand ability gives you just as
 
 ``` scss
 .button {
-	background: $orange;
+  background: $orange;
 
-	.form & {
-		background: $blue;
-	}
+  .form & {
+    background: $blue;
+  }
 }
 ```
 
@@ -225,11 +225,11 @@ Not as many people know about [putting the ampersand <em>after</em> the nested s
 
 ``` scss
 .button {
-	background: orange;
+  background: orange;
 }
 
 .form .button {
-	background: blue;
+  background: blue;
 }
 ```
 
@@ -237,4 +237,4 @@ One thing I've been interested in is viewing pages with no css at all. If you're
 
 One downside to viewing the DOM without any styles is that an end user sees <em>everything</em> on the page — including things like incorrect canvas navigation or different versions of components shown at different sizes. Also, there's nothing to stop you from using both scss and react-responsive, which is actually what I settled on doing. This means that even if viewing the page with css turned off, a user will still only get one navigation and one version of a component unless their browser is at the right size to trigger a `<MediaQuery/>` tag. The downside to this is that I need the breakpoints configured in two places: once in my config.js object and once as traditional scss variables somewhere in the style files. I'm sure there's a way to make one read the other (probably to have the .js file pull from the .scss file?), but the amount of work to do this didn't seem worth it in my experience. Luckily, these configuration values rarely will need to be updated so this isn't a dealbreaker for me.
 
-Overall, I still see the appeal of putting componentizing styles in javascript. Im my opinion, there are huge workflow and browser performance gains to be made, and as libraries and functionalities grow over time, switching to them won't mean leaving as much behind. For now I'm sticking with SCSS because that's what my current job requires me to write. Additionally having a personal project where I can continue to explore more complex mixins and extends will only help me become a better developer. Knowing myself though, I'm sure the next personal project I start from scratch will convince me to do something completely different, because the idea of leveraging the ability to have code more and more integrated with itself is definitely tempting. However, as long as future projects continue to be as much of a learning experience as the back-and-forth switching on this project was, I'll gladly be along for the ride. -->
+Overall, I still see the appeal of putting componentizing styles in javascript. Im my opinion, there are huge workflow and browser performance gains to be made, and as libraries and functionalities grow over time, switching to them won't mean leaving as much behind. For now I'm sticking with SCSS because that's what my current job requires me to write. Additionally having a personal project where I can continue to explore more complex mixins and extends will only help me become a better developer. Knowing myself though, I'm sure the next personal project I start from scratch will convince me to do something completely different, because the idea of leveraging the ability to have code more and more integrated with itself is definitely tempting. However, as long as future projects continue to be as much of a learning experience as the back-and-forth switching on this project was, I'll gladly be along for the ride.

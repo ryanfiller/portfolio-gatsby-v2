@@ -15,11 +15,11 @@ meta:
     - html5
 ---
 
-<img src="/gundam_v_zaku_1979.jpg" alt="RX-78-2 slicing a Zaku in half" data-caption="Mobile Suit Gundam '79, Sunrise / Bandai" data-align="right" data-small="" />
+![RX-78-2 slicing a Zaku in half](/images/gundam_v_zaku_1979.jpg){data-caption="Mobile Suit Gundam '79, Sunrise / Bandai" data-align="right"}
 
 A few months ago when I decided to start my website from scratch I also decided I would also keep a detailed [change log](/changes). This was meant to track the progression of my code, but also my thought process of *why* I was doing things. The version names are completely arbitrary, but I thought it might be fun to name them after [giant robots from the Gudam UC timeline](https://gundam.fandom.com/wiki/RX-78_Gundam_Series). In universe those follow some semblance of [semantic versioning](https://semver.org/), and also I am also a huge dork.
 
-After only a few "versions" this page started to get pretty long. I wanted to add a basic accordion feature to it - each change set would have a header and a summary and the details would be collapsible. My specific componentwas built in React, but the idea is pretty universal. A button would toggle between the open and closed state, that state wouldbe represented bya class on the wrapping element. CSS would use that class to determine when to show the details.
+After only a few "versions" this page started to get pretty long. I wanted to add a basic accordion feature to it - each change set would have a header and a summary and the details would be collapsible. My specific component was built in React, but the idea is pretty universal. A button would toggle between the open and closed state, that state wouldbe represented bya class on the wrapping element. CSS would use that class to determine when to show the details.
 
 ```javascript
 const Change = props => {
