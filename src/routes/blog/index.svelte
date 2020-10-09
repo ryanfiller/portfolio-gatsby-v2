@@ -16,10 +16,12 @@ blog -->
 </script>
 
 <script>
-  export let posts
+	export let posts
+	
+	import PostPreview from '../../components/content/post-preview.svelte'
 </script>
 
-<!-- <style type="text/scss">
+<style type="text/scss">
 	ul {
 		margin: 0 0 1em 0;
 		font-size: 1.5rem;
@@ -34,18 +36,16 @@ blog -->
 			}
 		}
 	}
-</style> -->
+</style>
 
-<svelte:head>
+<!-- <svelte:head>
 	<title>CHANGE ME</title>
-</svelte:head>
+</svelte:head> -->
 
 <ul>
   {#each posts as post}
 		<li>
-      <a rel='prefetch' href={post.slug}>
-        {post.title}
-      </a>
+			<PostPreview {post} />
     </li>
 	{/each}
 </ul>
