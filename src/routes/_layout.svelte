@@ -10,6 +10,7 @@
 	import SEO from '../components/layout/seo.svelte'
 
 	import { markdown } from '../stores.js'
+	$: markdown.set({}) // ???
 
 </script>
 

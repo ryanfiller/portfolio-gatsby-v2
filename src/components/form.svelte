@@ -194,7 +194,7 @@
       </header>
       <button 
         type='reset'
-        onClick={() => {
+        on:click={() => {
           formValues = {}
           state = 'form'
         }} 
@@ -209,7 +209,7 @@
       </header>
       <button 
         type='reset'
-        onClick={() => {
+        on:click={() => {
           state = 'form'
         }} 
       >

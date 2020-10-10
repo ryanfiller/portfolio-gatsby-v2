@@ -2,7 +2,7 @@
   export let segment
   import { mainNav } from '../../site-config.js'
   import Nav from './nav.svelte'
-  // import Banner from './banner'
+  import Banner from './banner.svelte'
 </script>
 
 <style global type='text/scss'>
@@ -58,10 +58,7 @@
       </a>
     </Nav>
   </div>
-  {#if segment !=='homepage'}
-    <!-- <Banner 
-      contentType={segment}
-      {...frontmatter}
-    /> -->
+  {#if !!segment}  <!-- blank segment is homepage or _error -->
+    <Banner {segment} />
   {/if}
 </header>
