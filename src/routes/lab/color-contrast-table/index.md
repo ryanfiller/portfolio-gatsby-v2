@@ -1,8 +1,6 @@
 ---
 title: color-contrast-table
 options:
-  custompath: ''
-  customtemplate: ''
   published: true
 meta:
   categories:
@@ -18,8 +16,10 @@ url:
   - https://www.npmjs.com/package/color-contrast-table
 ---
 
-<!-- import ColorChart from '../../../components/misc/color-chart'
+<script>
+  import ColorChart from './_color-chart.svelte'
+</script>
 
-<ColorChart editable /> -->
+<ColorChart editable />
 
-<!-- I made a tool in vanilla js and also in react -->
+I made a tool in vanilla js and also in react

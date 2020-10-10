@@ -59,7 +59,8 @@ const getPosts = ({
     // reverse chronological date sort
 		.filter(page => page.options.published)
 		// if category, do a filter, or else return them all
-    .filter(page => category ? page.meta.categories.includes(category) : page)
+		.filter(page => category ? page.meta.categories.includes(category) : page)
+		// TODO rethink if this should happen in the component or here, maybe make another arg?
 		.sort((a, b) => (a.meta.date < b.meta.date) ? 1 : -1)
 
 		// for pagination, defaults to 0-all

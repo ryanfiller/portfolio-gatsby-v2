@@ -1,6 +1,6 @@
 <script context="module">
 	export function preload({ params, query }) {
-		return this.fetch(`/blog.json`)
+		return this.fetch(`/lab.json`)
 		.then(response => response.json())
 		.then(posts => {
       return { posts }
@@ -11,7 +11,7 @@
 <script>
 	export let posts
 	
-	import PostPreview from '../../components/content/post-preview.svelte'
+  import PostPreview from '../../components/content/post-preview.svelte'
 </script>
 
 <style type="text/scss">

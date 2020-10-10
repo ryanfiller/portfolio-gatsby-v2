@@ -1,13 +1,11 @@
 ---
 title: variable font display
 options:
-  custompath: ''
-  customtemplate: ''
   published: true
 meta:
   categories:
     - experiments
-  date: 2019-21-03
+  date: 2019-11-03
   excerpt: >-
     A way to visualize variable font font-variation properties
   tags:
@@ -17,7 +15,12 @@ url:
   - https://www.npmjs.com/package/color-contrast-table
 ---
 
-<!-- import VariableFont from '../../../components/misc/variable-font'
+<script>
+  import VariableFont from './_variable-font.svelte'
+  import FontImporter from '../../../../static/fonts/font-importer.svelte'
+</script>
+
+<FontImporter />
 
 <VariableFont 
   name='Science Gothic'
@@ -51,4 +54,4 @@ url:
     QUAD: [1, 1000],
     SIZE: [1, 1000]
   }}
-/> -->
+/>

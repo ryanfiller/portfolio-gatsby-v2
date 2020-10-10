@@ -8,7 +8,6 @@
 	let hideSiteHeader = false
 
 	import SEO from '../components/layout/seo.svelte'
-	// import FontImporter from '../../../static/fonts/font-importer'
 
 	import { markdown } from '../stores.js'
 
@@ -156,7 +155,6 @@
 </svelte:head>
 
 <SEO />
-<!-- <FontImporter /> -->
 
 <div id='site' className={segment}>
 	{#if !hideSiteHeader}
