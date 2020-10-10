@@ -11,8 +11,9 @@
 <script>
 export let posts
 	
-  import { meta } from '../site-config'
+  import { meta, forms } from '../site-config'
 	import Posts from '../components/posts.svelte'
+	import Form from '../components/form.svelte'
 </script>
 
 <style global type='text/scss'>
@@ -49,6 +50,6 @@ export let posts
   
   <Posts {posts} />
   
-  <!-- <Form {...contactForm} location={props.location.pathname} /> -->
+  <Form {...forms.contact} location={'home'} />
 
 </main>
