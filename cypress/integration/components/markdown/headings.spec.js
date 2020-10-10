@@ -5,7 +5,7 @@ context('remark headings', () => {
   })
   
   it('renders all headings correctly', () => {
-    cy.get('div#headings')
+    cy.get('#headings')
     .within(() => {
       cy.get('h1#heading-level-1')
       .should('exist')

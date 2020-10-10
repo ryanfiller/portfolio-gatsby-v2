@@ -37,10 +37,12 @@ function transformer(tree) {
       const iframeProps = () => {
         const attrs = [
           `src="${src}"`,
-          `loading="lazy"`
         ]
         if (title) {
           attrs.push(`title="${title}"`)
+        }
+        if (process.env.NODE_ENV === 'production') { // the breaks cypress
+          attrs.push(`loading="lazy"`)
         }
         return attrs.join(' ')
       }

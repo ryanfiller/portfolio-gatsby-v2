@@ -5,7 +5,7 @@ context('remark blockquote', () => {
   })
   
   it('renders markdown quotes correctly', () => {
-    cy.get('div#quotes').within(() => {        
+    cy.get('#quotes').within(() => {        
       cy.get('blockquote').eq(0)
       .get('cite').should('exist')
       .get('hr').should('not.exist')

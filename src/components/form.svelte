@@ -160,12 +160,21 @@
   export let location = ''
   export let fields = []
 
+  const setDefaultValues = () => fields.map(field => formValues[field.name] = '')
+
   let state = 'form'
   let formValues = {}
+  setDefaultValues()
+  
 
   const encode = data => Object.keys(data).map(key => {
     return `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
   }).join('&')
+
+  const handleInputChange = event => {
+    const { name, value } = event.target
+    formValues[name] = value
+  }
 
   const handleFormSubmit = event => {
     event.preventDefault()
@@ -195,7 +204,7 @@
       <button 
         type='reset'
         on:click={() => {
-          formValues = {}
+          setDefaultValues()
           state = 'form'
         }} 
       >
@@ -239,7 +248,8 @@
               name={field.name}
               placeholder={field.placeholder ? field.placeholder : field.name}
               required={!!field.required}
-              bind:value={formValues[field.name]}
+              value={formValues[field.name]}
+              on:input={event => handleInputChange(event, field.name)}
             />
             <label for={field.name}>
               {field.name}
@@ -247,12 +257,14 @@
           </div>
         {:else}
           <div class={`form__row form__row--${field.type}`}>
-            <input 
+            <input
+              type={field.type}
               id={field.name}
               name={field.name}
               placeholder={field.placeholder ? field.placeholder : field.name}
               required={!!field.required}
-              bind:value={formValues[field.name]}
+              value={formValues[field.name]}
+              on:input={event => handleInputChange(event, field.name)}
             />
             <label for={field.name}>
               {field.name}

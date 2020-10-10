@@ -116,6 +116,7 @@
   export let options = {}
 
   let text = 'the five boxing wizards jump quickly'
+  let capitalization = 'none'
 
   const styleOptions = Object.entries(options).map(option => {
     const [name, [min, max]] = option
@@ -132,8 +133,6 @@
   const handleStyleOptionChange = (event, index) => {
     styleOptions[index].value = event.target.value
   }
-
-  let capitalization = 'none'
 
   $: fontStyles = styleOptions.map(option => {
     return `'${option.name}' ${option.value}`
@@ -163,7 +162,7 @@
         </label>
         <input
           type='range'
-          id={makeId(`${variable}-slider`)}
+          id={makeId(`${variable.name}-slider`)}
           {...styleOptions[index]}
           on:change={event => handleStyleOptionChange(event, index)}
         />
@@ -172,10 +171,9 @@
 
     <div class='variable-font__select'>
       <label for={makeId('capitalization')}>text-transform</label>
-      <!-- svelte-ignore a11y-no-onchange -->
       <select
         id={makeId('capitalization')}
-        on:change={event => capitalization = event.target.value}
+        bind:value={capitalization}
       >
         <option value='none'>none</option>
         <option value='capitalize'>capitalize</option>

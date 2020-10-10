@@ -9,7 +9,7 @@
 </script>
 
 <script>
-export let posts
+  export let posts
 	
   import { meta, forms } from '../site-config'
 	import Posts from '../components/posts.svelte'
@@ -34,22 +34,19 @@ export let posts
   }
 </style>
 
-<main>
-  <section class='temp-bio'>
-    <div>
-      <h1>{meta.description}</h1>
-      <p>
-        {meta.about}
-      </p>
-    </div>
-    <img  
-      src={meta.headshot}
-      alt={meta.author}
-    />
-  </section>
-  
-  <Posts {posts} />
-  
-  <Form {...forms.contact} location={'home'} />
+<section class='temp-bio'>
+  <div>
+    <h1>{meta.description}</h1>
+    <p>
+      {meta.about}
+    </p>
+  </div>
+  <img  
+    src={meta.headshot}
+    alt={meta.author}
+  />
+</section>
 
-</main>
+<Posts {posts} />
+
+<Form {...forms.contact} />

@@ -5,7 +5,7 @@ context('remark videos', () => {
   })
 
   it('renders the correct attributes', () => {
-    cy.get('div#videos').within(() => {
+    cy.get('#videos').within(() => {
       cy.get('video').eq(0)
       .should('have.attr', 'title', 'title')
   
@@ -16,7 +16,7 @@ context('remark videos', () => {
 
   it('render sizes and alignments', () => {
     // just look for the attributes, the css is thoroughly tested in the image test
-    cy.get('div#videos').within(() => {
+    cy.get('#videos').within(() => {
       // full
       cy.get('figure[data-align="full"]').get('video').should('exist')
       // left
