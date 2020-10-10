@@ -1,25 +1,35 @@
+<script context="module">
+	export function preload({ params, query }) {
+		return this.fetch(`/blog.json`)
+		.then(response => response.json())
+		.then(posts => {
+      return { posts }
+    })
+	}
+</script>
+
 <script>
+export let posts
+	
   import { meta } from '../site-config'
+	import Posts from '../components/posts.svelte'
 </script>
 
 <style global type='text/scss'>
-  // section { // DON'T DO THIS
-  //   display: flex;
-  //   align-items: center;
-  // }
-
-  div {
-    line-height: 1.5;
-  }
-
-  p {
-    margin: 1em 0;
-  }
-
-  img {
-    float: right;
-    margin: 0 0 1em 1em;
-    width: 200px;
+  .temp-bio {
+    div {
+      line-height: 1.5;
+    }
+  
+    p {
+      margin: 1em 0;
+    }
+  
+    img {
+      float: right;
+      margin: 0 0 1em 1em;
+      width: 200px;
+    }
   }
 </style>
 
@@ -37,7 +47,7 @@
     />
   </section>
   
-  <!-- <Posts posts={props.data.allMdx.edges} /> -->
+  <Posts {posts} />
   
   <!-- <Form {...contactForm} location={props.location.pathname} /> -->
 
