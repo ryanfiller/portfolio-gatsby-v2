@@ -10,8 +10,6 @@
 	import SEO from '../components/layout/seo.svelte'
 
 	import { markdown } from '../stores.js'
-	$: markdown.set({}) // ???
-
 </script>
 
 <style global type="text/scss">
@@ -155,7 +153,7 @@
 	<link rel='stylesheet' href='/slowly-delete-these-styles.css'>
 </svelte:head>
 
-<SEO />
+<SEO segment={segment} />
 
 <div id='site' className={segment}>
 	{#if !hideSiteHeader}

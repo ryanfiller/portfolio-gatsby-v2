@@ -3,13 +3,14 @@
 	export let status
 	export let error
 	const dev = process.env.NODE_ENV === 'development'
+	import { meta } from '../site-config'
 </script>
 
 <style>
 </style>
 
 <svelte:head>
-	<title>{status}</title>
+	<title>Uh Oh - {status} | {meta.title}</title>
 </svelte:head>
 
 <h1>Ruh Roh: {status}</h1>
