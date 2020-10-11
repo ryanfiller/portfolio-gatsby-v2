@@ -89,7 +89,6 @@ module.exports = {
     },
 
     // design / render related plugins
-    'gatsby-plugin-preact',
     {
       resolve: 'gatsby-plugin-sass',
       options: {
