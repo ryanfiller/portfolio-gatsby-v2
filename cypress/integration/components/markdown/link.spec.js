@@ -1,6 +1,7 @@
 context('remark anchors', () => {
   beforeEach(() => {
     cy.visit('/styles')
+    cy.get('#text').scrollIntoView()
     cy.injectAxe()
   })
 

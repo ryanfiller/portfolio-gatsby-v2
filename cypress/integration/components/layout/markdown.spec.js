@@ -5,6 +5,7 @@ context('<Markdown /> component', () => {
   })
   
   it('renders the markdown components', () => {
+    cy.get('#content').scrollIntoView()
     cy.get('#content').within(() => {
       // links
       cy.get('a').should('exist')

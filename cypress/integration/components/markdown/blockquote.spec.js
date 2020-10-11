@@ -1,6 +1,7 @@
 context('remark blockquote', () => {
   beforeEach(() => {
     cy.visit('/styles')
+    cy.get('#quotes').scrollIntoView()
     cy.injectAxe()
   })
   

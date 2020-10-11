@@ -4,12 +4,22 @@
 	import Header from '../components/layout/header.svelte'
 	import Footer from '../components/layout/footer.svelte'
 
-	// TODO - have this pull from a store or something?
-	let hideSiteHeader = false
-
 	import SEO from '../components/layout/seo.svelte'
 
 	import { markdown } from '../stores.js'
+
+	// temporary fix for broken #hash links - https://github.com/sveltejs/sapper/issues/904#issuecomment-540536561
+	import { onMount } from 'svelte'
+	onMount(() => {
+		document.querySelectorAll('a').forEach(a => {
+			if (!a.hash || !document.querySelectorAll(a.hash).length) return
+			a.addEventListener('click', event => {
+				event.preventDefault()
+				window.location.hash = event.target.getAttribute('href')
+				event.target.scrollIntoView()
+			})
+		})
+	})
 </script>
 
 <style global type="text/scss">
@@ -156,9 +166,7 @@
 <SEO segment={segment} />
 
 <div id='site' className={segment}>
-	{#if !hideSiteHeader}
-		<Header segment={segment} />
-	{/if}
+	<Header segment={segment} />
 	<main id='content'>
 		<slot markdown={$markdown}></slot>
 	</main> 

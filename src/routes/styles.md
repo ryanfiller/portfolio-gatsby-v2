@@ -3,13 +3,15 @@ name: 'styles'
 title: 'Style Guide'
 ---
 
-<!-- import ColorChart from '../../../components/misc/color-chart' -->
+<script>
+  import ColorChart from '.lab/color-contrast-table/_color-chart.svelte'
+</script>
 
-<!-- <div id="colors">
+<div id="colors">
 
   <ColorChart />
 
-</div> -->
+</div>
 
 <div id="headings">
 

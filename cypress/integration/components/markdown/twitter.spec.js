@@ -1,6 +1,7 @@
 context('rehype twitter', () => {
   beforeEach(() => {
     cy.visit('/styles')
+    cy.get('#quotes').scrollIntoView()
     cy.injectAxe()
   })
 

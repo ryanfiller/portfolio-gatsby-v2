@@ -1,6 +1,7 @@
 context('rehype iframe', () => {
   beforeEach(() => {
     cy.visit('/styles')
+    cy.get('#iframes').scrollIntoView()
     cy.injectAxe()
   })
   

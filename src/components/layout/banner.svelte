@@ -97,6 +97,6 @@
   {:else if segment === 'lab'}
     <Lab {...$markdown} />
   {/if}
-{:else}
+{:else if segment}
   <Default title={segment} />
 {/if}

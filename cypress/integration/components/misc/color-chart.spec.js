@@ -4,8 +4,7 @@ context('<ColorChart /> component', () => {
   context('default chart', () => {
     beforeEach(() => {
       cy.visit('/styles')
-      // scroll through page to make sure lazy load element appear
-      cy.get('#site-footer').scrollIntoView()
+      cy.get('#colors').scrollIntoView()
       cy.injectAxe()
     })
 

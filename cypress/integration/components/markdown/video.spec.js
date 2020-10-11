@@ -1,14 +1,13 @@
 context('remark videos', () => {
   beforeEach(() => {
     cy.visit('/styles')
+    cy.get('#videos').scrollIntoView()
     cy.injectAxe()
   })
 
   it('renders the correct attributes', () => {
     cy.get('#videos').within(() => {
-      cy.get('video').eq(0)
-      .should('have.attr', 'title', 'title')
-  
+      cy.get('video').eq(0).should('have.attr', 'title', 'title')
       cy.checkA11y()
     })
   })

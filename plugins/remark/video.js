@@ -3,10 +3,15 @@ import visit from 'unist-util-visit'
 function renderVideo(node) {
   const data = node.data || (node.data = {})
   const props = data.hProperties || (data.hProperties = {})
-  const src = node.url
   const alt = node.alt
   const title = node.title
   const caption = props['data-caption']
+  let src
+  if (process.env.NODE_ENV !== 'test') { // the breaks cypress
+    src = node.url
+  } else {
+    src = ''
+  }
 
   // TODO, options object
 
