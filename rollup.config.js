@@ -12,6 +12,7 @@ import { globalStyle, scss } from 'svelte-preprocess'
 import copy from 'rollup-plugin-copy'
 
 import attr from 'remark-attr'
+import remarkCustomBlocks from 'remark-custom-blocks'
 // TODO remark-abbr
 // TODO https://github.com/JS-DevTools/rehype-toc
 
@@ -34,6 +35,13 @@ const preprocess = [
 		layout: 'src/components/layout/mdsvex.svelte',
 		remarkPlugins: [
 			[attr, { scope: 'every' }],
+			[remarkCustomBlocks, {
+				details: {
+					classes: 'details',
+					title: 'required',
+					details: true
+				},
+			}],
 			blockquote,
 			headings,
 			images,

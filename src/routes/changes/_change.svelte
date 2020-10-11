@@ -1,4 +1,4 @@
-<style type='text/scss'>
+<style global type='text/scss'>
   @import '../../styles/variables.scss';
   @import '../../styles/functions.scss';
 
@@ -8,23 +8,17 @@
     padding: calc(var(--padding)/2) var(--padding);
     margin-bottom: var(--padding);
 
-    &:last-child {
+    p {
       margin-bottom: 0;
-    }
-
-    &__summary-text {
-      p {
-        margin-bottom: 0;
-    
-        &:first-of-type,
-        &:last-of-type {
-          margin-bottom: 1em;
-        }
+  
+      &:first-of-type,
+      &:last-of-type {
+        margin-bottom: 1em;
       }
     }
 
-    &__details {
-      &-label {
+    details {
+      summary {
         font-size: 1.125em;
         cursor: pointer;
 
@@ -40,105 +34,40 @@
         }
       }
 
-      &-text {
-        font-size: 1em;
-        
-        &[open] {
-          .change__details-label:before {
-            transform: rotate(90deg);
-          }
-    
-          & > ul {
-            max-height: 100%;
-          }
+      &[open] {
+        summary:before {
+          transform: rotate(90deg);
         }
-    
-        & > ul { // top level ul only
-          max-height: 0;
-          overflow: hidden;
-          margin-left: .185rem;
+      }
+
+      div > ul { // remark-custom-block inserts a div
+        &:first-of-type { // top level ul only
+          transition: var(--transitionSpeed);
           // TODO? - maybe make a border mixin
           border-left: .125rem solid var(--colorPrimary);
-          padding-left: .5rem;
+          list-style: none;
+          margin-left: .185rem;
+          padding-left: 1rem;
           padding-top: 1rem;
+          font-weight: bold;
+
+          ul {
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 1rem;
+          }
 
           p {
             margin-bottom: 0;
           }
-    
-          & > li {
-            font-weight: bold;
-    
-            ul {
-              font-weight: normal;
-              margin-top: 0;
-              margin-bottom: 1rem;
-
-              li {
-                margin-bottom: 0;
-              }
-
-              ul {
-                list-style: none;
-                margin-left: 0;
-              }
-            }
-          }
-    
-          // <CSStransition>
-          &.list--enter {
-            max-height: 100vh;
-            transition: var(--transitionSpeed);
-          }
-    
-          &.list--enter-done {
-            max-height: none;
-          }
-          // &.list--exit {}
-          // &.list--exit-done {}
         }
       }
     }
   }
 </style>
 
-<script>
-  $: console.log('props', $$props)
-  $: console.log('slots', $$slots)
-</script>
-
-<!-- import React, { useState } from 'react'
-
-
-const Change = props => {
-  const [open, toggleOpen] = useState(false)
-  const handleToggleOpen = event => {
-    event.preventDefault()
-    toggleOpen(!open)
-  }
-
-  const elements = [...props.children]
-  // remove first element, the h2
-  const header = elements.shift()
-  // remove the last element, the list
-  const list = elements.pop()
-
-  return (
-    
--->
+<!-- TODO - refactor this to use 'callout' component -->
 
 <section class='change'>
   <slot />
 </section>
-  <!-- {header}
-  <div class='change__summary-text'>
-    {elements}
-  </div>
-  <details  class='change__details-text'>
-    open={open}
-      onClick={handleToggleOpen}
-    <summary class='change__details-label'>
-      Version Details
-    </summary>
-      {list}
-  </details> -->
