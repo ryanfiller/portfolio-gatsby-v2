@@ -3,9 +3,10 @@ name: 'changes'
 title: 'Change Log'
 ---
 
-under construction
+<script>
+  import Change from './_change.svelte'
+</script>
 
-<!-- import Change from '../../../components/misc/change'
 
 <Change>
 
@@ -484,7 +485,7 @@ under construction
   - RF-04-G
     - [Early 2018](http://2018.ryanfiller.com/)
     - Built using [Gatsby](https://www.gatsbyjs.org/) and [NetlifyCMS](https://www.netlifycms.org/)
-    - Abandoned due to ever increasing complexity and difficulty of backwards compatability. Complexity and build time needed to be cut down since Netlify introduced limited build minutes, and sometimes starting fresh is easiest.
+    - Abandoned due to ever increasing complexity and difficulty of backwards compatibility. Complexity and build time needed to be cut down since Netlify introduced limited build minutes, and sometimes starting fresh is easiest.
 
   - RF-03-J
     - [Late 2016](http://2016.ryanfiller.com/)
@@ -510,4 +511,4 @@ under construction
     - [Late Fall 2011](http://2011.ryanfiller.com/)
     - Built using HTML, CSS, and jQuery to satisfy an assignment for a Web01 college course.
 
-</Change> -->
+</Change>
