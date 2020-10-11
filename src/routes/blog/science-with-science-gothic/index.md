@@ -218,4 +218,4 @@ There are some javascript options, probably the most popular of which is the [We
 
 I did make a [test page](https://5e854097e97dd4000678801a--font-science-gothic.netlify.com/) using Web Font Loader, but this actually hurt performance by adding to the overall size of the javascript bundle. The biggest downside to this approach, in my opinion, is that custom fonts will actually *never* load for users with javascript disabled since there is no mechanism to swap out class names when fonts are made available and shutting off features to users is something I try to avoid whenever possible.
 
-TODO - take these netlify pages down, add an update about removing examples from this
+<!-- TODO - take these netlify pages down, add an update about removing examples from this -->

@@ -4,7 +4,7 @@ title: 'Style Guide'
 ---
 
 <script>
-  import ColorChart from '.lab/color-contrast-table/_color-chart.svelte'
+  import ColorChart from './lab/color-contrast-table/_color-chart.svelte'
 </script>
 
 <div id="colors">

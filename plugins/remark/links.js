@@ -1,7 +1,6 @@
 import visit from 'unist-util-visit'
-
-// TODO pull this from some config file elsewhere
-const siteUrl = 'ryanfiller.com'
+import { meta } from '../../src/site-fon' 
+const siteUrl = meta.siteUrl
 
 function transformer(ast) {
   visit(ast, 'link', visitor)
