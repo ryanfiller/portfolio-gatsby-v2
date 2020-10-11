@@ -1,5 +1,7 @@
 <style global type='text/scss'> 
   .framework-list {
+    --iconSize: 2rem;
+
     ul {
       margin-left: 0;
       padding-left: 2em;
@@ -12,18 +14,22 @@
         + li {
           margin-top: 2em;
         }
+
+        & > p:first-child {
+          margin-top: calc(-1 * var(--iconSize)); // move the first paragraph up
+        }
     
         &:before {
           content: '';
           display: block;
-          height: 1.5em;
-          width: 1.5em;
+          height: var(--iconSize);
+          width: var(--iconSize);
           background-size: contain;
           background-position: center center;
           background-repeat: no-repeat;
-          position: absolute;
-          top: 0;
-          left: -2em;
+          position: sticky;
+          top: calc(.5 * var(--iconSize));
+          transform: translateX(calc(-1.5 * var(--iconSize)));
         }
     
         &:nth-child(1):before {

@@ -58,7 +58,7 @@
       </a>
     </Nav>
   </div>
-  {#if segment}  <!-- blank segment is homepage or _error -->
+  {#if !!segment}  <!-- blank segment is homepage or _error -->
     <Banner {segment} />
   {/if}
 </header>

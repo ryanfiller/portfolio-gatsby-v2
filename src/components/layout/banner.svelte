@@ -5,7 +5,12 @@
   import Blog from './banners/blog.svelte'
   import Lab from './banners/lab.svelte'
 
+  import { stores } from '@sapper/app'
+	const { preloading, page } = stores()
   import { markdown } from '../../stores.js'
+
+  let isRoot
+  $: isRoot = $page.path.split('/').filter(Boolean).length === 1
 
 </script>
 
@@ -91,12 +96,13 @@
   }
 </style>
 
-{#if !!Object.entries($markdown).length}
+
+{#if isRoot}
+  <Default title={segment} />
+{:else if Object.keys($markdown).length}
   {#if segment === 'blog'}
     <Blog {...$markdown} />
   {:else if segment === 'lab'}
     <Lab {...$markdown} />
   {/if}
-{:else if segment}
-  <Default title={segment} />
 {/if}

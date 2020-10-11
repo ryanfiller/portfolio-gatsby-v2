@@ -10,7 +10,7 @@ context('remark anchors', () => {
       cy.get('#text').within(() => {        
         cy.get('a').eq(0)
         .should('have.attr', 'href', '/')
-        .should('have.attr', 'title', 'ryanfiller.com')
+        .should('have.attr', 'title', 'https://www.ryanfiller.com')
         cy.checkA11y()
       })
     })
@@ -21,7 +21,7 @@ context('remark anchors', () => {
       cy.get('#text').within(() => {        
         cy.get('a').eq(1)
         .should('have.attr', 'href', '/blog')
-        .should('have.attr', 'title', 'ryanfiller.com/blog')
+        .should('have.attr', 'title', 'https://www.ryanfiller.com/blog')
         cy.checkA11y()
       })
     })
